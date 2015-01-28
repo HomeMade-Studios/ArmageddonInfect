@@ -22,7 +22,7 @@ public class Character{
     public void move() {
     	x += dx;
         y += dy;
-        	
+        System.out.println(x+" "+y);
         }
     
 	public void keyPressed(KeyEvent e) {

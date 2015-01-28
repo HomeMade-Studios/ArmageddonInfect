@@ -19,7 +19,7 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class Board extends JPanel implements ActionListener {
 
-	Character cazzillo;
+	Character character;
 	HUD hud;
 	ImgLoader loader;
 	Random rand = new Random();
@@ -35,8 +35,8 @@ public class Board extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setBackground(Color.DARK_GRAY);
         setFocusable(true);
-        cazzillo=new Character();
-        hud= new HUD(screenWidth, screenHeight,cazzillo.getHealt());
+        character=new Character();
+        hud= new HUD(screenWidth, screenHeight,character.getHealt());
         loader= new ImgLoader();
         timer = new Timer (10 , this);
         timer.start();
@@ -53,20 +53,20 @@ public class Board extends JPanel implements ActionListener {
         g.dispose();
     }
     
-    
     public void actionPerformed(ActionEvent e) {
-    		hud.updateHUD(cazzillo.getHealt());
-	    	repaint();
+    	character.move();
+    	hud.updateHUD(character.getHealt());
+	    repaint();
     }
     
     private class TAdapter extends KeyAdapter {
 
         public void keyReleased(KeyEvent e) {
-        	cazzillo.keyReleased(e);
+        	character.keyReleased(e);
         }
 
         public void keyPressed(KeyEvent e) {
-        	cazzillo.keyPressed(e);
+        	character.keyPressed(e);
         }
     }
 }
