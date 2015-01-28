@@ -6,10 +6,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class ImgLoader {
-	int width = 64;
-	int height = 64;
-	int rows = 3;
-	int cols = 8;
+	int width = 32;
+	int height = 32;
+	int rows = 8;
+	int cols = 3;
 	BufferedImage[][] spritesBase;
 	BufferedImage HUD;
 	BufferedImage bigImg;
