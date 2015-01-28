@@ -23,6 +23,7 @@ public class Board extends JPanel implements ActionListener {
 	Mouse mouse;
 	HUD hud;
 	ImgLoader loader;
+	Enemy enemy;
 	Random rand = new Random();
 	private Timer timer;
 	int screenWidth;
@@ -38,6 +39,7 @@ public class Board extends JPanel implements ActionListener {
         setBackground(Color.DARK_GRAY);
         setFocusable(true);
         character=new Character();
+        enemy=new Enemy();
         hud= new HUD(screenWidth, screenHeight,character.getHealt());
         loader= new ImgLoader();
         timer = new Timer (10 , this);
@@ -49,6 +51,7 @@ public class Board extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D)g;
         g2d.drawImage(loader.getSprite()[character.GetP(mouse.getMx(), mouse.getMy())][character.animationCycle()],character.getX(),character.getY(),null);
         g2d.setColor(Color.GREEN);
+        g2d.drawImage(loader.getSprite()[4][0], enemy.getX(), enemy.getY(), null);
         g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));
         g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
         g2d.drawImage(loader.getHUD(), hud.getX(), hud.getY(), null);
@@ -58,6 +61,7 @@ public class Board extends JPanel implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
     	character.move();
+    	enemy.move(character.getX(), character.getY());
     	hud.updateHUD(character.getHealt());
 	    repaint();
     }
