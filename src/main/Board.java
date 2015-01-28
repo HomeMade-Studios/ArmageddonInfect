@@ -49,7 +49,7 @@ public class Board extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D)g;
-        g2d.drawImage(loader.getSprite()[character.GetP(mouse.getMx(), mouse.getMy())][character.animationCycle()],character.getX(),character.getY(),null);
+        g2d.drawImage(loader.getSprite()[character.GetP(mouse.getMx(), mouse.getMy())][character.animationCycle(mouse.isMouseClicked())],character.getX(),character.getY(),null);
         g2d.setColor(Color.GREEN);
         g2d.drawImage(loader.getSprite()[4][0], enemy.getX(), enemy.getY(), null);
         g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));

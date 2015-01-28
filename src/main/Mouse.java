@@ -10,17 +10,25 @@ class Mouse implements MouseInputListener {
 
 	private int mx;
 	private int my;
+	private boolean clicked;
 	static Random rand = new Random();
 
 	public void mouseMoved(MouseEvent e) {
         mx = e.getX();
         my = e.getY();
     }
-
-	@Override
+	
+	public boolean isMouseClicked(){
+		if(clicked){
+			clicked=false;
+			return true;
+		}
+		else
+			return false;
+	}
+	
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		clicked=true;
 	}
 
 	@Override

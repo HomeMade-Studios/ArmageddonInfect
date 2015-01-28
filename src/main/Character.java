@@ -17,7 +17,7 @@ public class Character{
     
     public Character() {
     	dAn=an=j=0;
-    	Mj=DMj=5;
+    	Mj=DMj=15;
         x = 480;
         y = 318;
     }
@@ -48,22 +48,24 @@ public class Character{
     	return p;
     }
     
-	public int animationCycle(){
-		j++;
+	public int animationCycle(boolean click){
+		j++;				//Aggiunge ritardo all'animazione
 		if(j>Mj){
 			an++;
-			Mj+=25;
+			Mj+=DMj;
 		}
 		if(an==3){
-			Mj=25;
+			Mj=DMj;
 			an=dAn;
 			j=0;
 		}
 		if(dx==0&&dy==0){
-			Mj=25;
+			Mj=DMj;
 			an=dAn;
 			j=0;
 		}
+		if(click)
+			an=3;
 		return an;
 	}
     

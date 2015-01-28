@@ -9,7 +9,7 @@ public class ImgLoader {
 	int width = 32;
 	int height = 32;
 	int rows = 8;
-	int cols = 3;
+	int cols = 4;
 	BufferedImage[][] spritesBase;
 	BufferedImage HUD;
 	BufferedImage bigImg;
