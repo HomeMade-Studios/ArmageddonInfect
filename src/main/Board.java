@@ -19,7 +19,7 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class Board extends JPanel implements ActionListener {
 
-	Cazzillo cazzillo;
+	Character cazzillo;
 	HUD hud;
 	ImgLoader loader;
 	Random rand = new Random();
@@ -35,7 +35,7 @@ public class Board extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setBackground(Color.DARK_GRAY);
         setFocusable(true);
-        cazzillo=new Cazzillo();
+        cazzillo=new Character();
         hud= new HUD(screenWidth, screenHeight,cazzillo.getHealt());
         loader= new ImgLoader();
         timer = new Timer (10 , this);

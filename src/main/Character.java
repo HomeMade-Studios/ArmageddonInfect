@@ -3,7 +3,7 @@ package main;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-public class Cazzillo{
+public class Character{
 
     static int x;
     static int y;
@@ -14,7 +14,7 @@ public class Cazzillo{
 	Random rand = new Random();
 	boolean paused;
     
-    public Cazzillo() {
+    public Character() {
         x = 480;
         y = 318;
     }
@@ -43,10 +43,6 @@ public class Cazzillo{
 
         if (key == KeyEvent.VK_S) {
             dy = 1;
-        }
-        
-        if (key == KeyEvent.VK_Q) {
-            healt-= 1;
         }
         
         if (key == KeyEvent.VK_ESCAPE) {
