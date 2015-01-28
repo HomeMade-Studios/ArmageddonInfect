@@ -43,4 +43,7 @@ public class ImgLoader {
 	public BufferedImage getHUD() {
 		return HUD;
 	}
+	public BufferedImage[][] getSprite() {
+		return spritesBase;
+	}
 }
