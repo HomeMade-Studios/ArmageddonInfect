@@ -25,7 +25,8 @@ public class Enemy {
     	Mj=DMj=15;
 		delay = 2 + rand.nextInt(3);
 		j = 0;
-		enemyHB =new Rectangle(x+6,y,20,32); 
+		enemyHB =new Rectangle(x+6,y,20,32);
+		p = 4;
 	}
 	
 	public void move(int characterx, int charactery, Rectangle characterHB){
