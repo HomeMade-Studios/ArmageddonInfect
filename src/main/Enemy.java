@@ -26,7 +26,7 @@ public class Enemy {
 		health=100;
 		dAn=an=j=0;
     	Mj=DMj=15;
-		delay = 2 + rand.nextInt(3);
+		delay = 0 + rand.nextInt(5);
 		j = 0;
 		enemyHB =new Rectangle(x+6,y,20,32);
 		enemyHealth=new Rectangle(enemyHB.x,enemyHB.y-12,(int)enemyHB.getWidth(),3);

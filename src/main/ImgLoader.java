@@ -12,6 +12,7 @@ public class ImgLoader {
 	private int cols = 4;
 	private BufferedImage[][] spritesBase;
 	private BufferedImage HUD;
+	private BufferedImage lobby;
 	private BufferedImage bigImg;
 
 	public ImgLoader(){
@@ -23,6 +24,7 @@ public class ImgLoader {
 		try {
 			bigImg = ImageIO.read(getClass().getResource("/img/Spritesheet.png"));
 			HUD=ImageIO.read(getClass().getResource("/img/HUD.png"));
+			lobby=ImageIO.read(getClass().getResource("/img/Lobby.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -43,6 +45,11 @@ public class ImgLoader {
 	public BufferedImage getHUD() {
 		return HUD;
 	}
+	
+	public BufferedImage getLobby() {
+		return lobby;
+	}
+	
 	public BufferedImage[][] getSprite() {
 		return spritesBase;
 	}
