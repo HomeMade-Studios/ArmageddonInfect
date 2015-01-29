@@ -22,14 +22,14 @@ public class Character{
     	Mj=DMj=15;
         x = (Width/2)-16;
         y = (Height/2)-16;
-        hitbox=new Rectangle (x,y,20,32);
+        hitbox=new Rectangle (x+6,y,20,32);
     }
     
     public void move() {
     	if(!attack){
 	    	x += dx;
 	        y += dy;
-	        hitbox=new Rectangle (x,y,20,32);
+	        hitbox=new Rectangle (x+6,y,20,32);
     	}
     }
     

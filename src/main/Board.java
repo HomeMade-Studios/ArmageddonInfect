@@ -54,6 +54,7 @@ public class Board extends JPanel implements ActionListener {
         g2d.drawImage(loader.getSprite()[enemy.getP()][enemy.getAn()], enemy.getX(), enemy.getY(), null);
         g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));
         g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
+        g2d.fill(character.getHitbox());
         g2d.drawImage(loader.getHUD(), hud.getX(), hud.getY(), null);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
