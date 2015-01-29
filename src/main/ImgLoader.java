@@ -6,13 +6,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class ImgLoader {
-	int width = 32;
-	int height = 32;
-	int rows = 8;
-	int cols = 4;
-	BufferedImage[][] spritesBase;
-	BufferedImage HUD;
-	BufferedImage bigImg;
+	private int width = 32;
+	private int height = 32;
+	private int rows = 8;
+	private int cols = 4;
+	private BufferedImage[][] spritesBase;
+	private BufferedImage HUD;
+	private BufferedImage bigImg;
 
 	public ImgLoader(){
 	System.out.println(getClass());

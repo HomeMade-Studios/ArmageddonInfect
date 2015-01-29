@@ -5,20 +5,19 @@ import java.awt.Rectangle;
 
 
 public class HUD {
-	Point hud;
-	Rectangle healtgr1;
-	Rectangle healtgr2;
-	float healt1;
-	float healt2;
-	float healtMAX;
-	int screenWidth;
-	int screenHeight;
-	int x;
-	int y;
-	int h1;
-	int h2;
-	int h2y;
-	int temp;
+	private Rectangle healtgr1;
+	private Rectangle healtgr2;
+	private float healt1;
+	private float healt2;
+	private float healtMAX;
+	private int screenWidth;
+	private int screenHeight;
+	private int x;
+	private int y;
+	private int h1;
+	private int h2;
+	private int h2y;
+	private int temp;
 
 	public HUD(int Width, int Height, int healtMAX) {
 		screenWidth = Width;

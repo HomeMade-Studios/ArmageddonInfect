@@ -6,13 +6,17 @@ import java.util.Random;
 
 public class Character{
 
-    static int x;
-    static int y;
-    int dx;
-    int dy;
-    int pov,j,Mj,DMj,an,dAn,k,att;
-    int strength=25;
-    int healt=100;
+    private int x;
+    private int y;
+    private int dx;
+    private int dy;
+    private int pov,j,Mj,DMj,an,dAn,k,att;
+    private int strength=25;
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+	int healt=100;
     Rectangle hitbox;
 	Random rand = new Random();
 	boolean paused,attack;
@@ -51,7 +55,7 @@ public class Character{
     	return pov;
     }
     
-    void Attacked(int Str){
+    public void attacked(int Str){
     	if(att>40){
 			att=0;
 	    	healt-=Str;
@@ -142,6 +146,10 @@ public class Character{
             dy = 0;
         }
     }
+    
+    public int getStrength() {
+		return strength;
+	}
     
 	public int getX() {
 		return x;
