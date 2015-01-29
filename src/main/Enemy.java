@@ -14,6 +14,7 @@ public class Enemy {
 	int health;
 	int p,j,Mj,DMj,an,dAn,k;
 	Rectangle enemyHB;
+	Rectangle enemyHealth;
 	Random rand = new Random();
 	
 	public Enemy(){

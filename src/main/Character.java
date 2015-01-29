@@ -81,7 +81,6 @@ public class Character{
 		}
 		if(click)
 			attack=true;
-		System.out.println(attack);
 		if(attack){
 			an=3;
 			k++;
@@ -128,25 +127,25 @@ public class Character{
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         
-    	if (key == KeyEvent.VK_1 ) {
-        }
-    	
-        
         if (key == KeyEvent.VK_A) {
-            dx = 0;
-        }
+            if(dx!=1)
+               dx = 0;
+           }
 
-        if (key == KeyEvent.VK_D) {
-            dx = 0;
-        }
+           if (key == KeyEvent.VK_D) {
+            if(dx!=-1)
+               dx = 0;
+           }
 
-        if (key == KeyEvent.VK_W) {
-            dy = 0;
-        }
+           if (key == KeyEvent.VK_W) {
+            if(dy!=1)
+               dy = 0;
+           }
 
-        if (key == KeyEvent.VK_S) {
-            dy = 0;
-        }
+           if (key == KeyEvent.VK_S) {
+            if(dy!=-1)
+               dy = 0;
+           }
     }
     
     public int getStrength() {
