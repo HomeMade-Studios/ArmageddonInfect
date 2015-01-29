@@ -9,11 +9,11 @@ public class Character{
     static int y;
     int dx;
     int dy;
-    int p,j,Mj,DMj,an,dAn;
+    int pov,j,Mj,DMj,an,dAn;
     int strength=25;
     int healt=100;
 	Random rand = new Random();
-	boolean paused;
+	boolean paused,attack;
     
     public Character() {
     	dAn=an=j=0;
@@ -25,31 +25,31 @@ public class Character{
     public void move() {
     	x += dx;
         y += dy;
-        System.out.println(x+" "+y);
         }
     
     public int GetP(int mx, int my){
     	if (Math.abs(mx-x)>Math.abs(my-y)){	//Algoritmo che determina la posizione del mouse rispetto al personaggio
     		if (mx-x>0){
-	    		p=3;	//Imposta la variabile che indica che guarda a destra
+	    		pov=3;	//Imposta la variabile che indica che guarda a destra
     		}
     		else{
-    			p=2;	//Visione a sinistra
+    			pov=2;	//Visione a sinistra
     		}
     	}
     	else{
     		if (my-y>0){
-	    		p=0;	//visione in basso
+	    		pov=0;	//visione in basso
     		}
     		else{
-    			p=1;	//visione in alto
+    			pov=1;	//visione in alto
     		}
     	}
-    	return p;
+    	return pov;
     }
     
 	public int animationCycle(boolean click){
-		j++;				//Aggiunge ritardo all'animazione
+		if(!attack)
+			j++;				//Aggiunge ritardo all'animazione
 		if(j>Mj){
 			an++;
 			Mj+=DMj;
@@ -64,8 +64,10 @@ public class Character{
 			an=dAn;
 			j=0;
 		}
-		if(click)
+		if(click){
+			attack=true;
 			an=3;
+		}
 		return an;
 	}
     
