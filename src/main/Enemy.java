@@ -10,7 +10,7 @@ public class Enemy {
 	int delay;
 	int move;
 	int i;  
-	int p,j,Mj,DMj,an,dAn;
+	int p,j,Mj,DMj,an,dAn,k;
 	Rectangle enemyHB;
 	Random rand = new Random();
 	
@@ -18,6 +18,7 @@ public class Enemy {
 		
 		x = rand.nextInt(992);
 		y = rand.nextInt(668);
+		k = 0;
 		dAn=an=j=0;
     	Mj=DMj=15;
 		delay = 2 + rand.nextInt(3);
@@ -68,8 +69,20 @@ public class Enemy {
 			enemyHB = new Rectangle(x+6,y,20,32);
 		}
 		else{
-			an = 3;
+			if(k > 20){
+				an = 3;
+				if(k == 40){
+					k = 0;
+				}
+				
+			}
+			else{
+				an = 0;
+			}
+			k++;
+			
 		}
+		System.out.println(k+ " " + an);
 	}
 
 	public int getX() {
