@@ -51,7 +51,7 @@ public class Character{
     	return pov;
     }
     
-    void Attacked(int Str){
+    void attacked(int Str){
     	if(att>40){
 			att=0;
 	    	healt-=Str;
