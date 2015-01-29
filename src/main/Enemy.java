@@ -29,6 +29,7 @@ public class Enemy {
 		delay = 2 + rand.nextInt(3);
 		j = 0;
 		enemyHB =new Rectangle(x+6,y,20,32);
+		enemyHealth=new Rectangle(enemyHB.x,enemyHB.y-12,(int)enemyHB.getWidth(),3);
 		p = 4;
 	}
 	
@@ -73,6 +74,7 @@ public class Enemy {
 				j=0;
 			}
 			enemyHB = new Rectangle(x+6,y,20,32);
+			enemyHealth=new Rectangle(enemyHB.x,enemyHB.y-12,(int)enemyHB.getWidth(),3);
 		}
 		else{
 			if(k > 20){
@@ -139,6 +141,10 @@ public class Enemy {
 
 	public int getHealth() {
 		return health;
+	}
+
+	public Rectangle getEnemyHealth() {
+		return enemyHealth;
 	}
 	
 	

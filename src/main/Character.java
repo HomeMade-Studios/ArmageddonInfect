@@ -11,11 +11,7 @@ public class Character{
     private int dx;
     private int dy;
     private int pov,j,Mj,DMj,an,dAn,k,att;
-    private int strength=25;
-
-	public void setStrength(int strength) {
-		this.strength = strength;
-	}
+    private int strength=50;
 	int healt=1000;
     Rectangle hitbox;
 	Random rand = new Random();
