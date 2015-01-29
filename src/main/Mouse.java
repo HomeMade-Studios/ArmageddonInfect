@@ -27,7 +27,7 @@ class Mouse implements MouseInputListener {
 			return false;
 	}
 	
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent e) {
 		clicked=true;
 	}
 

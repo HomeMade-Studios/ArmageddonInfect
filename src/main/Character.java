@@ -56,7 +56,7 @@ public class Character{
     }
     
     public void attacked(int Str){
-    	if(att>40){
+    	if(att>80){
 			att=0;
 	    	healt-=Str;
 		}
@@ -79,8 +79,10 @@ public class Character{
 			an=dAn;
 			j=0;
 		}
-		if(click|attack){
+		if(click)
 			attack=true;
+		System.out.println(attack);
+		if(attack){
 			an=3;
 			k++;
 			if(k>15){

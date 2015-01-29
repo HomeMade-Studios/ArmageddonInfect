@@ -11,6 +11,7 @@ public class Enemy {
 	int move;
 	int strength;
 	int i;  
+	int health;
 	int p,j,Mj,DMj,an,dAn,k;
 	Rectangle enemyHB;
 	Random rand = new Random();
@@ -21,6 +22,7 @@ public class Enemy {
 		y = rand.nextInt(668);
 		k = 0;
 		strength = 10;
+		health=100;
 		dAn=an=j=0;
     	Mj=DMj=15;
 		delay = 2 + rand.nextInt(3);
@@ -86,6 +88,17 @@ public class Enemy {
 			
 		}
 	}
+	public void attacked(int Str, int Pov,int cx,int cy){
+		if(cx>x&&Pov==2)
+			health-=Str;
+		else if(cx<x&&Pov==3)
+			health-=Str;
+		else if(cy>y&&Pov==1)
+			health-=Str;
+		else if(cy<y&&Pov==0)
+			health-=Str;
+		System.out.println(health);
+	}
 
 	public int getX() {
 		return x;
@@ -114,14 +127,12 @@ public class Enemy {
 	public int getAn() {
 		return an;
 	}
-
+	
+	public int getStrength() {
+		return strength;
+	}
+	
 	public Rectangle getEnemyHB() {
 		return enemyHB;
 	}
-	
-	
-	
-	
-	
-
 }
