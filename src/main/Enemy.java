@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Rectangle;
 import java.util.Random;
 
 public class Enemy {
@@ -10,6 +11,7 @@ public class Enemy {
 	int move;
 	int i;  
 	int p,j,Mj,DMj,an,dAn;
+	Rectangle enemyHB;
 	Random rand = new Random();
 	
 	public Enemy(){
@@ -20,6 +22,7 @@ public class Enemy {
     	Mj=DMj=15;
 		delay = 2 + rand.nextInt(3);
 		j = 0;
+		enemyHB =new Rectangle(x+6,y,20,32); 
 	}
 	
 	public void move(int characterx, int charactery){
@@ -61,6 +64,7 @@ public class Enemy {
 			an=dAn;
 			j=0;
 		}
+		enemyHB =new Rectangle(x+6,y,20,32);
 	}
 
 	public int getX() {
@@ -89,6 +93,10 @@ public class Enemy {
 
 	public int getAn() {
 		return an;
+	}
+
+	public Rectangle getEnemyHB() {
+		return enemyHB;
 	}
 	
 	
