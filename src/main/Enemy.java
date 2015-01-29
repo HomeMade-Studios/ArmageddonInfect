@@ -100,7 +100,6 @@ public class Enemy {
 			health-=Str;
 		else if(cy<y&&Pov==0)
 			health-=Str;
-		System.out.println(health);
 	}
 
 	public int getX() {

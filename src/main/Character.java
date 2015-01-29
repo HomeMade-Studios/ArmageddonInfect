@@ -13,22 +13,24 @@ public class Character{
     private int pov,j,Mj,DMj,an,dAn,k,att;
     private int strength=50;
 	int healt=1000;
-    Rectangle hitbox;
+    Rectangle hitbox,attackbox;
 	Random rand = new Random();
 	boolean paused,attack;
     
     public Character(int Width, int Height) {
     	dAn=an=j=0;
-    	Mj=DMj=15;
+    	Mj=DMj=10;
         x = (Width/2)-16;
         y = (Height/2)-16;
         hitbox=new Rectangle (x+6,y,20,32);
+        attackbox=new Rectangle (x-6,y-6,44,44);
     }
     
     public void move() {
 	    	x += dx;
 	        y += dy;
 	        hitbox=new Rectangle (x+6,y,20,32);
+	        attackbox=new Rectangle (x-6,y-6,44,44);
     }
     
     public int GetP(int mx, int my){
@@ -161,5 +163,9 @@ public class Character{
 	}
 	public Rectangle getHitbox() {
 		return hitbox;
+	}
+
+	public Rectangle getAttackbox() {
+		return attackbox;
 	}
 }

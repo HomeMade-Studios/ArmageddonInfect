@@ -42,7 +42,7 @@ public class Board extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setBackground(Color.DARK_GRAY);
         setFocusable(true);
-        spawnFrequency = 100;
+        spawnFrequency = 200;
         character=new Character(screenWidth, screenHeight);
         enemy=new Enemy();
         hud= new HUD(screenWidth, screenHeight,character.getHealt());
@@ -80,7 +80,7 @@ public class Board extends JPanel implements ActionListener {
     		enemies.get(i).move(character.getX(), character.getY(), character.getHitbox());
     		if(enemies.get(i).getEnemyHB().intersects(character.getHitbox()))
         		character.attacked(enemies.get(i).getStrength());
-        	if(enemies.get(i).getEnemyHB().intersects(character.getHitbox())&&mouse.isMouseClicked())
+        	if(enemies.get(i).getEnemyHB().intersects(character.getAttackbox())&&mouse.isMouseClicked())
         		enemies.get(i).attacked(character.getStrength(),character.GetP(mouse.getMx(), mouse.getMy()),character.getX(),character.getY());
         	if(enemies.get(i).getHealth() <= 0)
         		enemies.remove(i);
