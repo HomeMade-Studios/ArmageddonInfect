@@ -10,7 +10,7 @@ public class Character{
     static int y;
     int dx;
     int dy;
-    int pov,j,Mj,DMj,an,dAn,k;
+    int pov,j,Mj,DMj,an,dAn,k,att;
     int strength=25;
     int healt=100;
     Rectangle hitbox;
@@ -26,11 +26,9 @@ public class Character{
     }
     
     public void move() {
-    	if(!attack){
 	    	x += dx;
 	        y += dy;
 	        hitbox=new Rectangle (x+6,y,20,32);
-    	}
     }
     
     public int GetP(int mx, int my){
@@ -53,6 +51,14 @@ public class Character{
     	return pov;
     }
     
+    void Attacked(int Str){
+    	if(att>40){
+			att=0;
+	    	healt-=Str;
+		}
+    	att++;
+    }
+    
 	public int animationCycle(boolean click){
 			j++;				//Aggiunge ritardo all'animazione
 		if(j>Mj){
@@ -73,7 +79,7 @@ public class Character{
 			attack=true;
 			an=3;
 			k++;
-			if(k>10){
+			if(k>15){
 				attack=false;
 				k=0;
 			}

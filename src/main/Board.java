@@ -61,7 +61,9 @@ public class Board extends JPanel implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
     	character.move();
-    	enemy.move(character.getX(), character.getY(), character.getHitbox);
+    	enemy.move(character.getX(), character.getY(), character.getHitbox());
+    	if(enemy.getEnemyHB().intersects(character.getHitbox()))
+    		character.Attacked(10);
     	hud.updateHUD(character.getHealt());
 	    repaint();
     }
