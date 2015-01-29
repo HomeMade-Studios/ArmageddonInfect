@@ -16,7 +16,7 @@ public class Character{
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
-	int healt=100;
+	int healt=1000;
     Rectangle hitbox;
 	Random rand = new Random();
 	boolean paused,attack;
