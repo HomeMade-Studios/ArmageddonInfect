@@ -25,46 +25,51 @@ public class Enemy {
 		enemyHB =new Rectangle(x+6,y,20,32); 
 	}
 	
-	public void move(int characterx, int charactery){
-		if(move > delay ){
-			if(x < characterx){
-				x++;
-				p=7;
+	public void move(int characterx, int charactery, Rectangle characterHB){
+		if(!enemyHB.intersects(characterHB)){
+			if(move > delay ){
+				if(x < characterx){
+					x++;
+					p=7;
+				}
+				if(x > characterx){
+					x--;
+					p=6;
+				}
+				if(y < charactery){
+					y++;
+					p=4;
+				}
+				if(y > charactery){
+					y--;
+					p=5;
+				}
+				move = 0;
 			}
-			if(x > characterx){
-				x--;
-				p=6;
+			else{
+				move++;
 			}
-			if(y < charactery){
-				y++;
-				p=4;
+			
+			j++;				//Aggiunge ritardo all'animazione
+			if(j>Mj){
+				an++;
+				Mj+=DMj;
 			}
-			if(y > charactery){
-				y--;
-				p=5;
+			if(an==3){
+				Mj=DMj;
+				an=dAn;
+				j=0;
 			}
-			move = 0;
+			if(x == characterx && y == charactery){
+				Mj=DMj;
+				an=dAn;
+				j=0;
+			}
+			enemyHB = new Rectangle(x+6,y,20,32);
 		}
 		else{
-			move++;
+			an = 3;
 		}
-		
-		j++;				//Aggiunge ritardo all'animazione
-		if(j>Mj){
-			an++;
-			Mj+=DMj;
-		}
-		if(an==3){
-			Mj=DMj;
-			an=dAn;
-			j=0;
-		}
-		if(x == characterx && y == charactery){
-			Mj=DMj;
-			an=dAn;
-			j=0;
-		}
-		enemyHB =new Rectangle(x+6,y,20,32);
 	}
 
 	public int getX() {
