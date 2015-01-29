@@ -168,4 +168,10 @@ public class Character{
 	public Rectangle getAttackbox() {
 		return attackbox;
 	}
+
+	public boolean isPaused() {
+		return paused;
+	}
+	
+	
 }
