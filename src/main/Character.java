@@ -9,7 +9,7 @@ public class Character{
     static int y;
     int dx;
     int dy;
-    int pov,j,Mj,DMj,an,dAn;
+    int pov,j,Mj,DMj,an,dAn,k;
     int strength=25;
     int healt=100;
 	Random rand = new Random();
@@ -17,7 +17,7 @@ public class Character{
     
     public Character() {
     	dAn=an=j=0;
-    	Mj=DMj=15;
+    	Mj=DMj=20;
         x = 480;
         y = 318;
     }
@@ -48,7 +48,6 @@ public class Character{
     }
     
 	public int animationCycle(boolean click){
-		if(!attack)
 			j++;				//Aggiunge ritardo all'animazione
 		if(j>Mj){
 			an++;
@@ -64,9 +63,14 @@ public class Character{
 			an=dAn;
 			j=0;
 		}
-		if(click){
+		if(click|attack){
 			attack=true;
 			an=3;
+			k++;
+			if(k>15){
+				attack=false;
+				k=0;
+			}
 		}
 		return an;
 	}
