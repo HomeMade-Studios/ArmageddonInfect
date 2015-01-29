@@ -135,4 +135,11 @@ public class Enemy {
 	public Rectangle getEnemyHB() {
 		return enemyHB;
 	}
+
+	public int getHealth() {
+		return health;
+	}
+	
+	
+	
 }

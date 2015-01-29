@@ -76,6 +76,8 @@ public class Board extends JPanel implements ActionListener {
         		character.attacked(enemies.get(i).getStrength());
         	if(enemies.get(i).getEnemyHB().intersects(character.getHitbox())&&mouse.isMouseClicked())
         		enemies.get(i).attacked(character.getStrength(),character.GetP(mouse.getMx(), mouse.getMy()),character.getX(),character.getY());
+        	if(enemies.get(i).getHealth() <= 0)
+        		enemies.remove(i);
     	}
     	
     	hud.updateHUD(character.getHealt());
