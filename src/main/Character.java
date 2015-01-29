@@ -23,9 +23,11 @@ public class Character{
     }
     
     public void move() {
-    	x += dx;
-        y += dy;
-        }
+    	if(!attack){
+	    	x += dx;
+	        y += dy;
+    	}
+    }
     
     public int GetP(int mx, int my){
     	if (Math.abs(mx-x)>Math.abs(my-y)){	//Algoritmo che determina la posizione del mouse rispetto al personaggio
@@ -67,7 +69,7 @@ public class Character{
 			attack=true;
 			an=3;
 			k++;
-			if(k>15){
+			if(k>10){
 				attack=false;
 				k=0;
 			}
