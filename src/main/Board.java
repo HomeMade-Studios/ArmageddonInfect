@@ -38,7 +38,7 @@ public class Board extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setBackground(Color.DARK_GRAY);
         setFocusable(true);
-        character=new Character();
+        character=new Character(screenWidth, screenHeight);
         enemy=new Enemy();
         hud= new HUD(screenWidth, screenHeight,character.getHealt());
         loader= new ImgLoader();

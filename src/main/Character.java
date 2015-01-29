@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
@@ -12,20 +13,23 @@ public class Character{
     int pov,j,Mj,DMj,an,dAn,k;
     int strength=25;
     int healt=100;
+    Rectangle hitbox;
 	Random rand = new Random();
 	boolean paused,attack;
     
-    public Character() {
+    public Character(int Width, int Height) {
     	dAn=an=j=0;
-    	Mj=DMj=20;
-        x = 480;
-        y = 318;
+    	Mj=DMj=15;
+        x = (Width/2)-16;
+        y = (Height/2)-16;
+        hitbox=new Rectangle (x,y,20,32);
     }
     
     public void move() {
     	if(!attack){
 	    	x += dx;
 	        y += dy;
+	        hitbox=new Rectangle (x,y,20,32);
     	}
     }
     
@@ -82,18 +86,22 @@ public class Character{
         int key = e.getKeyCode();
     	
         if (key == KeyEvent.VK_A) {
-            dx = -1;
+            if(dx!=1)
+        	dx = -1;
         }
 
         if (key == KeyEvent.VK_D) {
+            if(dx!=-1)
             dx = 1;
         }
 
         if (key == KeyEvent.VK_W) {
+            if(dy!=1)
             dy = -1;
         }
 
         if (key == KeyEvent.VK_S) {
+            if(dy!=-1)
             dy = 1;
         }
         
@@ -139,5 +147,8 @@ public class Character{
 
 	public int getHealt() {
 		return healt;
+	}
+	public Rectangle getHitbox() {
+		return hitbox;
 	}
 }
