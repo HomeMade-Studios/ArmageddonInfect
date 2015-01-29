@@ -104,6 +104,9 @@ public class Board extends JPanel implements ActionListener {
 		        		enemies.remove(i);
 		    	}
 		    	hud.updateHUD(character.getHealt());
+		    	if(character.getHealt() <= 0){
+		    		isInLobby = true;
+		    	}
 			}
 			character.move();
 		    repaint();
