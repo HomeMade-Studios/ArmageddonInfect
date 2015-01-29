@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.Shape;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +28,7 @@ public class Board extends JPanel implements ActionListener {
 	Random rand = new Random();
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private Timer timer;
+	boolean isInLobby = true;
 	int screenWidth;
 	int screenHeight;
 	int spawnFrequency;
