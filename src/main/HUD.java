@@ -14,7 +14,7 @@ public class HUD {
 	private int h2;
 	private int h2y;
 	private int temp;
-	private int exp,expMax,expBox = 0;
+	private int expBar,expBox = 0;
 
 	public HUD(int Width, int Height) {
 		screenWidth = Width;
@@ -42,8 +42,13 @@ public class HUD {
 			h2 = (int) (64 * ((health2) / (healthMax / 100 * 30)));
 			h2y = h2y + (temp - h2);
 		}
+		expBar = expMax;
 		if(exp == expMax/10){
 			expBox++;
+			expBar = 0;
+		}
+		if(expBox == 10){
+			expBox = 0;
 		}
 		
 	}
@@ -67,4 +72,9 @@ public class HUD {
 	public int getH2y() {
 		return h2y;
 	}
+
+	public int getExpBox() {
+		return expBox;
+	}
+	
 }

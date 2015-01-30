@@ -73,14 +73,15 @@ public class Board extends JPanel implements ActionListener {
     	        }
     	        
             }
-        	
-        	
         	g2d.setColor(Color.GREEN);
 	        g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));
 	        g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
+	        g2d.setColor(Color.CYAN);
+	        for(int i = 0; i < hud.getExpBox(); i++){
+	        g2d.fill(new Rectangle(hud.getX()+48, hud.getY()+95, 20, 8));
+	        }
 	        g2d.drawImage(loader.getHUD(), hud.getX(), hud.getY(), null);
         }
-	        
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
@@ -107,7 +108,7 @@ public class Board extends JPanel implements ActionListener {
 		        		enemies.remove(i);
 		        		character.setExp(character.getExp() + 5);
 		        	}
-		        		
+		        	
 		    	}
 		    	
 		    	if(character.getHealt() <= 0){
