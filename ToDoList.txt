@@ -1,5 +1,3 @@
-*Sistemare lobby					[Ugo]
--Exp								[Ugo]
 -Sistemare Anim attacco				[Marco]
 -Sistema drop						[Marco]
 *Rendere variabile risoluzione		[Ugo]
