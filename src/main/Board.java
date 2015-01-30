@@ -111,7 +111,7 @@ public class Board extends JPanel implements ActionListener {
 		    	}
 			}
 			character.move();
-			hud.updateHUD(character.getHealt());
+			hud.updateHUD(character.getHealt(),character.getExp(),character.getMaxExp());
 		    repaint();
 		}
     }
