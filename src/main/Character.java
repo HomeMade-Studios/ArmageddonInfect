@@ -35,7 +35,7 @@ public class Character{
     	oldy=y;
 	    x += dx;
 	    y += dy;
-	    hitbox=new Rectangle (x+6,y,20,32);
+        hitbox=new Rectangle (x+4,y,21,32);
 	    attackbox=new Rectangle (x-6,y-6,44,44);
 	    if(!walkableArea.intersects(hitbox)){
 	    	stopmove();
