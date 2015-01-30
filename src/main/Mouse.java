@@ -24,11 +24,14 @@ class Mouse implements MouseInputListener {
 	
 	public boolean isMouseClicked(){
 		if(clicked){
-			clicked = false;
 			return true;
 		}
 		else
 			return false;
+	}
+	
+	public void setClick(boolean robba){
+		this.clicked=robba;
 	}
 	
 	public void mouseClicked(MouseEvent e) {
@@ -51,7 +54,6 @@ class Mouse implements MouseInputListener {
 		clicked=true;		
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent e) {
 		clicked=false;
 	}

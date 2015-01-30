@@ -123,7 +123,7 @@ public class Board extends JPanel implements ActionListener {
 		        	}
 		        	
 		    	}
-		    	
+		    	mouse.setClick(false);
 		    	if(character.getHealt() <= 0){
 		    		isInLobby = true;
 		    		reset();
