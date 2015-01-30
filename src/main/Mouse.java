@@ -11,6 +11,10 @@ class Mouse implements MouseInputListener {
 	private int mx;
 	private int my;
 	private boolean clicked;
+	public void setClicked(boolean clicked) {
+		this.clicked = clicked;
+	}
+
 	static Random rand = new Random();
 
 	public void mouseMoved(MouseEvent e) {
@@ -20,7 +24,6 @@ class Mouse implements MouseInputListener {
 	
 	public boolean isMouseClicked(){
 		if(clicked){
-			clicked=false;
 			return true;
 		}
 		else
@@ -28,7 +31,7 @@ class Mouse implements MouseInputListener {
 	}
 	
 	public void mouseClicked(MouseEvent e) {
-		clicked=true;
+		
 	}
 
 	@Override
@@ -43,16 +46,13 @@ class Mouse implements MouseInputListener {
 		
 	}
 
-	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		clicked=true;		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		clicked=false;
 	}
 
 	@Override

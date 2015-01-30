@@ -11,7 +11,7 @@ public class Character{
     private int dx;
     private int dy;
     private int pov,j,Mj,DMj,an,dAn,k,att,exp,maxExp;
-    private int strength=10;
+    private int strength=50;
 	int healt,healtMax;
     Rectangle hitbox,attackbox,walkableArea;
 	Random rand = new Random();
@@ -20,6 +20,7 @@ public class Character{
     public Character(int Width, int Height) {
     	healt=healtMax=2000000000;
     	dAn=an=j=0;
+    	k=0;
     	maxExp=100;
     	Mj=DMj=10;
         x = (Width/2)-16;
@@ -90,6 +91,7 @@ public class Character{
 				k=0;
 			}
 		}
+		System.out.println(click);
 		return an;
 	}
     
