@@ -6,7 +6,7 @@ public class Lobby {
 	Rectangle mapSelection;
 	
 	public Lobby(){
-		mapSelection = new Rectangle(900,10,100,100);
+		mapSelection = new Rectangle(855,15,100,35);
 	}
 
 	public Rectangle getMapSelection() {
