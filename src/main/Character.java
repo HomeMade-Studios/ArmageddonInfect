@@ -25,7 +25,7 @@ public class Character{
     	Mj=DMj=10;
         x = (Width/2)-16;
         y = (Height/2)-16;
-        hitbox=new Rectangle (x+6,y,20,32);
+        hitbox=new Rectangle (x+4,y,21,32);
         walkableArea=new Rectangle (27,42,963,594);
         attackbox=new Rectangle (x-6,y-6,44,44);
     }
