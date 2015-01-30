@@ -64,6 +64,10 @@ public class Board extends JPanel implements ActionListener {
         		g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);    
         		g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
 	        	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
+	        	for(int i=0;i<lobby.getLobbyHB().length;i++){
+					g2d.fill(lobby.getLobbyHB()[i]);
+				}
+	        	
         	}
         	else{
         		g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
@@ -100,7 +104,6 @@ public class Board extends JPanel implements ActionListener {
 				for(int i=0;i<lobby.getLobbyHB().length;i++){
 					if(lobby.getLobbyHB()[i].intersects(character.getHitbox())){
 						character.stopmove();
-						System.out.println("contact");
 					}
 				}
 				if(character.getHitbox().intersects(lobby.getMapSelection())){
