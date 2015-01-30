@@ -21,7 +21,6 @@ public class ImgLoader {
 	height = 32;
 	rows = 8;
 	cols = 4;
-	System.out.println(getClass());
 	spritesBase = new BufferedImage[rows][cols];
 	load();
 	}
@@ -43,7 +42,7 @@ public class ImgLoader {
 		cols=1;
 		try {
 	    	mapBackground= new BufferedImage [cols];
-	        mapBackground[0] = ImageIO.read(getClass().getResource("/img/MapBackgrounds.png"));
+	        mapBackground[0] = ImageIO.read(getClass().getResource("/img/MapBackgrounds01.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

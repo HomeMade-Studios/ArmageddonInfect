@@ -35,8 +35,8 @@ public class Board extends JPanel implements ActionListener {
 	int spawnFrequency;
 	
 	public Board(int Width, int Height) {
-		screenWidth=Width;
-		screenHeight=Height;
+		screenWidth=Width - 6;
+		screenHeight=Height - 28;
 		mouse=new Mouse();
     	addMouseMotionListener(mouse);
     	addMouseListener(mouse);
@@ -58,11 +58,11 @@ public class Board extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D)g;
         if(!character.isPaused()){
         	if(isInLobby){
-        		g2d.drawImage(loader.getLobby(), screenWidth - 1024, screenHeight - 700, null);    
+        		g2d.drawImage(loader.getLobby(), -(1020 - screenWidth)/2, -(700 - screenHeight)/2, null);    
         		g2d.drawImage(loader.getSprite()[character.GetP(mouse.getMx(), mouse.getMy())][character.animationCycle(mouse.isMouseClicked())],character.getX(),character.getY(),null);
         	}
         	else{
-        		g2d.drawImage(loader.getMapBackground()[0],0,0,null);
+        		g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
         		g2d.drawImage(loader.getSprite()[character.GetP(mouse.getMx(), mouse.getMy())][character.animationCycle(mouse.isMouseClicked())],character.getX(),character.getY(),null);
     	        for(int i = 0; i < enemies.size(); i++){
     	        	g2d.drawImage(loader.getSprite()[enemies.get(i).getP()][enemies.get(i).getAn()], enemies.get(i).getX(), enemies.get(i).getY(), null);
@@ -103,8 +103,11 @@ public class Board extends JPanel implements ActionListener {
 		        		character.attacked(enemies.get(i).getStrength());
 		        	if(enemies.get(i).getEnemyHB().intersects(character.getAttackbox())&&mouse.isMouseClicked())
 		        		enemies.get(i).attacked(character.getStrength(),character.GetP(mouse.getMx(), mouse.getMy()),character.getX(),character.getY());
-		        	if(enemies.get(i).getHealth() <= 0)
+		        	if(enemies.get(i).getHealth() <= 0){
 		        		enemies.remove(i);
+		        		character.setExp(character.getExp() + 5);
+		        	}
+		        		
 		    	}
 		    	
 		    	if(character.getHealt() <= 0){
