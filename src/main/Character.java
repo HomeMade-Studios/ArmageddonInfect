@@ -18,7 +18,7 @@ public class Character{
 	boolean paused,attack;
     
     public Character(int Width, int Height) {
-    	healt=healtMax=200;
+    	healt=healtMax=100;
     	dAn=an=j=0;
     	k=0;
     	maxExp=100;

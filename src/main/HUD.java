@@ -27,10 +27,13 @@ public class HUD {
 	}
 
 	public void updateHUD(int health, int healthMax, int exp, int expMax) {
-		if (health >= health1) {
+		if (health > health1) {
 			health2 = health - health1;
 			health1 = healthMax / 100 * 70;
+			h1 = (int) (226 * ((health1) / (healthMax / 100 * 70)));
 		} else {
+			h2 = -1;
+			h2y = 65;
 			health2 = -1;
 			health1 = health;
 		}
@@ -53,6 +56,7 @@ public class HUD {
 		if(expBox == 10){
 			expBox = 0;
 		}
+		System.out.println(health2+" "+h2);
 	}
 
 	public int getX() {
