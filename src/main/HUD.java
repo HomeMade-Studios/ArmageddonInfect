@@ -28,8 +28,8 @@ public class HUD {
 
 	public void updateHUD(int health, int healthMax, int exp, int expMax) {
 		if (health > health1) {
-			health2 = health - health1;
 			health1 = healthMax / 100 * 70;
+			health2 = health - health1;
 			h1 = (int) (226 * ((health1) / (healthMax / 100 * 70)));
 		} else {
 			h2 = -1;
