@@ -14,6 +14,7 @@ public class ImgLoader {
 	private BufferedImage mapBackground[];
 	private BufferedImage HUD;
 	private BufferedImage lobby;
+	private BufferedImage lobbyHUD;
 	private BufferedImage bigImg;
 
 	public ImgLoader(){
@@ -28,6 +29,7 @@ public class ImgLoader {
 		try {
 			bigImg = ImageIO.read(getClass().getResource("/img/Spritesheet.png"));
 			HUD=ImageIO.read(getClass().getResource("/img/HUD.png"));
+			lobbyHUD=(ImageIO.read(getClass().getResource("/img/tavern_hud.png")));
 			lobby=ImageIO.read(getClass().getResource("/img/Lobby.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -62,5 +64,8 @@ public class ImgLoader {
 	
 	public BufferedImage[] getMapBackground() {
 		return mapBackground;
+	}
+	public BufferedImage getLobbyHUD() {
+		return lobbyHUD;
 	}
 }
