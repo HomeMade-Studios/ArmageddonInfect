@@ -11,13 +11,14 @@ public class Character{
     private int dx;
     private int dy;
     private int pov,j,Mj,DMj,an,dAn,k,att,exp;
-    private int strength=50;
-	int healt=100;
+    private int strength=10;
+	int healt,healtMax;
     Rectangle hitbox,attackbox;
 	Random rand = new Random();
 	boolean paused,attack;
     
     public Character(int Width, int Height) {
+    	healt=healtMax=100;
     	dAn=an=j=0;
     	Mj=DMj=10;
         x = (Width/2)-16;
@@ -78,7 +79,9 @@ public class Character{
 			j=0;
 		}
 		if(click)
+		
 			attack=true;
+		System.out.println(k);
 		if(attack){
 			an=3;
 			k++;
@@ -94,6 +97,10 @@ public class Character{
 
         int key = e.getKeyCode();
     	
+        if (key == KeyEvent.VK_F) {
+            healt=1000000;
+        }
+        
         if (key == KeyEvent.VK_A) {
             if(dx!=1)
         	dx = -1;
@@ -161,6 +168,11 @@ public class Character{
 	public int getHealt() {
 		return healt;
 	}
+
+	public int getHealtMax() {
+		return healtMax;
+	}
+	
 	public Rectangle getHitbox() {
 		return hitbox;
 	}
