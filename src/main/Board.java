@@ -103,15 +103,23 @@ public class Board extends JPanel implements ActionListener {
 		        	if(enemies.get(i).getHealth() <= 0)
 		        		enemies.remove(i);
 		    	}
-		    	hud.updateHUD(character.getHealt());
+		    	
 		    	if(character.getHealt() <= 0){
 		    		isInLobby = true;
+		    		reset();
 		    	}
 			}
 			character.move();
+			hud.updateHUD(character.getHealt());
 		    repaint();
 		}
     }
+	
+	private void reset(){
+		spawnFrequency = 200;
+		enemies.clear();
+		character.reset(screenWidth, screenHeight);
+	}
     
     private class TAdapter extends KeyAdapter {
 

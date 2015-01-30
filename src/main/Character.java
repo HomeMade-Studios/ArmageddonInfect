@@ -12,7 +12,7 @@ public class Character{
     private int dy;
     private int pov,j,Mj,DMj,an,dAn,k,att;
     private int strength=50;
-	int healt=1000;
+	int healt=100;
     Rectangle hitbox,attackbox;
 	Random rand = new Random();
 	boolean paused,attack;
@@ -24,6 +24,14 @@ public class Character{
         y = (Height/2)-16;
         hitbox=new Rectangle (x+6,y,20,32);
         attackbox=new Rectangle (x-6,y-6,44,44);
+    }
+    
+    public void reset(int Width, int Height){
+    	healt=1000;
+    	x = (Width/2)-16;
+        y = (Height/2)-16;
+        dAn=an=j=0;
+    	Mj=DMj=10;
     }
     
     public void move() {
@@ -172,6 +180,4 @@ public class Character{
 	public boolean isPaused() {
 		return paused;
 	}
-	
-	
 }
