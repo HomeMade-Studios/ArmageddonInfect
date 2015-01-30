@@ -10,7 +10,7 @@ public class Character{
     private int y;
     private int dx;
     private int dy;
-    private int pov,j,Mj,DMj,an,dAn,k,att,exp;
+    private int pov,j,Mj,DMj,an,dAn,k,att,exp,microExp;
     private int strength=10;
 	int healt,healtMax;
     Rectangle hitbox,attackbox;
@@ -191,5 +191,13 @@ public class Character{
 
 	public void setExp(int exp) {
 		this.exp = exp;
+	}
+
+	public int getMicroExp() {
+		return microExp;
+	}
+
+	public void setMicroExp(int microExp) {
+		this.microExp = microExp;
 	}
 }
