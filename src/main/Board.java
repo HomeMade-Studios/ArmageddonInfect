@@ -118,7 +118,7 @@ public class Board extends JPanel implements ActionListener {
 	private void reset(){
 		spawnFrequency = 200;
 		enemies.clear();
-		character.reset(screenWidth, screenHeight);
+		character= new Character(screenWidth, screenHeight);
 	}
     
     private class TAdapter extends KeyAdapter {
