@@ -17,6 +17,10 @@ public class ImgLoader {
 	private BufferedImage bigImg;
 
 	public ImgLoader(){
+	width = 32;
+	height = 32;
+	rows = 8;
+	cols = 4;
 	System.out.println(getClass());
 	spritesBase = new BufferedImage[rows][cols];
 	load();
@@ -29,10 +33,6 @@ public class ImgLoader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		width = 32;
-		height = 32;
-		rows = 8;
-		cols = 4;
 		for (int i = 0; i < rows; i++)
 		{
 		    for (int j = 0; j < cols; j++)
@@ -40,21 +40,12 @@ public class ImgLoader {
 		        spritesBase[i][j] = bigImg.getSubimage(j * width,i * height,width,height);
 		    }
 		}	
-		width = 1024;
-		height = 700;
-		rows = 1;
-		cols = 2;
+		cols=1;
 		try {
-			bigImg = ImageIO.read(getClass().getResource("/img/MapBackgrounds.png"));
+	    	mapBackground= new BufferedImage [cols];
+	        mapBackground[0] = ImageIO.read(getClass().getResource("/img/Nomecoso.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		for (int i = 0; i < rows; i++)
-		{
-		    for (int j = 0; j < cols; j++)
-		    {
-		        mapBackground[(i * cols) + j] = bigImg.getSubimage(j * width,i * height,width,height);
-		    }
 		}
 	}
 	
