@@ -3,6 +3,7 @@
 -Sistemare Anim attacco				[Marco]
 -Sistema drop						[Marco]
 -Rendere variabile risoluzione
+-Sistema salvataggio
 -Sistema inventario off game
 -Menu crafting
 -Aggiungere "Scelta mappa"
