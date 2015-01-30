@@ -79,7 +79,6 @@ public class Character{
 			j=0;
 		}
 		if(click)
-		
 			attack=true;
 		System.out.println(k);
 		if(attack){
