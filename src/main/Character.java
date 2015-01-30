@@ -13,7 +13,7 @@ public class Character{
     private int pov,j,Mj,DMj,an,dAn,k,att,exp,maxExp;
     private int strength=10;
 	int healt,healtMax;
-    Rectangle hitbox,attackbox;
+    Rectangle hitbox,attackbox,walkableArea;
 	Random rand = new Random();
 	boolean paused,attack;
     
@@ -24,6 +24,7 @@ public class Character{
         x = (Width/2)-16;
         y = (Height/2)-16;
         hitbox=new Rectangle (x+6,y,20,32);
+        walkableArea=new Rectangle (1024-Width,700-Height,986,640);
         attackbox=new Rectangle (x-6,y-6,44,44);
     }
     
@@ -80,7 +81,6 @@ public class Character{
 		}
 		if(click)
 			attack=true;
-		System.out.println(k);
 		if(attack){
 			an=3;
 			k++;
