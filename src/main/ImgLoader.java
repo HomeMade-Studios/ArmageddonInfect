@@ -15,6 +15,7 @@ public class ImgLoader {
 	private BufferedImage HUD;
 	private BufferedImage lobby;
 	private BufferedImage lobbyHUD;
+	private BufferedImage pauseOverlay;
 	private BufferedImage bigImg;
 
 	public ImgLoader(){
@@ -30,6 +31,7 @@ public class ImgLoader {
 			bigImg = ImageIO.read(getClass().getResource("/img/Spritesheet.png"));
 			HUD=ImageIO.read(getClass().getResource("/img/HUD.png"));
 			lobbyHUD=(ImageIO.read(getClass().getResource("/img/tavern_hud.png")));
+			pauseOverlay=(ImageIO.read(getClass().getResource("/img/pause_overlay.png")));
 			lobby=ImageIO.read(getClass().getResource("/img/Lobby.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -48,6 +50,12 @@ public class ImgLoader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	
+	public BufferedImage getPauseOverlay() {
+		return pauseOverlay;
 	}
 	
 	public BufferedImage getHUD() {

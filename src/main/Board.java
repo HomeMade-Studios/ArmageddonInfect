@@ -88,7 +88,7 @@ public class Board extends JPanel implements ActionListener {
 	    }
 	    g2d.fill(new Rectangle(hud.getX()+48, hud.getY()+106, hud.getExpBar(), 7));
 	    if(character.isPaused()){
-	    	
+	    	g2d.drawImage(loader.getPauseOverlay(), screenWidth-loader.getPauseOverlay().getWidth(), screenHeight-loader.getPauseOverlay().getHeight(), null);
 	    }
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
