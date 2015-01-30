@@ -197,7 +197,7 @@ public class Character{
 		return maxExp;
 	}
 
-	public void setMaxExp(int microExp) {
+	public void setMaxExp(int maxExp) {
 		this.maxExp = maxExp;
 	}
 }
