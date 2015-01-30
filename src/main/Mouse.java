@@ -24,6 +24,7 @@ class Mouse implements MouseInputListener {
 	
 	public boolean isMouseClicked(){
 		if(clicked){
+			clicked = false;
 			return true;
 		}
 		else
