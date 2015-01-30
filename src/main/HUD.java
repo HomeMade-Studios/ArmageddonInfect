@@ -53,8 +53,6 @@ public class HUD {
 		if(expBox == 10){
 			expBox = 0;
 		}
-		System.out.println(expBox);
-		
 	}
 
 	public int getX() {

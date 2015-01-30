@@ -33,6 +33,7 @@ public class Board extends JPanel implements ActionListener {
 	int screenWidth;
 	int screenHeight;
 	int spawnFrequency;
+	int wave,waveFinish;
 	
 	public Board(int Width, int Height) {
 		screenWidth=Width - 6;
@@ -44,8 +45,10 @@ public class Board extends JPanel implements ActionListener {
         setBackground(Color.DARK_GRAY);
         setFocusable(true);
         spawnFrequency = 200;
+        wave = 0;
+        waveFinish = 0;
         character=new Character(screenWidth, screenHeight);
-        enemy=new Enemy();
+        enemy=new Enemy(wave);
         lobby=new Lobby();
         hud= new HUD(screenWidth, screenHeight);
         loader= new ImgLoader();
@@ -97,7 +100,13 @@ public class Board extends JPanel implements ActionListener {
 			}
 			else{
 				if(rand.nextInt(spawnFrequency) == 0){
-		    		enemies.add(new Enemy());
+		    		enemies.add(new Enemy(wave));
+		    		waveFinish++;
+		    		if(waveFinish == 11){
+		    			wave++;
+		    			waveFinish = 1;
+		    		}
+		    		System.out.println(wave+" "+enemies.size());
 		    	}
 		    	for(int i = 0; i < enemies.size(); i++){
 		    		enemies.get(i).move(character.getX(), character.getY(), character.getHitbox());

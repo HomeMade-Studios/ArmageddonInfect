@@ -17,12 +17,12 @@ public class Enemy {
 	Rectangle enemyHealth;
 	Random rand = new Random();
 	
-	public Enemy(){
+	public Enemy(int wave){
 		
 		x = rand.nextInt(992);
 		y = rand.nextInt(668);
 		k = 0;
-		strength = 10;
+		strength = 10+wave;
 		health=100;
 		dAn=an=j=0;
     	Mj=DMj=15;
