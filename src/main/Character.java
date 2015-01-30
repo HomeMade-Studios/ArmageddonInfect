@@ -27,7 +27,11 @@ public class Character{
     }
     
     public void reset(int Width, int Height){
-
+    	healt=1000;
+    	x = (Width/2)-16;
+        y = (Height/2)-16;
+        dAn=an=j=0;
+    	Mj=DMj=10;
     }
     
     public void move() {
