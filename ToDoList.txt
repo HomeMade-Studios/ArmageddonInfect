@@ -5,7 +5,6 @@
 -Rendere variabile risoluzione		[Ugo]
 -Sistema salvataggio
 -Sistema inventario off game
--Aggiungere npc lobby
 -Menu crafting
 -Aggiungere "Scelta mappa"
 -Aggiunta menu iniziale
