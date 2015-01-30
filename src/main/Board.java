@@ -78,8 +78,9 @@ public class Board extends JPanel implements ActionListener {
 	        g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
 	        g2d.setColor(Color.CYAN);
 	        for(int i = 0; i < hud.getExpBox(); i++){
-	        g2d.fill(new Rectangle(hud.getX()+48, hud.getY()+95, 20, 8));
+	        g2d.fill(new Rectangle(hud.getX()+48+i*24, hud.getY()+95, 20, 8));
 	        }
+	        g2d.fill(new Rectangle(hud.getX()+48, hud.getY()+106, hud.getExpBar(), 7));
 	        g2d.drawImage(loader.getHUD(), hud.getX(), hud.getY(), null);
         }
         Toolkit.getDefaultToolkit().sync();

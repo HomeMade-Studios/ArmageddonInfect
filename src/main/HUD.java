@@ -42,14 +42,15 @@ public class HUD {
 			h2 = (int) (64 * ((health2) / (healthMax / 100 * 30)));
 			h2y = h2y + (temp - h2);
 		}
-		expBar = expMax;
+		
 		if(exp == expMax/10){
 			expBox++;
-			expBar = 0;
+			exp = 0;
 		}
 		if(expBox == 10){
 			expBox = 0;
 		}
+		expBar = (int)(212 * ((exp) / (expMax)));
 		
 	}
 
@@ -76,5 +77,10 @@ public class HUD {
 	public int getExpBox() {
 		return expBox;
 	}
+
+	public int getExpBar() {
+		return expBar;
+	}
+	
 	
 }
