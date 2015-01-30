@@ -91,7 +91,7 @@ public class Board extends JPanel implements ActionListener {
 				}
 			}
 			else{
-				if(rand.nextInt(spawnFrequency) == 1){
+				if(rand.nextInt(spawnFrequency) == 0){
 		    		enemies.add(new Enemy());
 		    	}
 		    	for(int i = 0; i < enemies.size(); i++){
