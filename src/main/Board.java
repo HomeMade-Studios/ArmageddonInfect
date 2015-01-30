@@ -107,7 +107,7 @@ public class Board extends JPanel implements ActionListener {
 		        		enemies.get(i).attacked(character.getStrength(),character.GetP(mouse.getMx(), mouse.getMy()),character.getX(),character.getY());
 		        	if(enemies.get(i).getHealth() <= 0){
 		        		enemies.remove(i);
-		        		character.setExp(character.getExp() + 5);
+		        		character.setExp(character.getExp() + 50);
 		        	}
 		        	
 		    	}
@@ -124,7 +124,7 @@ public class Board extends JPanel implements ActionListener {
     }
 	
 	private void reset(){
-		spawnFrequency = 200;
+		spawnFrequency = 150;
 		enemies.clear();
 		character= new Character(screenWidth, screenHeight);
 		hud=new HUD(screenWidth, screenHeight);

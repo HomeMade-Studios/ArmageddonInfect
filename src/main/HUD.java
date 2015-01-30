@@ -1,7 +1,5 @@
 package main;
 
-import java.awt.Rectangle;
-
 
 public class HUD {
 	private float health1;
@@ -14,7 +12,8 @@ public class HUD {
 	private int h2;
 	private int h2y;
 	private int temp;
-	private int expBar,expBox = 0;
+	private int expBar,expBox = 0,exp;
+	private boolean stopExpBox = false;
 
 	public HUD(int Width, int Height) {
 		screenWidth = Width;
@@ -42,15 +41,19 @@ public class HUD {
 			h2 = (int) (64 * ((health2) / (healthMax / 100 * 30)));
 			h2y = h2y + (temp - h2);
 		}
-		
-		if(exp == expMax/10){
+		this.exp = exp%expMax;
+		expBar = (int)(212 * ((this.exp)) / (expMax));
+		if(this.exp % expMax == 0 && exp != 0 && !stopExpBox){
 			expBox++;
-			exp = 0;
+			stopExpBox = true;
+		}
+		else if(this.exp % expMax != 0){
+			stopExpBox = false;
 		}
 		if(expBox == 10){
 			expBox = 0;
 		}
-		expBar = (int)(212 * ((exp) / (expMax)));
+		System.out.println(expBox);
 		
 	}
 
