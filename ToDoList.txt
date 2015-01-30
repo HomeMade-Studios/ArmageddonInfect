@@ -1,0 +1,7 @@
+-Sistemare lobby
+-Exp
+-Sistemare Anim attacco
+-Rendere variabile risoluzione
+-Aggiungere "Scelta mappa"
+-Aggiunta menu
+-LAN
