@@ -39,7 +39,6 @@ public class HUD {
 		} else {
 			temp = h2;
 			h2 = (int) (64 * ((health2) / (healthMax / 100 * 30)));
-			h1=226;
 			h2y = h2y + (temp - h2);
 		}
 		this.exp = exp%expMax;
