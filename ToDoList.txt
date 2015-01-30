@@ -2,7 +2,7 @@
 -Exp								[Ugo]
 -Sistemare Anim attacco				[Marco]
 -Sistema drop						[Marco]
--Rendere variabile risoluzione		[Ugo]
+*Rendere variabile risoluzione		[Ugo]
 -Sistema salvataggio
 -Sistema inventario off game
 -Menu crafting
