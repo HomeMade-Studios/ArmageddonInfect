@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
@@ -11,6 +12,12 @@ class Mouse implements MouseInputListener {
 	private int mx;
 	private int my;
 	private boolean clicked;
+	private Rectangle mousePos;
+	
+	Mouse(){
+		mousePos= new Rectangle(0,0,3,3);
+	}
+	
 	public void setClicked(boolean clicked) {
 		this.clicked = clicked;
 	}
@@ -20,6 +27,7 @@ class Mouse implements MouseInputListener {
 	public void mouseMoved(MouseEvent e) {
         mx = e.getX();
         my = e.getY();
+		mousePos= new Rectangle(mx,my,3,3);
     }
 	
 	public boolean isMouseClicked(){
@@ -30,6 +38,10 @@ class Mouse implements MouseInputListener {
 			return false;
 	}
 	
+	public Rectangle getMousePos() {
+		return mousePos;
+	}
+
 	public void setClick(boolean robba){
 		this.clicked=robba;
 	}

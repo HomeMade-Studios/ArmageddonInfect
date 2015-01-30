@@ -38,7 +38,7 @@ public class ImgLoader {
 		{
 		    for (int j = 0; j < cols; j++)
 		    {
-		        spritesBase[i][j] = bigImg.getSubimage(j * width,i * height,width,height);
+		    	spritesBase[i][j] = bigImg.getSubimage(j * width,i * height,width,height);
 		    }
 		}	
 		cols=1;
