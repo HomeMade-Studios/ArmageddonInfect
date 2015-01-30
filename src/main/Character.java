@@ -10,7 +10,7 @@ public class Character{
     private int y;
     private int dx;
     private int dy;
-    private int pov,j,Mj,DMj,an,dAn,k,att;
+    private int pov,j,Mj,DMj,an,dAn,k,att,exp;
     private int strength=50;
 	int healt=100;
     Rectangle hitbox,attackbox;
@@ -171,5 +171,13 @@ public class Character{
 
 	public boolean isPaused() {
 		return paused;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
 	}
 }
