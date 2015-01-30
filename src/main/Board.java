@@ -61,7 +61,7 @@ public class Board extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D)g;
         if(!character.isPaused()){
         	if(isInLobby){
-        		g2d.drawImage(loader.getLobby(), -(1020 - screenWidth)/2, -(700 - screenHeight)/2, null);    
+        		g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);    
         		g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
         	}
         	else{
