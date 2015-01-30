@@ -42,7 +42,7 @@ public class Character{
 	    }
     }
     
-    private void stopmove() {
+    public void stopmove() {
     	x=oldx;
     	y=oldy;
 	}

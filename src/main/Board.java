@@ -97,6 +97,11 @@ public class Board extends JPanel implements ActionListener {
 			character.SetP(mouse.getMx(), mouse.getMy());
 			character.animationCycle(mouse.isMouseClicked());
 			if(isInLobby){
+				for(int i=0;i>lobby.getLobbyHB().length;i++){
+					if(lobby.getLobbyHB()[i].intersects(character.getHitbox())){
+						character.stopmove();
+					}
+				}
 				if(character.getHitbox().intersects(lobby.getMapSelection())){
 					isInLobby = false;
 				}
