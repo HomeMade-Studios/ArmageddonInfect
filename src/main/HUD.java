@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 public class HUD {
 	private Rectangle healtgr1;
 	private Rectangle healtgr2;
+	private Rectangle b;
 	private float healt1;
 	private float healt2;
 	private float healtMAX;
@@ -47,6 +48,7 @@ public class HUD {
 			h2 = (int) (64 * ((healt2) / (healtMAX / 100 * 30)));
 			h2y = h2y + (temp - h2);
 		}
+		
 	}
 
 	public Rectangle getHealtgr1() {
