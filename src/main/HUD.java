@@ -56,7 +56,6 @@ public class HUD {
 		if(expBox == 10){
 			expBox = 0;
 		}
-		System.out.println(health2+" "+h2);
 	}
 
 	public int getX() {

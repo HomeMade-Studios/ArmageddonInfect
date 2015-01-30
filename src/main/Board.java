@@ -63,7 +63,7 @@ public class Board extends JPanel implements ActionListener {
         	if(isInLobby){
         		g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);    
         		g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
-	        	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);        		
+	        	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
         	}
         	else{
         		g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
@@ -97,9 +97,10 @@ public class Board extends JPanel implements ActionListener {
 			character.SetP(mouse.getMx(), mouse.getMy());
 			character.animationCycle(mouse.isMouseClicked());
 			if(isInLobby){
-				for(int i=0;i>lobby.getLobbyHB().length;i++){
+				for(int i=0;i<lobby.getLobbyHB().length;i++){
 					if(lobby.getLobbyHB()[i].intersects(character.getHitbox())){
 						character.stopmove();
+						System.out.println("contact");
 					}
 				}
 				if(character.getHitbox().intersects(lobby.getMapSelection())){
