@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Character{
 
-    private int x;
-    private int y;
+    private int x,oldx;
+    private int y,oldy;
     private int dx;
     private int dy;
     private int pov,j,Mj,DMj,an,dAn,k,att,exp,maxExp;
@@ -26,15 +26,21 @@ public class Character{
         x = (Width/2)-16;
         y = (Height/2)-16;
         hitbox=new Rectangle (x+6,y,20,32);
-        walkableArea=new Rectangle (1024-Width,700-Height,986,640);
+        walkableArea=new Rectangle (0,32,1017,594);
         attackbox=new Rectangle (x-6,y-6,44,44);
     }
     
     public void move() {
-	    	x += dx;
-	        y += dy;
-	        hitbox=new Rectangle (x+6,y,20,32);
-	        attackbox=new Rectangle (x-6,y-6,44,44);
+    	oldx=x;
+    	oldy=y;
+	    x += dx;
+	    y += dy;
+	    hitbox=new Rectangle (x+6,y,20,32);
+	    attackbox=new Rectangle (x-6,y-6,44,44);
+	    if(!walkableArea.intersects(hitbox)){
+	    	x=oldx;
+	    	y=oldy;
+	    }
     }
     
     public void SetP(int mx, int my){
@@ -186,6 +192,10 @@ public class Character{
 
 	public Rectangle getAttackbox() {
 		return attackbox;
+	}
+	
+	public Rectangle getWalkable() {
+		return walkableArea;
 	}
 
 	public boolean isPaused() {
