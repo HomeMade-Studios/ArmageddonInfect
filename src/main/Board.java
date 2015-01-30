@@ -72,10 +72,11 @@ public class Board extends JPanel implements ActionListener {
     	    		g2d.fill(new Rectangle((int)enemies.get(i).getEnemyHealth().getX(),(int) enemies.get(i).getEnemyHealth().getY(), (int)((float)enemies.get(i).getHealth()*0.2), (int)enemies.get(i).getEnemyHealth().getHeight()));
     	        }
     	        g2d.setColor(Color.GREEN);
-    	        g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));
-    	        g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
-    	        g2d.drawImage(loader.getHUD(), hud.getX(), hud.getY(), null);
+    	        
             }
+        	g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));
+	        g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
+	        g2d.drawImage(loader.getHUD(), hud.getX(), hud.getY(), null);
         }
 	        
         Toolkit.getDefaultToolkit().sync();
@@ -118,7 +119,7 @@ public class Board extends JPanel implements ActionListener {
 	private void reset(){
 		spawnFrequency = 200;
 		enemies.clear();
-		character.reset(screenWidth, screenHeight);
+		character= new Character(screenWidth, screenHeight);
 	}
     
     private class TAdapter extends KeyAdapter {
