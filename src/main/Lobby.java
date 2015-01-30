@@ -11,7 +11,7 @@ public class Lobby {
 		lobbyHB = new Rectangle[4];
 		lobbyHB[0] = new Rectangle(0,0,1018,45);
 		lobbyHB[1] = new Rectangle(419,0,5,198);
-		lobbyHB[2] = new Rectangle(73,198,350,45);
+		lobbyHB[2] = new Rectangle(73,198,351,45);
 		lobbyHB[3] = new Rectangle(73,198,5,127);
 	}
 
