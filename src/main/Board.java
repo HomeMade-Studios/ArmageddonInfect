@@ -61,6 +61,7 @@ public class Board extends JPanel implements ActionListener {
         		g2d.drawImage(loader.getLobby(), screenWidth - 1024, screenHeight - 700, null);        		
         	}
         	else{
+        		g2d.drawImage(loader.getMapBackground()[0],0,0,null);
     	        for(int i = 0; i < enemies.size(); i++){
     	        	g2d.drawImage(loader.getSprite()[enemies.get(i).getP()][enemies.get(i).getAn()], enemies.get(i).getX(), enemies.get(i).getY(), null);
     	            g2d.setColor(Color.BLACK);
@@ -70,7 +71,7 @@ public class Board extends JPanel implements ActionListener {
     	        }
     	        
             }
-        	g2d.drawImage(loader.getMapBackground()[1],0,0,null);
+        	
         	g2d.drawImage(loader.getSprite()[character.GetP(mouse.getMx(), mouse.getMy())][character.animationCycle(mouse.isMouseClicked())],character.getX(),character.getY(),null);
         	g2d.setColor(Color.GREEN);
 	        g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));

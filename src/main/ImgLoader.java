@@ -43,7 +43,7 @@ public class ImgLoader {
 		cols=1;
 		try {
 	    	mapBackground= new BufferedImage [cols];
-	        mapBackground[0] = ImageIO.read(getClass().getResource("/img/Nomecoso.png"));
+	        mapBackground[0] = ImageIO.read(getClass().getResource("/img/MapBackgrounds.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
