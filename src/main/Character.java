@@ -18,7 +18,7 @@ public class Character{
 	boolean paused,attack;
     
     public Character(int Width, int Height) {
-    	healt=healtMax=2000000000;
+    	healt=healtMax=200;
     	dAn=an=j=0;
     	k=0;
     	maxExp=100;
@@ -37,7 +37,7 @@ public class Character{
 	        attackbox=new Rectangle (x-6,y-6,44,44);
     }
     
-    public int GetP(int mx, int my){
+    public void SetP(int mx, int my){
     	if (Math.abs(mx-x)>Math.abs(my-y)){	//Algoritmo che determina la posizione del mouse rispetto al personaggio
     		if (mx-x>0){
 	    		pov=3;	//Imposta la variabile che indica che guarda a destra
@@ -54,7 +54,6 @@ public class Character{
     			pov=1;	//visione in alto
     		}
     	}
-    	return pov;
     }
     
     public void attacked(int Str){
@@ -65,7 +64,7 @@ public class Character{
     	att++;
     }
     
-	public int animationCycle(boolean click){
+	public void animationCycle(boolean click){
 			j++;				//Aggiunge ritardo all'animazione
 		if(j>Mj){
 			an++;
@@ -91,8 +90,6 @@ public class Character{
 				k=0;
 			}
 		}
-		System.out.println(click);
-		return an;
 	}
     
 	public void keyPressed(KeyEvent e){
@@ -100,7 +97,7 @@ public class Character{
         int key = e.getKeyCode();
     	
         if (key == KeyEvent.VK_F) {
-            healt=1000000;
+            healt=healtMax;
         }
         
         if (key == KeyEvent.VK_A) {
@@ -155,7 +152,15 @@ public class Character{
            }
     }
     
-    public int getStrength() {
+    public int getPov() {
+		return pov;
+	}
+
+	public int getAn() {
+		return an;
+	}
+
+	public int getStrength() {
 		return strength;
 	}
     

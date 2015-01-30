@@ -62,11 +62,11 @@ public class Board extends JPanel implements ActionListener {
         if(!character.isPaused()){
         	if(isInLobby){
         		g2d.drawImage(loader.getLobby(), -(1020 - screenWidth)/2, -(700 - screenHeight)/2, null);    
-        		g2d.drawImage(loader.getSprite()[character.GetP(mouse.getMx(), mouse.getMy())][character.animationCycle(mouse.isMouseClicked())],character.getX(),character.getY(),null);
+        		g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
         	}
         	else{
         		g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
-        		g2d.drawImage(loader.getSprite()[character.GetP(mouse.getMx(), mouse.getMy())][character.animationCycle(mouse.isMouseClicked())],character.getX(),character.getY(),null);
+        		g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
     	        for(int i = 0; i < enemies.size(); i++){
     	        	g2d.drawImage(loader.getSprite()[enemies.get(i).getP()][enemies.get(i).getAn()], enemies.get(i).getX(), enemies.get(i).getY(), null);
     	            g2d.setColor(Color.BLACK);
@@ -93,6 +93,9 @@ public class Board extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if(!character.isPaused()){
+			character.move();
+			character.SetP(mouse.getMx(), mouse.getMy());
+			character.animationCycle(mouse.isMouseClicked());
 			if(isInLobby){
 				if(character.getHitbox().intersects(lobby.getMapSelection())){
 					isInLobby = false;
@@ -106,17 +109,14 @@ public class Board extends JPanel implements ActionListener {
 		    			wave++;
 		    			waveFinish = 1;
 		    		}
-		    		System.out.println(wave+" "+enemies.size());
 		    	}
 		    	for(int i = 0; i < enemies.size(); i++){
 		    		enemies.get(i).move(character.getX(), character.getY(), character.getHitbox());
 		    		if(enemies.get(i).getEnemyHB().intersects(character.getHitbox()))
 		        		character.attacked(enemies.get(i).getStrength());
 		        	if(enemies.get(i).getEnemyHB().intersects(character.getAttackbox())){
-		        		if(mouse.isMouseClicked()){
-		        		enemies.get(i).attacked(character.getStrength(),character.GetP(mouse.getMx(), mouse.getMy()),character.getX(),character.getY());
+		        		enemies.get(i).attacked(character.getStrength(),character.getPov(),character.getX(),character.getY(),mouse.isMouseClicked());
 		        		}
-		        	}
 		        	if(enemies.get(i).getHealth() <= 0){
 		        		enemies.remove(i);
 		        		character.setExp(character.getExp() + 50);
@@ -129,7 +129,6 @@ public class Board extends JPanel implements ActionListener {
 		    		reset();
 		    	}
 			}
-			character.move();
 			hud.updateHUD(character.getHealt(),character.getHealtMax(), character.getExp(),character.getMaxExp());
 		    repaint();
 		}
