@@ -47,7 +47,7 @@ public class Board extends JPanel implements ActionListener {
         character=new Character(screenWidth, screenHeight);
         enemy=new Enemy();
         lobby=new Lobby();
-        hud= new HUD(screenWidth, screenHeight,character.getHealt());
+        hud= new HUD(screenWidth, screenHeight);
         loader= new ImgLoader();
         timer = new Timer (10 , this);
         timer.start();
@@ -111,7 +111,7 @@ public class Board extends JPanel implements ActionListener {
 		    	}
 			}
 			character.move();
-			hud.updateHUD(character.getHealt(),character.getExp(),character.getMaxExp());
+			hud.updateHUD(character.getHealt(),character.getHealtMax(), character.getExp(),character.getMaxExp());
 		    repaint();
 		}
     }
@@ -120,7 +120,7 @@ public class Board extends JPanel implements ActionListener {
 		spawnFrequency = 200;
 		enemies.clear();
 		character= new Character(screenWidth, screenHeight);
-		hud=new HUD(screenWidth, screenHeight, character.getHealt());
+		hud=new HUD(screenWidth, screenHeight);
 	}
     
     private class TAdapter extends KeyAdapter {

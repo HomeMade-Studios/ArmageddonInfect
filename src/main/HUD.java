@@ -6,7 +6,6 @@ import java.awt.Rectangle;
 public class HUD {
 	private float health1;
 	private float health2;
-	private float healthMax;
 	private int screenWidth;
 	private int screenHeight;
 	private int x;
@@ -15,22 +14,20 @@ public class HUD {
 	private int h2;
 	private int h2y;
 	private int temp;
+	private int exp,expMax,expBox;
 
-	public HUD(int Width, int Height, int healthMax) {
+	public HUD(int Width, int Height) {
 		screenWidth = Width;
 		screenHeight = Height;
 		x = screenWidth - 275;
 		y = screenHeight - 150;
 		h1 = 226;
 		h2 = 64;
-		this.healthMax = healthMax;
-		health1 = healthMax / 100 * 70;
-		health2 = healthMax / 100 * 30;
 		h2y = 0;
 		temp = 0;
 	}
 
-	public void updateHUD(int health, int exp, int expMax) {
+	public void updateHUD(int health, int healthMax, int exp, int expMax) {
 		if (health >= health1) {
 			health2 = health - health1;
 			health1 = healthMax / 100 * 70;
@@ -45,6 +42,8 @@ public class HUD {
 			h2 = (int) (64 * ((health2) / (healthMax / 100 * 30)));
 			h2y = h2y + (temp - h2);
 		}
+		
+		
 		
 	}
 
