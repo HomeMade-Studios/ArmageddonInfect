@@ -26,7 +26,7 @@ public class Character{
         x = (Width/2)-16;
         y = (Height/2)-16;
         hitbox=new Rectangle (x+6,y,20,32);
-        walkableArea=new Rectangle (0,32,1017,594);
+        walkableArea=new Rectangle (32-5,32+10,985-32+10,594);
         attackbox=new Rectangle (x-6,y-6,44,44);
     }
     
@@ -38,12 +38,16 @@ public class Character{
 	    hitbox=new Rectangle (x+6,y,20,32);
 	    attackbox=new Rectangle (x-6,y-6,44,44);
 	    if(!walkableArea.intersects(hitbox)){
-	    	x=oldx;
-	    	y=oldy;
+	    	stopmove();
 	    }
     }
     
-    public void SetP(int mx, int my){
+    private void stopmove() {
+    	x=oldx;
+    	y=oldy;
+	}
+
+	public void SetP(int mx, int my){
     	if (Math.abs(mx-x)>Math.abs(my-y)){	//Algoritmo che determina la posizione del mouse rispetto al personaggio
     		if (mx-x>0){
 	    		pov=3;	//Imposta la variabile che indica che guarda a destra
