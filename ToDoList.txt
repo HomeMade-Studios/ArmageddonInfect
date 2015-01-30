@@ -1,7 +1,10 @@
--Sistemare lobby
--Exp
--Sistemare Anim attacco
+-Sistemare lobby					[Ugo]
+-Exp								[Ugo]
+-Sistemare Anim attacco				[Marco]
+-Sistema drop						[Marco]
 -Rendere variabile risoluzione
+-Sistema inventario off game
+-Menu crafting
 -Aggiungere "Scelta mappa"
--Aggiunta menu
+-Aggiunta menu iniziale
 -LAN
