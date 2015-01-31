@@ -1,10 +1,11 @@
 -Application	
--Board			[Ugo]
+-Board			[Marco]
 -Character		
 -Enemy			
--HUD			[Ugo]
--ImgLoader		
+-HUD			
+-ImgLoader		[Marco]
 -Lobby			
--Mouse	
--Drop			[Marco]
--Inventory		[Marco]
+-Mouse			
+-Drop			
+-Inventory		
+-FontExt		[Marco]
