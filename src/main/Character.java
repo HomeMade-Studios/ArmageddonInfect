@@ -14,7 +14,7 @@ public class Character{
     private int strength=50;
 	int healt,healtMax;
 	int level;
-    Rectangle hitbox,attackbox,walkableArea;
+    Rectangle hitbox,attackbox,walkableMapArea,walkableLobbyArea;
 	Random rand = new Random();
 	boolean paused,attack;
     
@@ -27,21 +27,28 @@ public class Character{
     	Mj=DMj=10;
         x = (Width/2)-16;
         y = (Height/2)-16;
-        hitbox=new Rectangle (x+4,y,21,32);
-        walkableArea=new Rectangle (27,42,963,594);
-        attackbox=new Rectangle (x-6,y-6,44,44);
+        walkableMapArea=new Rectangle (47,28,923,597);
+        walkableLobbyArea=new Rectangle (25,5,964,630);    
     }
     
-    public void move() {
+    public void move(boolean isInLobby) {
     	oldx=x;
     	oldy=y;
 	    x += dx;
 	    y += dy;
         hitbox=new Rectangle (x+4,y,21,32);
 	    attackbox=new Rectangle (x-6,y-6,44,44);
-	    if(!walkableArea.intersects(hitbox)){
-	    	stopmove();
+	    if(isInLobby){
+	    	if(!walkableLobbyArea.intersects(hitbox)){
+		    	stopmove();
+		    }
 	    }
+	    else{
+	    	if(!walkableMapArea.intersects(hitbox)){
+		    	stopmove();
+		    }
+	    }
+	    
     }
     
     public void stopmove() {
@@ -200,8 +207,12 @@ public class Character{
 		return attackbox;
 	}
 	
-	public Rectangle getWalkable() {
-		return walkableArea;
+	public Rectangle getWalkableMapArea() {
+		return walkableMapArea;
+	}
+	
+	public Rectangle getWalkableLobbyArea() {
+		return walkableLobbyArea;
 	}
 
 	public boolean isPaused() {

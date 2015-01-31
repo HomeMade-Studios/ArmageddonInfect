@@ -14,8 +14,7 @@ public class HUD {
 	private int h2;
 	private int h2y;
 	private int temp;
-	private int expBar,expBox = 0,exp;
-	private boolean stopExpBox = false;
+	private int expBar,expBox = 0;
 	private Rectangle[] iconsHB;
 
 	public HUD(int Width, int Height) {

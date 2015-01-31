@@ -110,7 +110,7 @@ public class Board extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if(!character.isPaused()){
-			character.move();
+			character.move(isInLobby);
 			character.SetP(mouse.getMx(), mouse.getMy());
 			character.animationCycle(mouse.isMouseClicked());
 			if(isInLobby){
