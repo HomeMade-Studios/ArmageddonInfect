@@ -38,6 +38,7 @@ public class Board extends JPanel implements ActionListener {
 	private Timer timer;
 	boolean isInLobby = true;
 	boolean levelUp = false;
+	boolean inventory = false,stats = false,equipment=false;
     String filename = "character.sav";
     File f = new File(filename);
 	int screenWidth;
@@ -54,7 +55,7 @@ public class Board extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setBackground(Color.DARK_GRAY);
         setFocusable(true);
-        spawnFrequency = 150;
+        spawnFrequency = 20;
         wave = 0;
         waveFinish = 0;
         font=new FontExt();
@@ -142,9 +143,43 @@ public class Board extends JPanel implements ActionListener {
 					save();
 					isInLobby = false;
 				}
+				if(mouse.getMousePos().intersects(hud.getIconsHB()[0]) && mouse.isMouseClicked()){
+					if(!stats){
+						System.out.println("Stats opened");
+						stats = true;
+					}
+					else{
+						System.out.println("Stats closed");
+						stats = false;
+					}
+					mouse.setClick(false);
+				}
+				else if(mouse.getMousePos().intersects(hud.getIconsHB()[1]) && mouse.isMouseClicked()){
+					if(!equipment){
+						System.out.println("Equipment opened");
+						equipment = true;
+					}
+					else{
+						System.out.println("Equipment closed");
+						equipment = false;
+					}
+					mouse.setClick(false);
+				}
+				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
+					if(!inventory){
+						System.out.println("Inventory opened");
+						inventory = true;
+					}
+					else{
+						System.out.println("Inventory closed");
+						inventory = false;
+					}
+					mouse.setClick(false);
+				}
 			}
 			else{
-				if(rand.nextInt(spawnFrequency-wave * 2) == 0){
+				System.out.println(enemies.size());
+				if(rand.nextInt(spawnFrequency) == 0){
 		    		enemies.add(new Enemy(wave));
 		    		waveFinish++;
 		    		if(waveFinish == 11){
@@ -185,6 +220,8 @@ public class Board extends JPanel implements ActionListener {
 	private void reset(){
 		spawnFrequency = 150;
 		enemies.clear();
+		wave = 0;
+		waveFinish = 0;
 		character= new Character(screenWidth, screenHeight);
 		hud=new HUD(screenWidth, screenHeight);
 	}
