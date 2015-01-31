@@ -70,9 +70,6 @@ public class Board extends JPanel implements ActionListener {
 	      		else
 	      			g2d.drawImage(loader.getHUDicon()[1][i], hud.getX()+10+i*106, hud.getY()+53, null);
 	      	}
-	        for(int i=0;i<lobby.getLobbyHB().length;i++){
-				g2d.fill(lobby.getLobbyHB()[i]);
-			}
         }
         else{
         	g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
@@ -116,29 +113,38 @@ public class Board extends JPanel implements ActionListener {
 				if(character.getHitbox().intersects(lobby.getMapSelection())){
 					isInLobby = false;
 				}
-				if(mouse.getMousePos().intersects(hud.getIconsHB()[1]) && mouse.isMouseClicked()){
+				if(mouse.getMousePos().intersects(hud.getIconsHB()[0]) && mouse.isMouseClicked()){
 					if(!stats){
 						System.out.println("Stats opened");
+						stats = true;
 					}
 					else{
 						System.out.println("Stats closed");
+						stats = false;
 					}
+					mouse.setClick(false);
 				}
-				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
+				else if(mouse.getMousePos().intersects(hud.getIconsHB()[1]) && mouse.isMouseClicked()){
 					if(!equipment){
 						System.out.println("Equipment opened");
+						equipment = true;
 					}
 					else{
 						System.out.println("Equipment closed");
+						equipment = false;
 					}
+					mouse.setClick(false);
 				}
-				else if(mouse.getMousePos().intersects(hud.getIconsHB()[3]) && mouse.isMouseClicked()){
+				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
 					if(!inventory){
 						System.out.println("Inventory opened");
+						inventory = true;
 					}
 					else{
 						System.out.println("Inventory closed");
+						inventory = false;
 					}
+					mouse.setClick(false);
 				}
 			}
 			else{
