@@ -13,6 +13,7 @@ public class Character{
     private int pov,j,Mj,DMj,an,dAn,k,att,exp,maxExp;
     private int strength=50;
 	int healt,healtMax;
+	int level;
     Rectangle hitbox,attackbox,walkableArea;
 	Random rand = new Random();
 	boolean paused,attack;
@@ -21,6 +22,7 @@ public class Character{
     	healt=healtMax=100;
     	dAn=an=j=0;
     	k=0;
+    	level = 0;
     	maxExp=100;
     	Mj=DMj=10;
         x = (Width/2)-16;
@@ -221,4 +223,13 @@ public class Character{
 	public void setMaxExp(int maxExp) {
 		this.maxExp = maxExp;
 	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	
 }

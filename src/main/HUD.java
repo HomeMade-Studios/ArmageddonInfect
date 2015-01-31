@@ -33,7 +33,7 @@ public class HUD {
 		iconsHB[2] = new Rectangle(x+224, y+55, 28, 28);
 	}
 
-	public void updateHUD(int health, int healthMax, int exp, int expMax) {
+	public boolean updateHUD(int health, int healthMax, int exp, int expMax) {
 		if (health > health1) {
 			health1 = healthMax / 100 * 70;
 			health2 = health - health1;
@@ -51,18 +51,15 @@ public class HUD {
 			h2 = (int) (64 * ((health2) / (healthMax / 100 * 30)));
 			h2y = h2y + (temp - h2);
 		}
-		this.exp = exp%expMax;
-		expBar = (int)(212 * ((this.exp)) / (expMax));
-		if(this.exp % expMax == 0 && exp != 0 && !stopExpBox){
+		expBar = (int)(212 * ((exp%expMax)) / (expMax));
+		if(exp >= expMax+(expMax*expBox)){
 			expBox++;
-			stopExpBox = true;
-		}
-		else if(this.exp % expMax != 0){
-			stopExpBox = false;
 		}
 		if(expBox == 10){
 			expBox = 0;
+			return true;
 		}
+		return false;
 	}
 
 	public int getX() {
