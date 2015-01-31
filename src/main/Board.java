@@ -33,12 +33,13 @@ public class Board extends JPanel implements ActionListener {
 	Lobby lobby;
 	FontExt font;
 	SavedData save;
+	Inventory inventory;
 	Random rand = new Random();
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private Timer timer;
 	boolean isInLobby = true;
 	boolean levelUp = false;
-	boolean inventory = false,stats = false,equipment=false;
+	boolean inventoryWindow = false,stats = false,equipment=false;
     String filename = "character.sav";
     File f = new File(filename);
 	int screenWidth;
@@ -55,10 +56,11 @@ public class Board extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setBackground(Color.DARK_GRAY);
         setFocusable(true);
-        spawnFrequency = 20;
+        spawnFrequency = 100;
         wave = 0;
         waveFinish = 0;
         font=new FontExt();
+        inventory=new Inventory();
         character=new Character(screenWidth, screenHeight);
         enemy=new Enemy(wave);
         lobby=new Lobby();
@@ -81,6 +83,9 @@ public class Board extends JPanel implements ActionListener {
         	g2d.drawImage(loader.getBancone2(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
         	g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
         	g2d.drawImage(loader.getBancone(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
+        	if(inventoryWindow){
+        		g2d.drawImage(loader.getInventory(), inventory.getX(), inventory.getY(), null);
+        	}
         	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
         	for(int i=0; i<hud.getIconsHB().length; i++){
         		if(hud.getIconsHB()[i].intersects(mouse.getMousePos())){
@@ -166,13 +171,13 @@ public class Board extends JPanel implements ActionListener {
 					mouse.setClick(false);
 				}
 				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
-					if(!inventory){
+					if(!inventoryWindow){
 						System.out.println("Inventory opened");
-						inventory = true;
+						inventoryWindow = true;
 					}
 					else{
 						System.out.println("Inventory closed");
-						inventory = false;
+						inventoryWindow = false;
 					}
 					mouse.setClick(false);
 				}
