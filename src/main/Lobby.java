@@ -8,11 +8,12 @@ public class Lobby {
 	
 	public Lobby(){
 		mapSelection = new Rectangle(855,0,100,45);
-		lobbyHB = new Rectangle[4];
+		lobbyHB = new Rectangle[5];
 		lobbyHB[0] = new Rectangle(0,0,1018,45);
 		lobbyHB[1] = new Rectangle(419,0,5,198);
 		lobbyHB[2] = new Rectangle(73,198,351,45);
 		lobbyHB[3] = new Rectangle(73,198,5,127);
+		lobbyHB[4] = new Rectangle(78,297,347,1);
 	}
 
 	public Rectangle getMapSelection() {
