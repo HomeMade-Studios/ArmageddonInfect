@@ -1,8 +1,7 @@
 Coding
 
 -Sistema inventario off game		[Ugo]
--Funzione elaborazione font			[Marco]
--Sistema salvataggio
+-Sistema salvataggio				[Marco]
 -Menu crafting
 -Aggiungere "Scelta mappa"
 -Aggiunta menu iniziale
