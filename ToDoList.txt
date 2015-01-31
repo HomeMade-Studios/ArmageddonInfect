@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+*Sistemare Anim attacco				
+=======
 -Sistemare Anim attacco				[Marco]
+>>>>>>> parent of 17ee3c5... 'ToDo
 -Sistema drop						[Marco]
 *Rendere variabile risoluzione		[Ugo]
+-Sistema inventario off game		[Ugo]
+-Funzione elaborazione font			[Marco]
 -Sistema salvataggio
--Sistema inventario off game
 -Menu crafting
 -Aggiungere "Scelta mappa"
 -Aggiunta menu iniziale
