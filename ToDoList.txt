@@ -1,7 +1,8 @@
 Coding
 
+-Sistemare drop nella board			[??]
 -Sistema inventario off game		[Ugo]
--Sistema salvataggio				[Marco]
+-Sistema salvataggio		TEST	[Marco]
 -Menu crafting
 -Aggiungere "Scelta mappa"
 -Aggiunta menu iniziale
