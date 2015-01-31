@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.Rectangle;
+
 
 public class HUD {
 	private float health1;
@@ -14,6 +16,7 @@ public class HUD {
 	private int temp;
 	private int expBar,expBox = 0,exp;
 	private boolean stopExpBox = false;
+	private Rectangle[] iconsHB;
 
 	public HUD(int Width, int Height) {
 		screenWidth = Width;
@@ -24,6 +27,10 @@ public class HUD {
 		h2 = 64;
 		h2y = 0;
 		temp = 0;
+		iconsHB= new Rectangle[3];
+		iconsHB[0] = new Rectangle(x+12,y+55, 28, 28);
+		iconsHB[1] = new Rectangle(x+118, y+55, 28, 28);
+		iconsHB[2] = new Rectangle(x+224, y+55, 28, 28);
 	}
 
 	public void updateHUD(int health, int healthMax, int exp, int expMax) {
@@ -85,6 +92,9 @@ public class HUD {
 	public int getExpBar() {
 		return expBar;
 	}
-	
+
+	public Rectangle[] getIconsHB() {
+		return iconsHB;
+	}
 	
 }
