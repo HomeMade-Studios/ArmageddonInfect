@@ -63,7 +63,8 @@ public class Board extends JPanel implements ActionListener {
         if(isInLobby){
         	g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);    
         	g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
-	      	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
+        	g2d.drawImage(loader.getBancone(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
+        	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
 	      	for(int i=0;i<3;i++){
 	      		if(mouse.getMousePos().intersects(hud.getIconsHB()[i]))
 	      			g2d.drawImage(loader.getHUDicon()[0][i], hud.getX()+10+i*106, hud.getY()+53, null);
