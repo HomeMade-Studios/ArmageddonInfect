@@ -54,7 +54,7 @@ public class Board extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setBackground(Color.DARK_GRAY);
         setFocusable(true);
-        spawnFrequency = 200;
+        spawnFrequency = 150;
         wave = 0;
         waveFinish = 0;
         font=new FontExt();
@@ -111,9 +111,6 @@ public class Board extends JPanel implements ActionListener {
 	    	g2d.fill(new Rectangle(hud.getX()+48+i*24, hud.getY()+95, 20, 8));
 	    }
 	    g2d.fill(new Rectangle(hud.getX()+48, hud.getY()+106, hud.getExpBar(), 7));
-	    if(character.isPaused()){
-	    	g2d.drawImage(loader.getPauseOverlay(), screenWidth-loader.getPauseOverlay().getWidth(), screenHeight-loader.getPauseOverlay().getHeight(), null);
-	    }
 	    
 		String level="Level "+ character.getLevel();																					//Crea la stringa per l'input
 		font.input(level);																												//Crea arraylist con i valori giusti per il for
@@ -122,7 +119,9 @@ public class Board extends JPanel implements ActionListener {
 	    	g2d.drawImage(loader.getFont()[font.returnString().get(i)], hud.getX()+(i*loader.getFontWidth())+i, hud.getY(), null);		//Come posizione lasciare i*loader.getFontWidth() e aggiungere le coordinate altrimenti i caratteri si sovrappongono
 		}
 		font.clear();																													//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
-
+		if(character.isPaused()){
+        	g2d.drawImage(loader.getPauseOverlay(),-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
+        }
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
@@ -145,7 +144,7 @@ public class Board extends JPanel implements ActionListener {
 				}
 			}
 			else{
-				if(rand.nextInt(spawnFrequency) == 0){
+				if(rand.nextInt(spawnFrequency-wave * 2) == 0){
 		    		enemies.add(new Enemy(wave));
 		    		waveFinish++;
 		    		if(waveFinish == 11){
@@ -178,8 +177,9 @@ public class Board extends JPanel implements ActionListener {
 				character.setLevel(character.getLevel()+1);
 				character.setExp(character.getExp()-character.getMaxExp()*10);
 			};
-		    repaint();
+		    
 		}
+		repaint();
     }
 	
 	private void reset(){

@@ -22,6 +22,8 @@ public class ImgLoader {
 	private BufferedImage bigImg;
 	private BufferedImage bancone;
 	private BufferedImage bancone2;
+	private BufferedImage inventoryScrollButton;
+	private BufferedImage inventoryWindow;
 	
 
 	public ImgLoader(){
@@ -42,6 +44,8 @@ public class ImgLoader {
 			lobby=ImageIO.read(getClass().getResource("/img/Lobby.png"));
 			bancone=ImageIO.read(getClass().getResource("/img/tavern_bancone.png"));
 			bancone2=ImageIO.read(getClass().getResource("/img/tavern_bancone_sotto.png"));
+			inventoryScrollButton=ImageIO.read(getClass().getResource("/img/drops_inventory_scroll_button.png"));
+			inventoryWindow=ImageIO.read(getClass().getResource("/img/drops_inventory.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -143,5 +147,13 @@ public class ImgLoader {
 	
 	public BufferedImage getBancone2() {
 		return bancone2;
+	}
+	
+	public BufferedImage getInventory(){
+		return inventoryWindow;
+	}
+	
+	public BufferedImage getInventoryScrollButton(){
+		return inventoryScrollButton;
 	}
 }
