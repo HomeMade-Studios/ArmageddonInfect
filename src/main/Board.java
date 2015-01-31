@@ -30,6 +30,7 @@ public class Board extends JPanel implements ActionListener {
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private Timer timer;
 	boolean isInLobby = true;
+	boolean stats = false,equipment = false,inventory = false;
 	int screenWidth;
 	int screenHeight;
 	int spawnFrequency;
@@ -114,6 +115,30 @@ public class Board extends JPanel implements ActionListener {
 				}
 				if(character.getHitbox().intersects(lobby.getMapSelection())){
 					isInLobby = false;
+				}
+				if(mouse.getMousePos().intersects(hud.getIconsHB()[1]) && mouse.isMouseClicked()){
+					if(!stats){
+						System.out.println("Stats opened");
+					}
+					else{
+						System.out.println("Stats closed");
+					}
+				}
+				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
+					if(!equipment){
+						System.out.println("Equipment opened");
+					}
+					else{
+						System.out.println("Equipment closed");
+					}
+				}
+				else if(mouse.getMousePos().intersects(hud.getIconsHB()[3]) && mouse.isMouseClicked()){
+					if(!inventory){
+						System.out.println("Inventory opened");
+					}
+					else{
+						System.out.println("Inventory closed");
+					}
 				}
 			}
 			else{
