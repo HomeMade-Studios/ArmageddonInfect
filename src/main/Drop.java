@@ -8,7 +8,7 @@ public class Drop {
 	ArrayList<String> name=new ArrayList<String>();
 	String text="You obtained";
 	
-	Drop{
+	Drop(){
 		name.add("zombie eye.");
 		name.add("zombie bones.");
 		name.add("zombie flesh.");
@@ -21,7 +21,7 @@ public class Drop {
 	}
 	
 	void updateString(int n){
-		text.
+		//text.
 		
 	}
 }

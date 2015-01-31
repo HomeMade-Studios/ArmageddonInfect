@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-*Sistemare Anim attacco				
-=======
--Sistemare Anim attacco				[Marco]
->>>>>>> parent of 17ee3c5... 'ToDo
+*Sistemare Anim attacco				[Marco]
 -Sistema drop						[Marco]
 *Rendere variabile risoluzione		[Ugo]
 -Sistema inventario off game		[Ugo]
