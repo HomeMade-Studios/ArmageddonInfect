@@ -20,6 +20,7 @@ public class ImgLoader {
 	private BufferedImage bigImg;
 	private BufferedImage HUDicons;
 	private BufferedImage bancone;
+	private BufferedImage bancone2;
 	
 
 	public ImgLoader(){
@@ -39,6 +40,7 @@ public class ImgLoader {
 			pauseOverlay=(ImageIO.read(getClass().getResource("/img/pause_overlay.png")));
 			lobby=ImageIO.read(getClass().getResource("/img/Lobby.png"));
 			bancone=ImageIO.read(getClass().getResource("/img/tavern_bancone.png"));
+			bancone2=ImageIO.read(getClass().getResource("/img/tavern_bancone_sotto.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -108,5 +110,9 @@ public class ImgLoader {
 	
 	public BufferedImage getBancone() {
 		return bancone;
+	}
+	
+	public BufferedImage getBancone2() {
+		return bancone2;
 	}
 }
