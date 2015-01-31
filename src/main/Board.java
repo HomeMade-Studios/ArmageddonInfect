@@ -27,6 +27,7 @@ public class Board extends JPanel implements ActionListener {
 	ImgLoader loader;
 	Enemy enemy;
 	Lobby lobby;
+	FontExt font;
 	Random rand = new Random();
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private Timer timer;
@@ -49,6 +50,7 @@ public class Board extends JPanel implements ActionListener {
         spawnFrequency = 200;
         wave = 0;
         waveFinish = 0;
+        font=new FontExt();
         character=new Character(screenWidth, screenHeight);
         enemy=new Enemy(wave);
         lobby=new Lobby();
@@ -56,6 +58,7 @@ public class Board extends JPanel implements ActionListener {
         loader= new ImgLoader();
         timer = new Timer (10 , this);
         timer.start();
+		font.input("Giampli figo");
     }
 
     public void paint(Graphics g) {
@@ -103,6 +106,10 @@ public class Board extends JPanel implements ActionListener {
 	    g2d.setColor(Color.BLACK);
 		g2d.setFont(new Font("Purisa", Font.PLAIN, 13));
 		g2d.drawString("Level "+ character.getLevel(), hud.getX(), hud.getY());
+		for (int i = 0; i < font.returnString().size(); i++)
+		{
+	    	g2d.drawImage(loader.getFont()[font.returnString().get(i)], 100+(i*20), 100, null);
+		}
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }

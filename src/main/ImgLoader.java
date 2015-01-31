@@ -12,13 +12,13 @@ public class ImgLoader {
 	private int cols;
 	private BufferedImage[][] spritesBase;
 	private BufferedImage[][] HUDicon;
+	private BufferedImage[] Font;
 	private BufferedImage mapBackground[];
 	private BufferedImage HUD;
 	private BufferedImage lobby;
 	private BufferedImage lobbyHUD;
 	private BufferedImage pauseOverlay;
 	private BufferedImage bigImg;
-	private BufferedImage HUDicons;
 	private BufferedImage bancone;
 	private BufferedImage bancone2;
 	
@@ -44,20 +44,22 @@ public class ImgLoader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		for (int i = 0; i < rows; i++)
 		{
 		    for (int j = 0; j < cols; j++)
 		    {
 		    	spritesBase[i][j] = bigImg.getSubimage(j * width,i * height,width,height);
 		    }
-		}	
+		}
+		
 		width = 32;
 		height = 32;
 		rows = 2;
 		cols = 3;
 		HUDicon = new BufferedImage[rows][cols];
 		try {
-	        HUDicons = ImageIO.read(getClass().getResource("/img/tavern_hud_icons.png"));
+			bigImg = ImageIO.read(getClass().getResource("/img/tavern_hud_icons.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,9 +67,10 @@ public class ImgLoader {
 		{
 		    for (int j = 0; j < cols; j++)
 		    {
-		    	HUDicon[i][j] = HUDicons.getSubimage(j * width,i * height,width,height);
+		    	HUDicon[i][j] = bigImg.getSubimage(j * width,i * height,width,height);
 		    }
 		}	
+		
 		cols=1;
 		mapBackground= new BufferedImage [cols];
 		try {
@@ -75,6 +78,24 @@ public class ImgLoader {
 	        mapBackground[0] = ImageIO.read(getClass().getResource("/img/MapBackgrounds01.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		
+		try {
+			width = 20;
+			height = 30;
+			rows=2;
+			cols=26;
+			Font=new BufferedImage [rows*cols];
+			bigImg = ImageIO.read(getClass().getResource("/img/font.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < rows; i++)
+		{
+		    for (int j = 0; j < cols; j++)
+		    {
+		        Font[(i * cols) + j] = bigImg.getSubimage(j * width,i * height,width,height);
+		    }
 		}
 	}
 	
@@ -94,6 +115,10 @@ public class ImgLoader {
 	
 	public BufferedImage[][] getSprite() {
 		return spritesBase;
+	}
+	
+	public BufferedImage[] getFont() {
+		return Font;
 	}
 	
 	public BufferedImage[][] getHUDicon() {

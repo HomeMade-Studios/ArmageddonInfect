@@ -95,7 +95,6 @@ public class Enemy {
 	}
 	
 	public void attacked(int Str, int Pov,int cx,int cy, boolean click){
-		System.out.println(click);
 		if(click){
 			if((cx>x&&Pov==2)||(cx<x&&Pov==3)||(cy>y&&Pov==1)||(cy<y&&Pov==0))
 				health-=Str;
