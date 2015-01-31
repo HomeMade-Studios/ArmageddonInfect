@@ -38,4 +38,8 @@ public class FontExt {
 	public ArrayList<Integer> returnString(){
 		return StringAfter;
 	}
+	
+	public void clear(){
+		StringAfter.clear();
+	}
 }

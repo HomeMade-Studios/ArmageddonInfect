@@ -37,6 +37,7 @@ public class Board extends JPanel implements ActionListener {
 	int screenHeight;
 	int spawnFrequency;
 	int wave,waveFinish;
+	String test;
 	
 	public Board(int Width, int Height) {
 		screenWidth=Width - 6;
@@ -58,7 +59,7 @@ public class Board extends JPanel implements ActionListener {
         loader= new ImgLoader();
         timer = new Timer (10 , this);
         timer.start();
-		font.input("Giampli figo");
+		test="Giampli figo";
     }
 
     public void paint(Graphics g) {
@@ -105,11 +106,15 @@ public class Board extends JPanel implements ActionListener {
 	    }
 	    g2d.setColor(Color.BLACK);
 		g2d.setFont(new Font("Purisa", Font.PLAIN, 13));
-		g2d.drawString("Level "+ character.getLevel(), hud.getX(), hud.getY());
-		for (int i = 0; i < font.returnString().size(); i++)
+		String level="Level "+ character.getLevel();																//Creato la stringa per l'input
+		
+		font.input(level);																							//Crea arraylist con i valori giusti per il for
+		for (int i = 0; i <level.length(); i++)																		//Inserire come valore massimo contatore lunghezza stringa
 		{
-	    	g2d.drawImage(loader.getFont()[font.returnString().get(i)], 100+(i*20), 100, null);
+	    	g2d.drawImage(loader.getFont()[font.returnString().get(i)], hud.getX()+(i*20), hud.getY(), null);		//Come posizione lasciare i*20, altrimenti i caratteri si sovrappongono
 		}
+		font.clear();																								//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
+
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
