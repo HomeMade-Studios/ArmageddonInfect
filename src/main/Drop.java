@@ -7,7 +7,8 @@ public class Drop {
 	Random rand = new Random();
 	ArrayList<String> name=new ArrayList<String>();
 	String text="You obtained";
-	
+	int n;
+
 	Drop(){
 		name.add("zombie eye.");
 		name.add("zombie bones.");
@@ -15,13 +16,19 @@ public class Drop {
 	}
 
 	void obtainItem(){
-		int n;
 		n=rand.nextInt(3);
 		updateString(n);
 	}
 	
 	void updateString(int n){
-		//text.
-		
+		text.concat(name.get(n));
 	}
+
+	public String getText() {
+		return text;
+	}
+	
+	public int getN() {
+		return n;
+	}	
 }
