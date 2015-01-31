@@ -2,7 +2,6 @@ package main;
 
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -115,14 +114,12 @@ public class Board extends JPanel implements ActionListener {
 	    if(character.isPaused()){
 	    	g2d.drawImage(loader.getPauseOverlay(), screenWidth-loader.getPauseOverlay().getWidth(), screenHeight-loader.getPauseOverlay().getHeight(), null);
 	    }
-	    g2d.setColor(Color.BLACK);
-		g2d.setFont(new Font("Purisa", Font.PLAIN, 13));
+	    
 		String level="Level "+ character.getLevel();																					//Crea la stringa per l'input
-		
 		font.input(level);																												//Crea arraylist con i valori giusti per il for
 		for (int i = 0; i <level.length(); i++)																							//Inserire come valore massimo contatore lunghezza stringa
 		{
-	    	g2d.drawImage(loader.getFont()[font.returnString().get(i)], hud.getX()+(i*loader.getFontWidth()), hud.getY(), null);		//Come posizione lasciare i*loader.getFontWidth() e aggiungere le coordinate altrimenti i caratteri si sovrappongono
+	    	g2d.drawImage(loader.getFont()[font.returnString().get(i)], hud.getX()+(i*loader.getFontWidth())+i, hud.getY(), null);		//Come posizione lasciare i*loader.getFontWidth() e aggiungere le coordinate altrimenti i caratteri si sovrappongono
 		}
 		font.clear();																													//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
 
@@ -165,7 +162,7 @@ public class Board extends JPanel implements ActionListener {
 		        		}
 		        	if(enemies.get(i).getHealth() <= 0){
 		        		enemies.remove(i);
-		        		character.setExp(character.getExp() + 90);
+		        		character.setExp(character.getExp() + 500);
 		        	}
 		        	
 		    	}
