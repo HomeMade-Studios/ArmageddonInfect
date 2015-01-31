@@ -223,24 +223,27 @@ public class Character{
 		return exp;
 	}
 
-	public void setExp(int exp) {
-		this.exp = exp;
-	}
-
 	public int getMaxExp() {
 		return maxExp;
-	}
-
-	public void setMaxExp(int maxExp) {
-		this.maxExp = maxExp;
 	}
 
 	public int getLevel() {
 		return level;
 	}
 
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+
+	public void setHealtMax(int healtMax) {
+		this.healtMax = healtMax;
+	}
+
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
 }

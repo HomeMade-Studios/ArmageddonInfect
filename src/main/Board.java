@@ -11,6 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -28,16 +33,18 @@ public class Board extends JPanel implements ActionListener {
 	Enemy enemy;
 	Lobby lobby;
 	FontExt font;
+	SavedData save;
 	Random rand = new Random();
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private Timer timer;
 	boolean isInLobby = true;
 	boolean levelUp = false;
+    String filename = "character.sav";
+    File f = new File(filename);
 	int screenWidth;
 	int screenHeight;
 	int spawnFrequency;
 	int wave,waveFinish;
-	String test;
 	
 	public Board(int Width, int Height) {
 		screenWidth=Width - 6;
@@ -57,9 +64,13 @@ public class Board extends JPanel implements ActionListener {
         lobby=new Lobby();
         hud= new HUD(screenWidth, screenHeight);
         loader= new ImgLoader();
+        if (f.exists() && !f.isDirectory()){
+        	load();
+        	}
+        else{
+        	save= new SavedData();}
         timer = new Timer (10 , this);
         timer.start();
-		test="Giampli figo";
     }
 
     public void paint(Graphics g) {
@@ -132,6 +143,7 @@ public class Board extends JPanel implements ActionListener {
 					}
 				}
 				if(character.getHitbox().intersects(lobby.getMapSelection())){
+					save();
 					isInLobby = false;
 				}
 			}
@@ -160,7 +172,9 @@ public class Board extends JPanel implements ActionListener {
 		    	mouse.setClick(false);
 		    	if(character.getHealt() <= 0){
 		    		isInLobby = true;
+		    		save();
 		    		reset();
+		    		load();
 		    	}
 			}
 			if(hud.updateHUD(character.getHealt(),character.getHealtMax(), character.getExp(),character.getMaxExp())){
@@ -188,4 +202,37 @@ public class Board extends JPanel implements ActionListener {
         	character.keyPressed(e);
         }
     }
+    
+    public void save (){
+   	 FileOutputStream fos = null;
+   	 ObjectOutputStream out = null;
+   	save.setExp(character.getExp());
+   	save.setMaxHealt(character.getHealtMax());
+   	save.setLevel(character.getLevel());
+   	save.setStrength(character.getStrength());
+   	 try {
+   	   fos = new FileOutputStream(filename);
+   	   out = new ObjectOutputStream(fos);
+   	   out.writeObject(save);
+   	   out.close();
+   	 } catch (Exception ex) {
+   	   ex.printStackTrace();
+   	 }
+   }
+   public void load (){
+   	FileInputStream fis = null;
+       ObjectInputStream in = null;
+       try {
+         fis = new FileInputStream(filename);
+         in = new ObjectInputStream(fis);
+         save = (SavedData) in.readObject();
+         in.close();
+       } catch (Exception ex) {
+         ex.printStackTrace();
+       }        
+   	character.setExp(save.getExp());
+   	character.setHealtMax(save.getMaxHealt());
+   	character.setLevel(save.getLevel());
+   	character.setStrength(save.getStrength());
+   }
 }
