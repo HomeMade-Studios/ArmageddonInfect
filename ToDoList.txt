@@ -1,6 +1,5 @@
-*Sistemare Anim attacco				[Marco]
--Sistema drop						[Marco]
-*Rendere variabile risoluzione		[Ugo]
+Coding
+
 -Sistema inventario off game		[Ugo]
 -Funzione elaborazione font			[Marco]
 -Sistema salvataggio
@@ -9,3 +8,9 @@
 -Aggiunta menu iniziale
 -LAN
 -SoundTrack
+
+Graphics
+
+-Sistemare font
+-Menu "Scelta mappa"
+-Menu di crafting

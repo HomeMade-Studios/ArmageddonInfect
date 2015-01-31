@@ -30,7 +30,6 @@ public class Board extends JPanel implements ActionListener {
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private Timer timer;
 	boolean isInLobby = true;
-	boolean stats = false,equipment = false,inventory = false;
 	int screenWidth;
 	int screenHeight;
 	int spawnFrequency;
@@ -61,17 +60,12 @@ public class Board extends JPanel implements ActionListener {
         super.paint(g);
         Graphics2D g2d = (Graphics2D)g;
         if(isInLobby){
-        	g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null); 
-        	g2d.drawImage(loader.getBancone2(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
+        	g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);    
         	g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
-        	g2d.drawImage(loader.getBancone(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
-        	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
-	      	for(int i=0;i<3;i++){
-	      		if(mouse.getMousePos().intersects(hud.getIconsHB()[i]))
-	      			g2d.drawImage(loader.getHUDicon()[0][i], hud.getX()+10+i*106, hud.getY()+53, null);
-	      		else
-	      			g2d.drawImage(loader.getHUDicon()[1][i], hud.getX()+10+i*106, hud.getY()+53, null);
-	      	}
+	      	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
+	        for(int i=0;i<lobby.getLobbyHB().length;i++){
+				g2d.fill(lobby.getLobbyHB()[i]);
+			}
         }
         else{
         	g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
@@ -82,11 +76,11 @@ public class Board extends JPanel implements ActionListener {
     	    	g2d.draw(enemies.get(i).getEnemyHealth());
     	        g2d.setColor(Color.RED);
     	        g2d.fill(new Rectangle((int)enemies.get(i).getEnemyHealth().getX(),(int) enemies.get(i).getEnemyHealth().getY(), (int)((float)enemies.get(i).getHealth()*0.2), (int)enemies.get(i).getEnemyHealth().getHeight()));
+    	        g2d.drawImage(loader.getHUD(), hud.getX(), hud.getY(), null);
+    	        g2d.setColor(Color.GREEN);
+    		    g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));
+    		    g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
     	    } 
-    	    g2d.drawImage(loader.getHUD(), hud.getX(), hud.getY(), null);
-	        g2d.setColor(Color.GREEN);
-		    g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));
-		    g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
         }
 	    g2d.setColor(Color.CYAN);
 	    for(int i = 0; i < hud.getExpBox(); i++){
@@ -94,7 +88,7 @@ public class Board extends JPanel implements ActionListener {
 	    }
 	    g2d.fill(new Rectangle(hud.getX()+48, hud.getY()+106, hud.getExpBar(), 7));
 	    if(character.isPaused()){
-	    	g2d.drawImage(loader.getPauseOverlay(), -(1920 - screenWidth)/2, -(1080 - screenHeight)/2, null);
+	    	g2d.drawImage(loader.getPauseOverlay(), screenWidth-loader.getPauseOverlay().getWidth(), screenHeight-loader.getPauseOverlay().getHeight(), null);
 	    }
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -114,39 +108,6 @@ public class Board extends JPanel implements ActionListener {
 				}
 				if(character.getHitbox().intersects(lobby.getMapSelection())){
 					isInLobby = false;
-				}
-				if(mouse.getMousePos().intersects(hud.getIconsHB()[0]) && mouse.isMouseClicked()){
-					if(!stats){
-						System.out.println("Stats opened");
-						stats = true;
-					}
-					else{
-						System.out.println("Stats closed");
-						stats = false;
-					}
-					mouse.setClick(false);
-				}
-				else if(mouse.getMousePos().intersects(hud.getIconsHB()[1]) && mouse.isMouseClicked()){
-					if(!equipment){
-						System.out.println("Equipment opened");
-						equipment = true;
-					}
-					else{
-						System.out.println("Equipment closed");
-						equipment = false;
-					}
-					mouse.setClick(false);
-				}
-				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
-					if(!inventory){
-						System.out.println("Inventory opened");
-						inventory = true;
-					}
-					else{
-						System.out.println("Inventory closed");
-						inventory = false;
-					}
-					mouse.setClick(false);
 				}
 			}
 			else{
@@ -178,9 +139,8 @@ public class Board extends JPanel implements ActionListener {
 		    	}
 			}
 			hud.updateHUD(character.getHealt(),character.getHealtMax(), character.getExp(),character.getMaxExp());
-		    
+		    repaint();
 		}
-		repaint();
     }
 	
 	private void reset(){

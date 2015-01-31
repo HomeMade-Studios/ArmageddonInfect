@@ -10,9 +10,9 @@ public class Drop {
 	int n;
 
 	Drop(){
-		name.add("zombie eye.");
-		name.add("zombie bones.");
-		name.add("zombie flesh.");
+		name.add("zombie eye");
+		name.add("zombie bones");
+		name.add("zombie flesh");
 	}
 
 	void obtainItem(){

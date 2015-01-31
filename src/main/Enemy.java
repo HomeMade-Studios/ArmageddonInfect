@@ -12,6 +12,7 @@ public class Enemy {
 	int strength;
 	int i;  
 	int health;
+	int drop;
 	int p,j,Mj,DMj,an,dAn,k;
 	Rectangle enemyHB;
 	Rectangle enemyHealth;
@@ -31,6 +32,7 @@ public class Enemy {
 		enemyHB =new Rectangle(x+6,y,20,32);
 		enemyHealth=new Rectangle(enemyHB.x,enemyHB.y-12,(int)enemyHB.getWidth(),3);
 		p = 4;
+		drop=rand.nextInt(4);
 	}
 	
 	public void move(int characterx, int charactery, Rectangle characterHB){
@@ -144,6 +146,7 @@ public class Enemy {
 		return enemyHealth;
 	}
 	
-	
-	
+	public int getDrop() {
+		return drop;
+	}	
 }
