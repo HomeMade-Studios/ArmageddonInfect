@@ -13,7 +13,7 @@ public class Lobby {
 		lobbyHB[1] = new Rectangle(419,0,5,198);
 		lobbyHB[2] = new Rectangle(73,198,351,45);
 		lobbyHB[3] = new Rectangle(73,198,5,127);
-		lobbyHB[4] = new Rectangle(77,305,347,8);
+		lobbyHB[4] = new Rectangle(77,302,347,2);
 	}
 
 	public Rectangle getMapSelection() {
