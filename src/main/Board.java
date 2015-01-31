@@ -85,6 +85,7 @@ public class Board extends JPanel implements ActionListener {
         	g2d.drawImage(loader.getBancone(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
         	if(inventoryWindow){
         		g2d.drawImage(loader.getInventory(), inventory.getX(), inventory.getY(), null);
+        		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+179, inventory.getY()+15, null);
         	}
         	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
         	for(int i=0; i<hud.getIconsHB().length; i++){
