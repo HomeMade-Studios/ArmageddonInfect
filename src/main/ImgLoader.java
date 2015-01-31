@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 
 public class ImgLoader {
 	private int width;
+	private int fontWidth;
 	private int height;
 	private int rows;
 	private int cols;
@@ -81,7 +82,7 @@ public class ImgLoader {
 		}
 		
 		try {
-			width = 20;
+			fontWidth = 20;
 			height = 30;
 			rows=2;
 			cols=26;
@@ -94,12 +95,15 @@ public class ImgLoader {
 		{
 		    for (int j = 0; j < cols; j++)
 		    {
-		        Font[(i * cols) + j] = bigImg.getSubimage(j * width,i * height,width,height);
+		        Font[(i * cols) + j] = bigImg.getSubimage(j * fontWidth,i * height,fontWidth,height);
 		    }
 		}
 	}
 	
 	
+	public int getFontWidth() {
+		return fontWidth;
+	}	
 	
 	public BufferedImage getPauseOverlay() {
 		return pauseOverlay;
