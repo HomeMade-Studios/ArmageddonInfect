@@ -14,17 +14,18 @@ public class ImgLoader {
 	private BufferedImage[][] spritesBase;
 	private BufferedImage[][] HUDicon;
 	private BufferedImage[] font;
+	private BufferedImage[] fontSmall;
 	private BufferedImage[] drop;
 	private BufferedImage mapBackground[];
-	private BufferedImage HUD;
+	private BufferedImage mapHUD;
 	private BufferedImage lobby;
 	private BufferedImage lobbyHUD;
-	private BufferedImage pauseOverlay;
+	private BufferedImage pauseMenu;
 	private BufferedImage bigImg;
 	private BufferedImage bancone;
 	private BufferedImage bancone2;
-	private BufferedImage inventoryScrollButton;
-	private BufferedImage inventoryWindow;
+	private BufferedImage scrollButton;
+	private BufferedImage inventoryMenu;
 	
 
 	public ImgLoader(){
@@ -39,14 +40,14 @@ public class ImgLoader {
 	void load(){
 		try {
 			bigImg = ImageIO.read(getClass().getResource("/img/Spritesheet.png"));
-			HUD=ImageIO.read(getClass().getResource("/img/Hud/Hud.png"));
-			lobbyHUD=(ImageIO.read(getClass().getResource("/img/Hud/Hud2.png")));
-			pauseOverlay=(ImageIO.read(getClass().getResource("/img/Pause.png")));
-			lobby=ImageIO.read(getClass().getResource("/img/Tavern/Tavern.png"));
-			bancone=ImageIO.read(getClass().getResource("/img/Tavern/TavernBancone.png"));
-			bancone2=ImageIO.read(getClass().getResource("/img/Tavern/TavernBancone2.png"));
-			inventoryScrollButton=ImageIO.read(getClass().getResource("/img/InventoryScrollButton.png"));
-			inventoryWindow=ImageIO.read(getClass().getResource("/img/InventoryWindow.png"));
+			mapHUD=ImageIO.read(getClass().getResource("/img/Hud/map_hud.png"));
+			lobbyHUD=ImageIO.read(getClass().getResource("/img/Hud/lobby_hud.png"));
+			pauseMenu=ImageIO.read(getClass().getResource("/img/pause_menu.png"));
+			lobby=ImageIO.read(getClass().getResource("/img/Tavern/tavern.png"));
+			bancone=ImageIO.read(getClass().getResource("/img/Tavern/taver_bancone.png"));
+			bancone2=ImageIO.read(getClass().getResource("/img/Tavern/taver_bancone_sotto.png"));
+			scrollButton=ImageIO.read(getClass().getResource("/img/scroll_button.png"));
+			inventoryMenu=ImageIO.read(getClass().getResource("/img/inventory_menu.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +66,7 @@ public class ImgLoader {
 		cols = 3;
 		HUDicon = new BufferedImage[rows][cols];
 		try {
-			bigImg = ImageIO.read(getClass().getResource("/img/Hud/HudIcons.png"));
+			bigImg = ImageIO.read(getClass().getResource("/img/Hud/hud_icons.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +82,7 @@ public class ImgLoader {
 		mapBackground= new BufferedImage [cols];
 		try {
 	    	
-	        mapBackground[0] = ImageIO.read(getClass().getResource("/img/MapBackgrounds01.png"));
+	        mapBackground[0] = ImageIO.read(getClass().getResource("/img/map_backgrounds_01.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -92,7 +93,7 @@ public class ImgLoader {
 			rows=2;
 			cols=26;
 			font=new BufferedImage [rows*cols];
-			bigImg = ImageIO.read(getClass().getResource("/img/Font.png"));
+			bigImg = ImageIO.read(getClass().getResource("/img/font.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -103,13 +104,31 @@ public class ImgLoader {
 		        font[(i * cols) + j] = bigImg.getSubimage(j * fontWidth,i * height,fontWidth,height);
 		    }
 		}
+		
+		try {
+			fontWidth = 8;
+			height = 11;
+			rows=2;
+			cols=26;
+			fontSmall=new BufferedImage [rows*cols];
+			bigImg = ImageIO.read(getClass().getResource("/img/Fonts/font_small.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < rows; i++)
+		{
+		    for (int j = 0; j < cols; j++)
+		    {
+		        fontSmall[(i * cols) + j] = bigImg.getSubimage(j * fontWidth,i * height,fontWidth,height);
+		    }
+		}
 		try {
 			width = 32;
 			height = 32;
 			rows=16;
 			cols=16;
 			drop=new BufferedImage [rows*cols];
-			bigImg = ImageIO.read(getClass().getResource("/img/DropIcons.png"));
+			bigImg = ImageIO.read(getClass().getResource("/img/drop_icons.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -129,11 +148,11 @@ public class ImgLoader {
 	}	
 	
 	public BufferedImage getPauseOverlay() {
-		return pauseOverlay;
+		return pauseMenu;
 	}
 	
 	public BufferedImage getHUD() {
-		return HUD;
+		return mapHUD;
 	}
 	
 	public BufferedImage getLobby() {
@@ -169,11 +188,11 @@ public class ImgLoader {
 	}
 	
 	public BufferedImage getInventory(){
-		return inventoryWindow;
+		return inventoryMenu;
 	}
 	
 	public BufferedImage getInventoryScrollButton(){
-		return inventoryScrollButton;
+		return scrollButton;
 	}
 	
 	public BufferedImage[] getDrop() {
