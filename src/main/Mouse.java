@@ -66,6 +66,8 @@ class Mouse implements MouseInputListener {
 	public void mouseReleased(MouseEvent e) {
 		clicked=false;
 		dragging = false;
+		dx = 0;
+        dy = 0;
 	}
 
 	@Override
