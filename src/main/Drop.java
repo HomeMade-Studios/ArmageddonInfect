@@ -19,7 +19,6 @@ public class Drop {
 		text = "You obtained";
 		n=rand.nextInt(3);
 		updateString(n);
-		System.out.println(text);
 	}
 	
 	void updateString(int n){
