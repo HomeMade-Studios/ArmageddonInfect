@@ -10,6 +10,7 @@ public class SavedData implements Serializable {
 	private int exp,MaxHealt,level,strength;
 	private ArrayList<Integer> drop=new ArrayList<Integer>();
 	private ArrayList<Integer> dropNumber=new ArrayList<Integer>();
+	private ArrayList<String> dropName=new ArrayList<String>();;
 
 	public ArrayList<Integer> getDrop() {
 		return drop;
@@ -21,6 +22,10 @@ public class SavedData implements Serializable {
 
 	public ArrayList<Integer> getDropNumber() {
 		return dropNumber;
+	}
+	
+	public ArrayList<String> getDropName() {
+		return dropName;
 	}
 
 	public void setDropNumber(ArrayList<Integer> dropNumber) {
@@ -57,5 +62,10 @@ public class SavedData implements Serializable {
 
 	public void setStrength(int strength) {
 		this.strength = strength;
+	}
+
+	public void setDropName(ArrayList<String> dropName) {
+		this.dropName = dropName;
+		
 	}
 }

@@ -69,6 +69,10 @@ public class Inventory {
 	public void setDropNumber(ArrayList<Integer> dropNumber) {
 		this.dropNumber = dropNumber;
 	}
+
+	public void setDropName(ArrayList<String> dropName) {
+		this.dropName = dropName;
+	}
 	
 
 }

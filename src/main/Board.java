@@ -83,7 +83,6 @@ public class Board extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D)g;
-        g2d.setFont(new Font("Purisa", Font.BOLD, 13));
 	    
         if(isInLobby){
         	g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);  
@@ -95,7 +94,7 @@ public class Board extends JPanel implements ActionListener {
         		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+179, inventory.getY()+15, null);
         		for(int i=0;i<inventory.getDrop().size();i++){
         			g2d.drawImage(loader.getDrop()[inventory.getDrop().get(i)], inventory.getX()+8, inventory.getY()+9+i*35, null);
-        			g2d.drawString(inventory.getDropName().get(i), inventory.getX()+30, inventory.getY()+9+i*35);
+        			g2d.drawString(inventory.getDropName().get(i)+" ["+inventory.getDropNumber().get(i)+"]", inventory.getX()+45, inventory.getY()+28+i*36);
         		}
         	}
         	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
@@ -274,6 +273,7 @@ public class Board extends JPanel implements ActionListener {
       	save.setLevel(character.getLevel());
       	save.setStrength(character.getStrength());
       	save.setDrop(inventory.getDrop());
+      	save.setDropName(inventory.getDropName());
       	save.setDropNumber(inventory.getDropNumber());
       	 try {
       	   fos = new FileOutputStream(filename);
@@ -300,6 +300,7 @@ public class Board extends JPanel implements ActionListener {
       	character.setLevel(save.getLevel());
       	character.setStrength(save.getStrength());
       	inventory.setDrop(save.getDrop());
+      	inventory.setDropName(save.getDropName());
       	inventory.setDropNumber(save.getDropNumber());
       }
 }
