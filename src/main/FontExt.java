@@ -19,11 +19,14 @@ public class FontExt {
         		}
         	if(c>=65&&c<=90||c>=48&&c<=57||c==32){
 	        	if(c>=65&&c<=90){
-	        		c-=65;}
-	        	if(c==32)
+	        		c-=65;
+	        		break;}
+	        	if(c==32){
 	        		c+=19;
+	        		break;}
 	        	if(c>=48&&c<=57){
-	        		c-=22;}
+	        		c-=22;
+	        		break;}
 	        	System.out.println(c);
 
         	}
