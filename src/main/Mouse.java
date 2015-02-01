@@ -26,8 +26,8 @@ class Mouse implements MouseInputListener {
 	static Random rand = new Random();
 
 	public void mouseMoved(MouseEvent e) {
-        mx = e.getX();
-        my = e.getY();
+		mx = e.getX();
+	    my = e.getY();
 		mousePos= new Rectangle(mx,my,1,1);
     }
 	
@@ -77,6 +77,7 @@ class Mouse implements MouseInputListener {
         dy = e.getY() - my;
         mx = e.getX();
         my = e.getY();
+        mousePos= new Rectangle(mx,my,1,1);
 	}
 
 	public int getMx() {
