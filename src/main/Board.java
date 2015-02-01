@@ -202,7 +202,7 @@ public class Board extends JPanel implements ActionListener {
 					mouse.setClicked(false);
 				}
 				if(inventoryWindow){
-					if(mouse.getMousePos().intersects(inventory.getInventoryWindowHB()) && mouse.getDragging()){	
+					if(mouse.getMousePos().intersects(inventory.getInventoryWindowHB())){	
 						inventory.inventoryWindowMove(mouse.getDx(),mouse.getDy());
 					}
 				}

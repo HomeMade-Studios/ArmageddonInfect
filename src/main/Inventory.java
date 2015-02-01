@@ -24,7 +24,6 @@ public class Inventory {
 	public void inventoryWindowMove(int dx, int dy){	
 		x+=dx;
 		y+=dy;	
-		System.out.println(x+" "+y);	
 		inventoryWindowHB=new Rectangle(x+1,y+1,175,191);
 		
 	}
