@@ -39,14 +39,14 @@ public class ImgLoader {
 	void load(){
 		try {
 			bigImg = ImageIO.read(getClass().getResource("/img/Spritesheet.png"));
-			HUD=ImageIO.read(getClass().getResource("/img/HUD.png"));
-			lobbyHUD=(ImageIO.read(getClass().getResource("/img/tavern_hud.png")));
-			pauseOverlay=(ImageIO.read(getClass().getResource("/img/pause_overlay.png")));
-			lobby=ImageIO.read(getClass().getResource("/img/Lobby.png"));
-			bancone=ImageIO.read(getClass().getResource("/img/tavern_bancone.png"));
-			bancone2=ImageIO.read(getClass().getResource("/img/tavern_bancone_sotto.png"));
-			inventoryScrollButton=ImageIO.read(getClass().getResource("/img/drops_inventory_scroll_button.png"));
-			inventoryWindow=ImageIO.read(getClass().getResource("/img/drops_inventory.png"));
+			HUD=ImageIO.read(getClass().getResource("/img.Hud/Hud.png"));
+			lobbyHUD=(ImageIO.read(getClass().getResource("/img.Hud/Hud2.png")));
+			pauseOverlay=(ImageIO.read(getClass().getResource("/img/Pause.png")));
+			lobby=ImageIO.read(getClass().getResource("/img.Tavern/Tavern.png"));
+			bancone=ImageIO.read(getClass().getResource("/img.Tavern/TavernBancone.png"));
+			bancone2=ImageIO.read(getClass().getResource("/img.Tavern/TavernBancone.png"));
+			inventoryScrollButton=ImageIO.read(getClass().getResource("/img/InventoryScrollButton.png"));
+			inventoryWindow=ImageIO.read(getClass().getResource("/img/Inventory.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class ImgLoader {
 		cols = 3;
 		HUDicon = new BufferedImage[rows][cols];
 		try {
-			bigImg = ImageIO.read(getClass().getResource("/img/tavern_hud_icons.png"));
+			bigImg = ImageIO.read(getClass().getResource("/img.Hud/HudIcons.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -92,7 +92,7 @@ public class ImgLoader {
 			rows=2;
 			cols=26;
 			font=new BufferedImage [rows*cols];
-			bigImg = ImageIO.read(getClass().getResource("/img/font.png"));
+			bigImg = ImageIO.read(getClass().getResource("/img/Font.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -109,7 +109,7 @@ public class ImgLoader {
 			rows=16;
 			cols=16;
 			drop=new BufferedImage [rows*cols];
-			bigImg = ImageIO.read(getClass().getResource("/img/drop.png"));
+			bigImg = ImageIO.read(getClass().getResource("/img/DropIcons.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
