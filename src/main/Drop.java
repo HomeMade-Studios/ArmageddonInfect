@@ -10,19 +10,19 @@ public class Drop {
 	int n;
 
 	Drop(){
-		name.add("zombie eye");
-		name.add("zombie bones");
-		name.add("zombie flesh");
+		name.add("Zombie Eye");
+		name.add("Zombie Bones");
+		name.add("Zombie Flesh");
 	}
 
 	void obtainItem(){
-		text = "You obtained";
+		text = "You obtained: ";
 		n=rand.nextInt(3);
 		updateString(n);
 	}
 	
 	void updateString(int n){
-		text=text+" "+name.get(n);
+		text=text+name.get(n);
 	}
 
 	public String getText() {
