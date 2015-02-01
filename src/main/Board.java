@@ -92,10 +92,11 @@ public class Board extends JPanel implements ActionListener {
         	g2d.drawImage(loader.getBancone(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
         	if(inventoryWindow){
         		g2d.drawImage(loader.getInventory(), inventory.getX(), inventory.getY(), null);
-        		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+179, inventory.getY()+15, null);
+        		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+274, inventory.getY()+15, null);
+        		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+88, inventory.getY()+40, null);
         		for(int i=0;i<inventory.getDrop().size();i++){
-        			g2d.drawImage(loader.getDrop()[inventory.getDrop().get(i)], inventory.getX()+8, inventory.getY()+9+i*35, null);
-        			g2d.drawString(inventory.getDropName().get(i)+" ["+inventory.getDropNumber().get(i)+"]", inventory.getX()+45, inventory.getY()+28+i*36);
+        			g2d.drawImage(loader.getDrop()[inventory.getDrop().get(i)], inventory.getX()+103, inventory.getY()+9+i*35, null);
+        			g2d.drawString(inventory.getDropName().get(i)+" ["+inventory.getDropNumber().get(i)+"]", inventory.getX()+140, inventory.getY()+28+i*36);
         		}
         	}
         	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);

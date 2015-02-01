@@ -24,7 +24,7 @@ public class Inventory {
 	public void inventoryWindowMove(int dx, int dy){	
 		x+=dx;
 		y+=dy;	
-		inventoryWindowHB=new Rectangle(x+1,y+1,175,191);
+		inventoryWindowHB=new Rectangle(x+96,y+1,175,191);
 		
 	}
 	
