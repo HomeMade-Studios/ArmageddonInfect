@@ -42,8 +42,8 @@ public class Inventory {
 		return dropNumber;
 	}	
 	
-	public ArrayList<Integer> getDropName() {
-		return dropNumber;
+	public ArrayList<String> getDropName() {
+		return dropName;
 	}
 
 	public int getX() {
