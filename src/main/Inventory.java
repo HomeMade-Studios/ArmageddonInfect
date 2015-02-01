@@ -33,6 +33,11 @@ public class Inventory {
 		
 	}
 	
+	public void updateInventory(){
+		inventoryWindowHB=new Rectangle(x+1,y+1,175,191);
+		inventoryDrag=new Rectangle(x+95,y,192,9);
+	}
+	
 	public Rectangle getInventoryDrag() {
 		return inventoryDrag;
 	}
