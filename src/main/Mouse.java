@@ -11,7 +11,8 @@ class Mouse implements MouseInputListener {
 
 	private int mx;
 	private int my;
-	private boolean clicked;
+	int dx,dy;
+	private boolean clicked,dragging;
 	private Rectangle mousePos;
 	
 	Mouse(){
@@ -41,10 +42,6 @@ class Mouse implements MouseInputListener {
 	public Rectangle getMousePos() {
 		return mousePos;
 	}
-
-	public void setClick(boolean robba){
-		this.clicked=robba;
-	}
 	
 	public void mouseClicked(MouseEvent e) {
 		
@@ -68,20 +65,37 @@ class Mouse implements MouseInputListener {
 
 	public void mouseReleased(MouseEvent e) {
 		clicked=false;
+		dragging = false;
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		dragging = true;
+		dx = e.getX() - mx;
+        dy = e.getY() - my;
+        mx = e.getX();
+        my = e.getY();
 	}
 
 	public int getMx() {
 		return mx;
 	}
+	
+	public boolean getDragging() {
+		return dragging;
+	}
 
 	public int getMy() {
 		return my;
+	}
+
+	public int getDx() {
+		return dx;
+	}
+
+	public int getDy() {
+		return dy;
 	}	
+	
 }
 

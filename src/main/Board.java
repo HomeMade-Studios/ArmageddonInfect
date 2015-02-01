@@ -42,11 +42,13 @@ public class Board extends JPanel implements ActionListener {
 	boolean levelUp = false;
 	boolean inventoryWindow = false,stats = false,equipment=false;
 	boolean dropped;
+	boolean firstTime = true;
     String filename = "character.sav";
     File f = new File(filename);
     int a = 0;
 	int screenWidth;
 	int screenHeight;
+	int oldMouseX, oldMouseY;
 	int spawnFrequency;
 	int wave,waveFinish;
 	
@@ -177,7 +179,7 @@ public class Board extends JPanel implements ActionListener {
 						System.out.println("Stats closed");
 						stats = false;
 					}
-					mouse.setClick(false);
+					mouse.setClicked(false);
 				}
 				else if(mouse.getMousePos().intersects(hud.getIconsHB()[1]) && mouse.isMouseClicked()){
 					if(!equipment){
@@ -188,7 +190,7 @@ public class Board extends JPanel implements ActionListener {
 						System.out.println("Equipment closed");
 						equipment = false;
 					}
-					mouse.setClick(false);
+					mouse.setClicked(false);
 				}
 				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
 					if(!inventoryWindow){
@@ -197,7 +199,12 @@ public class Board extends JPanel implements ActionListener {
 					else{
 						inventoryWindow = false;
 					}
-					mouse.setClick(false);
+					mouse.setClicked(false);
+				}
+				if(inventoryWindow){
+					if(mouse.getMousePos().intersects(inventory.getInventoryWindowHB()) && mouse.getDragging()){	
+						inventory.inventoryWindowMove(mouse.getDx(),mouse.getDy());
+					}
 				}
 			}
 			else{
@@ -227,7 +234,7 @@ public class Board extends JPanel implements ActionListener {
 		        	}
 		        	
 		    	}
-		    	mouse.setClick(false);
+		    	mouse.setClicked(false);
 		    	if(character.getHealt() <= 0){
 		    		isInLobby = true;
 		    		save();

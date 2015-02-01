@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public class Inventory {
@@ -8,6 +9,7 @@ public class Inventory {
 	 ArrayList<Integer> dropNumber;
 	 ArrayList<String> dropName;
 	private boolean first=true;
+	Rectangle inventoryWindowHB;
 	private int x,y;
 	
 	Inventory(){
@@ -16,6 +18,15 @@ public class Inventory {
 		dropName=new ArrayList<String>();
 		x = 700;
 		y = 200;
+		inventoryWindowHB=new Rectangle(x+1,y+1,175,191);
+	}
+	
+	public void inventoryWindowMove(int dx, int dy){	
+		x+=dx;
+		y+=dy;	
+		System.out.println(x+" "+y);	
+		inventoryWindowHB=new Rectangle(x+1,y+1,175,191);
+		
 	}
 	
 	public void addDrop(int n, String name){
@@ -72,6 +83,10 @@ public class Inventory {
 
 	public void setDropName(ArrayList<String> dropName) {
 		this.dropName = dropName;
+	}
+
+	public Rectangle getInventoryWindowHB() {
+		return inventoryWindowHB;
 	}
 	
 
