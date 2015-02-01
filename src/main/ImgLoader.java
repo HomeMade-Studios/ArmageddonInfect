@@ -13,7 +13,8 @@ public class ImgLoader {
 	private int cols;
 	private BufferedImage[][] spritesBase;
 	private BufferedImage[][] HUDicon;
-	private BufferedImage[] Font;
+	private BufferedImage[] font;
+	private BufferedImage[] drop;
 	private BufferedImage mapBackground[];
 	private BufferedImage HUD;
 	private BufferedImage lobby;
@@ -90,7 +91,7 @@ public class ImgLoader {
 			height = 30;
 			rows=2;
 			cols=26;
-			Font=new BufferedImage [rows*cols];
+			font=new BufferedImage [rows*cols];
 			bigImg = ImageIO.read(getClass().getResource("/img/font.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -99,9 +100,27 @@ public class ImgLoader {
 		{
 		    for (int j = 0; j < cols; j++)
 		    {
-		        Font[(i * cols) + j] = bigImg.getSubimage(j * fontWidth,i * height,fontWidth,height);
+		        font[(i * cols) + j] = bigImg.getSubimage(j * fontWidth,i * height,fontWidth,height);
 		    }
 		}
+		try {
+			width = 32;
+			height = 32;
+			rows=16;
+			cols=16;
+			drop=new BufferedImage [rows*cols];
+			bigImg = ImageIO.read(getClass().getResource("/img/drop.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < rows; i++)
+		{
+		    for (int j = 0; j < cols; j++)
+		    {
+		        drop[(i * cols) + j] = bigImg.getSubimage(j * width,i * height,width,height);
+		    }
+		}
+		
 	}
 	
 	
@@ -126,7 +145,7 @@ public class ImgLoader {
 	}
 	
 	public BufferedImage[] getFont() {
-		return Font;
+		return font;
 	}
 	
 	public BufferedImage[][] getHUDicon() {
@@ -156,4 +175,10 @@ public class ImgLoader {
 	public BufferedImage getInventoryScrollButton(){
 		return inventoryScrollButton;
 	}
+	
+	public BufferedImage[] getDrop() {
+		return drop;
+	}
+	
+	
 }

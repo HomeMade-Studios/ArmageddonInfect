@@ -120,9 +120,10 @@ public class Board extends JPanel implements ActionListener {
 		    if(dropped){
 			    g2d.setColor(Color.BLACK);
 				g2d.setFont(new Font("Purisa", Font.PLAIN, 13));
-			    g2d.drawString(drop.getText(), 100, 650);
+			    g2d.drawString(drop.getText(), 50, 652);
+			    g2d.drawImage(loader.getDrop()[drop.getN()], 10, 630, null);
 			    a++;
-			    if(a==200){
+			    if(a==500){
 			    	dropped = false;
 			    	a=0;
 			    }
