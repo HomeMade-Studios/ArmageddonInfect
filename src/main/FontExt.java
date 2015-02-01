@@ -20,10 +20,12 @@ public class FontExt {
         	if(c>=65&&c<=90||c>=48&&c<=57||c==32){
 	        	if(c>=65&&c<=90){
 	        		c-=65;}
-	        	if(c>=48&&c<=57){
-	        		c-=22;}
 	        	if(c==32)
 	        		c+=19;
+	        	if(c>=48&&c<=57){
+	        		c-=22;}
+	        	System.out.println(c);
+
         	}
         	else
         		Error=true;

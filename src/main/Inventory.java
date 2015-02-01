@@ -32,6 +32,14 @@ public class Inventory {
 		}
 	}
 
+	public ArrayList<Integer> getDrop() {
+		return drop;
+	}
+
+	public ArrayList<Integer> getDropNumber() {
+		return dropNumber;
+	}
+
 	public int getX() {
 		return x;
 	}
