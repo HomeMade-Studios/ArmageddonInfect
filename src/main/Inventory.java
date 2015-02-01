@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Inventory {
 	
-	ArrayList<Integer> drop=new ArrayList<Integer>();
-	ArrayList<Integer> dropNumber=new ArrayList<Integer>();
-	boolean first=true;
-	int x,y;
+	private ArrayList<Integer> drop=new ArrayList<Integer>();
+	private ArrayList<Integer> dropNumber=new ArrayList<Integer>();
+	private boolean first=true;
+	private int x,y;
 	
 	Inventory(){
 		drop.add(0);
@@ -54,6 +54,14 @@ public class Inventory {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public void setDrop(ArrayList<Integer> drop) {
+		this.drop = drop;
+	}
+
+	public void setDropNumber(ArrayList<Integer> dropNumber) {
+		this.dropNumber = dropNumber;
 	}
 	
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class FontExt {
 	private ArrayList<Integer> StringAfter;
-	boolean Error;
+	private boolean Error;
 	
 	FontExt(){
 		Error=false;
