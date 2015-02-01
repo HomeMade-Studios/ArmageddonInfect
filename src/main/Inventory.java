@@ -61,13 +61,13 @@ public class Inventory {
 				first=false;
 				break;
 			}
+			System.out.println(dropName);
 		}
 		if(first){
 			drop.add(n);
 			dropNumber.add(1);
 			dropName.add(name);
 		}
-		System.out.println(drop);
 	}
 
 	public ArrayList<Integer> getDrop() {
