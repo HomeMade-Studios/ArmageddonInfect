@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImageOp;
 import java.util.ArrayList;
 
 public class Inventory {
@@ -9,9 +10,10 @@ public class Inventory {
 	 ArrayList<Integer> dropNumber;
 	 ArrayList<String> dropName;
 	private boolean first=true;
-	Rectangle inventoryWindowHB;
+	Rectangle inventoryScrollDrag;
 	Rectangle inventoryDrag;
 	private int x,y;
+	private int scrollx,scrolly;
 	boolean dragging;
 	
 	Inventory(){
@@ -20,21 +22,26 @@ public class Inventory {
 		dropName=new ArrayList<String>();
 		x = 700;
 		y = 200;
-		inventoryWindowHB=new Rectangle(x+1,y+1,175,191);
-		inventoryDrag=new Rectangle(x+95,y,192,9);
+		scrollx = x+274;
+		scrolly = y+15;
+		inventoryScrollDrag=new Rectangle(x+274,y+15,5,163);
+		inventoryDrag=new Rectangle(x,y,192,9);
 	}
 	
 	public void inventoryWindowMove(int dx, int dy){	
 		dragging = true;
 		x=dx;
 		y=dy;	
-		inventoryWindowHB=new Rectangle(x+96,y+1,175,191);
+		inventoryScrollDrag=new Rectangle(x+274,y+15,5,163);
 		inventoryDrag=new Rectangle(x+95,y,192,9);
-		
+	}
+	
+	public void inventoryScrollMove(int dy){	
+		dragging = true;
 	}
 	
 	public void updateInventory(){
-		inventoryWindowHB=new Rectangle(x+1,y+1,175,191);
+		inventoryScrollDrag=new Rectangle(x+274,y+15,5,163);
 		inventoryDrag=new Rectangle(x+95,y,192,9);
 	}
 	
@@ -61,13 +68,15 @@ public class Inventory {
 				first=false;
 				break;
 			}
-			System.out.println(dropName);
 		}
 		if(first){
 			drop.add(n);
 			dropNumber.add(1);
 			dropName.add(name);
 		}
+		System.out.println(dropName);
+		System.out.println(n);
+		first = true;
 	}
 
 	public ArrayList<Integer> getDrop() {
@@ -110,8 +119,16 @@ public class Inventory {
 		this.dropName = dropName;
 	}
 
-	public Rectangle getInventoryWindowHB() {
-		return inventoryWindowHB;
+	public Rectangle getInventoryScrollDrag() {
+		return inventoryScrollDrag;
+	}
+	
+	public int getScrollY() {
+		return scrolly;
+	}
+	
+	public int getScrollX() {
+		return scrollx;
 	}
 	
 
