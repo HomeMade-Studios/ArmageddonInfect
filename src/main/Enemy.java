@@ -140,6 +140,7 @@ public class Enemy {
 	public int getHealth() {
 		return health;
 	}
+	
 
 	public Rectangle getEnemyHealth() {
 		return enemyHealth;

@@ -2,6 +2,7 @@ package main;
 
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -32,6 +33,7 @@ public class Board extends JPanel implements ActionListener {
 	Enemy enemy;
 	Lobby lobby;
 	FontExt font;
+	Drop drop;
 	SavedData save;
 	Inventory inventory;
 	Random rand = new Random();
@@ -40,8 +42,10 @@ public class Board extends JPanel implements ActionListener {
 	boolean isInLobby = true;
 	boolean levelUp = false;
 	boolean inventoryWindow = false,stats = false,equipment=false;
+	boolean dropped;
     String filename = "character.sav";
     File f = new File(filename);
+    int a = 0;
 	int screenWidth;
 	int screenHeight;
 	int spawnFrequency;
@@ -61,6 +65,7 @@ public class Board extends JPanel implements ActionListener {
         waveFinish = 0;
         font=new FontExt();
         inventory=new Inventory();
+        drop = new Drop();
         character=new Character(screenWidth, screenHeight);
         enemy=new Enemy(wave);
         lobby=new Lobby();
@@ -112,6 +117,16 @@ public class Board extends JPanel implements ActionListener {
 	        g2d.setColor(Color.GREEN);
 		    g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));
 		    g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
+		    if(dropped){
+			    g2d.setColor(Color.BLACK);
+				g2d.setFont(new Font("Purisa", Font.PLAIN, 13));
+			    g2d.drawString(drop.getText(), 100, 650);
+			    a++;
+			    if(a==3000){
+			    	dropped = false;
+			    	a=0;
+			    }
+		    }
         }
 	    g2d.setColor(Color.CYAN);
 	    for(int i = 0; i < hud.getExpBox(); i++){
@@ -173,18 +188,15 @@ public class Board extends JPanel implements ActionListener {
 				}
 				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
 					if(!inventoryWindow){
-						System.out.println("Inventory opened");
 						inventoryWindow = true;
 					}
 					else{
-						System.out.println("Inventory closed");
 						inventoryWindow = false;
 					}
 					mouse.setClick(false);
 				}
 			}
 			else{
-				System.out.println(enemies.size());
 				if(rand.nextInt(spawnFrequency) == 0){
 		    		enemies.add(new Enemy(wave));
 		    		waveFinish++;
@@ -201,6 +213,11 @@ public class Board extends JPanel implements ActionListener {
 		        		enemies.get(i).attacked(character.getStrength(),character.getPov(),character.getX(),character.getY(),mouse.isMouseClicked());
 		        		}
 		        	if(enemies.get(i).getHealth() <= 0){
+		        		if(enemies.get(i).getDrop() == 0){
+		        			drop.obtainItem();
+		        			dropped = true;
+		        			inventory.addDrop(drop.getN());
+		        		}
 		        		enemies.remove(i);
 		        		character.setExp(character.getExp() + 500);
 		        	}

@@ -16,12 +16,14 @@ public class Drop {
 	}
 
 	void obtainItem(){
+		text = "You obtained";
 		n=rand.nextInt(3);
 		updateString(n);
+		System.out.println(text);
 	}
 	
 	void updateString(int n){
-		text.concat(name.get(n));
+		text=text+" "+name.get(n);
 	}
 
 	public String getText() {
