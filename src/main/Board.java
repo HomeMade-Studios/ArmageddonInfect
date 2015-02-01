@@ -91,6 +91,9 @@ public class Board extends JPanel implements ActionListener {
         	if(inventoryWindow){
         		g2d.drawImage(loader.getInventory(), inventory.getX(), inventory.getY(), null);
         		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+179, inventory.getY()+15, null);
+        		for(int i=0;i<inventory.getDrop().size();i++){
+        			g2d.drawImage(loader.getDrop()[inventory.getDrop().get(i)], inventory.getX()+8, inventory.getY()+9+i*35, null);
+        		}
         	}
         	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
         	for(int i=0; i<hud.getIconsHB().length; i++){
@@ -119,7 +122,7 @@ public class Board extends JPanel implements ActionListener {
 		    g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
 		    if(dropped){
 			    g2d.setColor(Color.BLACK);
-				g2d.setFont(new Font("Purisa", Font.PLAIN, 13));
+				g2d.setFont(new Font("Purisa", Font.BOLD, 13));
 			    g2d.drawString(drop.getText(), 50, 652);
 			    g2d.drawImage(loader.getDrop()[drop.getN()], 10, 630, null);
 			    a++;
