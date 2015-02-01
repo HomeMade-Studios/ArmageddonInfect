@@ -89,39 +89,39 @@ public class Board extends JPanel implements ActionListener {
         if(isInLobby){
         	g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);  
         	g2d.drawImage(loader.getBancone2(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
-        	g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
+        	g2d.drawImage(loader.getSpriteBase()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
         	g2d.drawImage(loader.getBancone(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
         	if(input.isInventory()){
-        		g2d.drawImage(loader.getInventory(), inventory.getX(), inventory.getY(), null);
-        		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+274, inventory.getY()+15, null);
-        		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+88, inventory.getY()+40, null);
+        		g2d.drawImage(loader.getInventoryMenu(), inventory.getX(), inventory.getY(), null);
+        		g2d.drawImage(loader.getScrollButton(), inventory.getX()+274, inventory.getY()+15, null);
+        		g2d.drawImage(loader.getScrollButton(), inventory.getX()+88, inventory.getY()+40, null);
         		for(int i=0;i<inventory.getDrop().size();i++){
         			g2d.drawImage(loader.getDrop()[inventory.getDrop().get(i)], inventory.getX()+103, inventory.getY()+9+i*35, null);
         			g2d.drawString(inventory.getDropName().get(i)+" ["+inventory.getDropNumber().get(i)+"]", inventory.getX()+140, inventory.getY()+28+i*36);
         		}
         	}
-        	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
+        	g2d.drawImage(loader.getLobbyHud(), hud.getX(), hud.getY(), null);
         	for(int i=0; i<hud.getIconsHB().length; i++){
         		if(hud.getIconsHB()[i].intersects(mouse.getMousePos())){
-        			g2d.drawImage(loader.getHUDicon()[0][i], hud.getX()+10+i*106, hud.getY()+53, null);
+        			g2d.drawImage(loader.getLobbyHudIcon()[0][i], hud.getX()+10+i*106, hud.getY()+53, null);
         		}
         		else{
-        			g2d.drawImage(loader.getHUDicon()[1][i], hud.getX()+10+i*106, hud.getY()+53, null);
+        			g2d.drawImage(loader.getLobbyHudIcon()[1][i], hud.getX()+10+i*106, hud.getY()+53, null);
         		}
         	}
         }
         else{
         	g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
-        	g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
+        	g2d.drawImage(loader.getSpriteBase()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
     	    for(int i = 0; i < enemies.size(); i++){
-    	       	g2d.drawImage(loader.getSprite()[enemies.get(i).getP()][enemies.get(i).getAn()], enemies.get(i).getX(), enemies.get(i).getY(), null);
+    	       	g2d.drawImage(loader.getSpriteBase()[enemies.get(i).getP()][enemies.get(i).getAn()], enemies.get(i).getX(), enemies.get(i).getY(), null);
     	        g2d.setColor(Color.BLACK);
     	    	g2d.draw(enemies.get(i).getEnemyHealth());
     	        g2d.setColor(Color.RED);
     	        g2d.fill(new Rectangle((int)enemies.get(i).getEnemyHealth().getX(),(int) enemies.get(i).getEnemyHealth().getY(), (int)((float)enemies.get(i).getHealth()*0.2), (int)enemies.get(i).getEnemyHealth().getHeight()));
     	        
     	    } 
-    	    g2d.drawImage(loader.getHUD(), hud.getX(), hud.getY(), null);
+    	    g2d.drawImage(loader.getMapHud(), hud.getX(), hud.getY(), null);
 	        g2d.setColor(Color.GREEN);
 		    g2d.fill(new Rectangle(hud.getX()+34, hud.getY()+68, (int)hud.getH1(), 18));
 		    g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
@@ -150,7 +150,7 @@ public class Board extends JPanel implements ActionListener {
 		}
 		font.clear();																													//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
 		if(character.isPaused()){
-        	g2d.drawImage(loader.getPauseOverlay(),-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
+        	g2d.drawImage(loader.getPauseMenu(),-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
         }
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
