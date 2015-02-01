@@ -217,7 +217,7 @@ public class Board extends JPanel implements ActionListener {
 		        		if(enemies.get(i).getDrop() == 0){
 		        			drop.obtainItem();
 		        			dropped = true;
-		        			inventory.addDrop(drop.getN());
+		        			inventory.addDrop(drop.getN(),drop.getName().get(drop.getN()));
 		        		}
 		        		enemies.remove(i);
 		        		character.setExp(character.getExp() + 500);

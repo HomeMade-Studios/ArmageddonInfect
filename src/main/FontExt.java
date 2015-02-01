@@ -24,8 +24,6 @@ public class FontExt {
 	        		c+=19;}
 	        	else if(c>=48&&c<=57){
 	        		c-=22;}
-	        	System.out.println(c);
-
         	}
         	else
         		Error=true;

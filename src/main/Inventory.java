@@ -4,32 +4,39 @@ import java.util.ArrayList;
 
 public class Inventory {
 	
-	private ArrayList<Integer> drop=new ArrayList<Integer>();
-	private ArrayList<Integer> dropNumber=new ArrayList<Integer>();
+	private ArrayList<Integer> drop;
+	private ArrayList<Integer> dropNumber;
+	private ArrayList<String> dropName;
 	private boolean first=true;
 	private int x,y;
 	
 	Inventory(){
+		drop=new ArrayList<Integer>();
+		dropNumber=new ArrayList<Integer>();
+		dropName=new ArrayList<String>();
 		drop.add(0);
 		dropNumber.add(0);
 		x = 700;
 		y = 200;
 	}
 	
-	public void addDrop(int n){
-		for(int i=0;i<drop.size();i++){
-			if(drop.get(i)!=n){
-				first=true;
-			}
-			else{
-				dropNumber.set(i, dropNumber.get(i)+1);
-				first=false;
+	public void addDrop(int n, String name){
+		if(drop != null){
+			for(int i=0;i<drop.size();i++){
+				if(drop.get(i)!=n){
+					first=true;
+				}
+				else{
+					dropNumber.set(i, dropNumber.get(i)+1);
+					first=false;
+				}
 			}
 		}
 		if(first){
 			drop.add(n);
 			dropNumber.add(1);
 		}
+		System.out.println(dropName);
 	}
 
 	public ArrayList<Integer> getDrop() {

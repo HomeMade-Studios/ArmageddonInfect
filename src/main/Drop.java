@@ -32,5 +32,11 @@ public class Drop {
 	
 	public int getN() {
 		return n;
+	}
+
+	public ArrayList<String> getName() {
+		return name;
 	}	
+	
+	
 }
