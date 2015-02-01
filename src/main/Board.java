@@ -207,9 +207,11 @@ public class Board extends JPanel implements ActionListener {
 					if((mouse.getMousePos().intersects(inventory.getInventoryDrag())||inventory.isDragging())&&mouse.isMouseClicked()){	
 						inventory.inventoryWindowMove(mouse.getMx()-180,mouse.getMy());
 					}
-					System.out.println(inventory.getX()+" "+inventory.getY());
-					if(!mouse.isMouseClicked()||!mouse.getMousePos().intersects(inventory.getInventoryDrag()))
+					else
 						inventory.setDragging(false);
+					if(mouse.isMouseClicked() && mouse.getMousePos().intersects(inventory.getInventoryScrollClick())){
+						inventory.inventoryScrollMove(mouse.getMy(), inventory.drop.size());
+					}
 				}
 				else
 					inventory.updateInventory();

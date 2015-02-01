@@ -10,7 +10,7 @@ public class Inventory {
 	 ArrayList<Integer> dropNumber;
 	 ArrayList<String> dropName;
 	private boolean first=true;
-	Rectangle inventoryScrollDrag;
+	Rectangle inventoryScrollClick;
 	Rectangle inventoryDrag;
 	private int x,y;
 	private int scrollx,scrolly;
@@ -24,7 +24,7 @@ public class Inventory {
 		y = 200;
 		scrollx = x+274;
 		scrolly = y+15;
-		inventoryScrollDrag=new Rectangle(x+274,y+15,5,163);
+		inventoryScrollClick=new Rectangle(x+274,y+15,5,163);
 		inventoryDrag=new Rectangle(x,y,192,9);
 	}
 	
@@ -32,16 +32,24 @@ public class Inventory {
 		dragging = true;
 		x=dx;
 		y=dy;	
-		inventoryScrollDrag=new Rectangle(x+274,y+15,5,163);
+		scrollx = x+274;
+		scrolly = y+15;
+		inventoryScrollClick=new Rectangle(x+274,y+15,5,163);
 		inventoryDrag=new Rectangle(x+95,y,192,9);
 	}
 	
-	public void inventoryScrollMove(int dy){	
-		dragging = true;
+	public void inventoryScrollMove(int My, int inventorySize){	
+		if(My > scrolly){
+			scrolly+=163/(inventorySize/4+1);
+		}
+		if(My < scrolly){
+			scrolly-=163/(inventorySize/4+1);
+		}
+		System.out.println(scrolly);
 	}
 	
 	public void updateInventory(){
-		inventoryScrollDrag=new Rectangle(x+274,y+15,5,163);
+		inventoryScrollClick=new Rectangle(x+274,y+15,5,163);
 		inventoryDrag=new Rectangle(x+95,y,192,9);
 	}
 	
@@ -119,8 +127,8 @@ public class Inventory {
 		this.dropName = dropName;
 	}
 
-	public Rectangle getInventoryScrollDrag() {
-		return inventoryScrollDrag;
+	public Rectangle getInventoryScrollClick() {
+		return inventoryScrollClick;
 	}
 	
 	public int getScrollY() {
