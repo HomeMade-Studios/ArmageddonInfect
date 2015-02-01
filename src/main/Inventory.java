@@ -10,7 +10,9 @@ public class Inventory {
 	 ArrayList<String> dropName;
 	private boolean first=true;
 	Rectangle inventoryWindowHB;
+	Rectangle inventoryDrag;
 	private int x,y;
+	boolean dragging;
 	
 	Inventory(){
 		drop=new ArrayList<Integer>();
@@ -19,15 +21,34 @@ public class Inventory {
 		x = 700;
 		y = 200;
 		inventoryWindowHB=new Rectangle(x+1,y+1,175,191);
+		inventoryDrag=new Rectangle(x+95,y,192,9);
 	}
 	
 	public void inventoryWindowMove(int dx, int dy){	
-		x+=dx;
-		y+=dy;	
+		dragging = true;
+		x=dx;
+		y=dy;	
 		inventoryWindowHB=new Rectangle(x+96,y+1,175,191);
+		inventoryDrag=new Rectangle(x+95,y,192,9);
 		
 	}
 	
+	public Rectangle getInventoryDrag() {
+		return inventoryDrag;
+	}
+
+	public void setInventoryDrag(Rectangle inventoryDrag) {
+		this.inventoryDrag = inventoryDrag;
+	}
+
+	public boolean isDragging() {
+		return dragging;
+	}
+
+	public void setDragging(boolean dragging) {
+		this.dragging = dragging;
+	}
+
 	public void addDrop(int n, String name){
 		for(int i=0;i<drop.size();i++){
 			if(drop.get(i)==n){

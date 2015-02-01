@@ -7,7 +7,23 @@ public class SavedData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int exp,MaxHealt,level,strength;
+	private int exp,MaxHealt,level,strength,inventoryX,inventoryY;
+	public int getInventoryX() {
+		return inventoryX;
+	}
+
+	public void setInventoryX(int inventoryX) {
+		this.inventoryX = inventoryX;
+	}
+
+	public int getInventoryY() {
+		return inventoryY;
+	}
+
+	public void setInventoryY(int inventoryY) {
+		this.inventoryY = inventoryY;
+	}
+
 	private ArrayList<Integer> drop=new ArrayList<Integer>();
 	private ArrayList<Integer> dropNumber=new ArrayList<Integer>();
 	private ArrayList<String> dropName=new ArrayList<String>();;

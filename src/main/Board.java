@@ -77,7 +77,7 @@ public class Board extends JPanel implements ActionListener {
         	}
         else{
         	save= new SavedData();}
-        timer = new Timer (10 , this);
+        timer = new Timer (5 , this);
         timer.start();
     }
 
@@ -151,6 +151,7 @@ public class Board extends JPanel implements ActionListener {
 		if(character.isPaused()){
         	g2d.drawImage(loader.getPauseOverlay(),-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
         }
+		g2d.fill(inventory.getInventoryDrag());
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
@@ -203,9 +204,12 @@ public class Board extends JPanel implements ActionListener {
 					mouse.setClicked(false);
 				}
 				if(inventoryWindow){
-					if(mouse.getMousePos().intersects(inventory.getInventoryWindowHB())){	
-						inventory.inventoryWindowMove(mouse.getDx(),mouse.getDy());
+					if((mouse.getMousePos().intersects(inventory.getInventoryDrag())||inventory.isDragging())&&mouse.isMouseClicked()){	
+						inventory.inventoryWindowMove(mouse.getMx()-180,mouse.getMy());
 					}
+					System.out.println(inventory.getX()+" "+inventory.getY());
+					if(!mouse.isMouseClicked()||!mouse.getMousePos().intersects(inventory.getInventoryDrag()))
+						inventory.setDragging(false);
 				}
 			}
 			else{
@@ -282,6 +286,8 @@ public class Board extends JPanel implements ActionListener {
       	save.setDrop(inventory.getDrop());
       	save.setDropName(inventory.getDropName());
       	save.setDropNumber(inventory.getDropNumber());
+      	save.setInventoryX(inventory.getX());
+      	save.setInventoryY(inventory.getY());
       	 try {
       	   fos = new FileOutputStream(filename);
       	   out = new ObjectOutputStream(fos);
@@ -309,5 +315,7 @@ public class Board extends JPanel implements ActionListener {
       	inventory.setDrop(save.getDrop());
       	inventory.setDropName(save.getDropName());
       	inventory.setDropNumber(save.getDropNumber());
+      	inventory.setX(save.getInventoryX());
+      	inventory.setY(save.getInventoryY());
       }
 }
