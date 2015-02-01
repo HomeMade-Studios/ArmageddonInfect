@@ -40,6 +40,10 @@ public class Inventory {
 
 	public ArrayList<Integer> getDropNumber() {
 		return dropNumber;
+	}	
+	
+	public ArrayList<Integer> getDropName() {
+		return dropNumber;
 	}
 
 	public int getX() {
