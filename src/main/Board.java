@@ -83,6 +83,8 @@ public class Board extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D)g;
+        g2d.setFont(new Font("Purisa", Font.BOLD, 13));
+	    
         if(isInLobby){
         	g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);  
         	g2d.drawImage(loader.getBancone2(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
@@ -93,6 +95,7 @@ public class Board extends JPanel implements ActionListener {
         		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+179, inventory.getY()+15, null);
         		for(int i=0;i<inventory.getDrop().size();i++){
         			g2d.drawImage(loader.getDrop()[inventory.getDrop().get(i)], inventory.getX()+8, inventory.getY()+9+i*35, null);
+        			g2d.drawString(inventory.getDropName().get(i), inventory.getX()+30, inventory.getY()+9+i*35);
         		}
         	}
         	g2d.drawImage(loader.getLobbyHUD(), hud.getX(), hud.getY(), null);
@@ -122,7 +125,6 @@ public class Board extends JPanel implements ActionListener {
 		    g2d.fill(new Rectangle(hud.getX()+242, hud.getY()+4+hud.getH2y(), 18, (int)hud.getH2()));
 		    if(dropped){
 			    g2d.setColor(Color.BLACK);
-				g2d.setFont(new Font("Purisa", Font.BOLD, 13));
 			    g2d.drawString(drop.getText(), 50, 652);
 			    g2d.drawImage(loader.getDrop()[drop.getN()], 10, 630, null);
 			    a++;
