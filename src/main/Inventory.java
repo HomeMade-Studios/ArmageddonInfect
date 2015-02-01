@@ -23,6 +23,7 @@ public class Inventory {
 			if(drop.get(i)==n){
 				dropNumber.set(i, dropNumber.get(i)+1);
 				first=false;
+				break;
 			}
 		}
 		if(first){
@@ -30,7 +31,7 @@ public class Inventory {
 			dropNumber.add(1);
 			dropName.add(name);
 		}
-		System.out.println(dropName);
+		System.out.println(drop);
 	}
 
 	public ArrayList<Integer> getDrop() {

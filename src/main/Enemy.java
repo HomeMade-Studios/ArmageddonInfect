@@ -32,7 +32,7 @@ public class Enemy {
 		enemyHB =new Rectangle(x+6,y,20,32);
 		enemyHealth=new Rectangle(enemyHB.x,enemyHB.y-12,(int)enemyHB.getWidth(),3);
 		p = 4;
-		drop=rand.nextInt(4);
+		drop=rand.nextInt(1);
 	}
 	
 	public void move(int characterx, int charactery, Rectangle characterHB){
