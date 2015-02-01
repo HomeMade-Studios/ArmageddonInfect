@@ -71,6 +71,7 @@ public class ImgLoader {
 			enchanterMenu=ImageIO.read(getClass().getResource("/img/Menu/enchanter_menu.png"));
 			merchantMenu=ImageIO.read(getClass().getResource("/img/Menu/merchant_menu.png"));
 			trasherMenu=ImageIO.read(getClass().getResource("/img/Menu/trasher_menu.png"));
+			pauseMenu=ImageIO.read(getClass().getResource("/img/Menu/pause_menu.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

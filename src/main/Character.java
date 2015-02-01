@@ -13,13 +13,13 @@ public class Character{
 	int level;
     Rectangle hitbox,attackbox,walkableMapArea,walkableLobbyArea;
 	Random rand = new Random();
-	boolean paused,attack;
+	boolean attack;
     
     public Character(int Width, int Height) {
     	healt=healtMax=100;
     	dAn=an=j=0;
     	k=0;
-    	level = 0;
+    	level = 1;
     	maxExp=100;
     	Mj=DMj=15;
         x = (Width/2)-16;
@@ -150,10 +150,6 @@ public class Character{
 	
 	public Rectangle getWalkableLobbyArea() {
 		return walkableLobbyArea;
-	}
-
-	public boolean isPaused() {
-		return paused;
 	}
 
 	public int getExp() {

@@ -149,7 +149,7 @@ public class Board extends JPanel implements ActionListener {
 	    	g2d.drawImage(loader.getFont()[font.returnString().get(i)], hud.getX()+(i*loader.getFontWidth())+i, hud.getY(), null);		//Come posizione lasciare i*loader.getFontWidth() e aggiungere le coordinate altrimenti i caratteri si sovrappongono
 		}
 		font.clear();																													//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
-		if(character.isPaused()){
+		if(input.isPaused()){
         	g2d.drawImage(loader.getPauseMenu(),-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
         }
         Toolkit.getDefaultToolkit().sync();
