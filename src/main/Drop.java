@@ -13,11 +13,14 @@ public class Drop {
 		name.add("Zombie Eye");
 		name.add("Zombie Bones");
 		name.add("Zombie Flesh");
+		name.add("Marihuana");
+		name.add("Zombie cunt");
+		name.add("Getting high");
 	}
 
 	void obtainItem(){
 		text = "You obtained: ";
-		n=rand.nextInt(3);
+		n=rand.nextInt(6);
 		updateString(n);
 	}
 	
