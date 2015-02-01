@@ -1,15 +1,12 @@
 package main;
 
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class Character{
 
     private int x,oldx;
     private int y,oldy;
-    private int dx;
-    private int dy;
     private int pov,j,Mj,DMj,an,dAn,k,att,exp,maxExp;
     private int strength=50;
 	int healt,healtMax;
@@ -31,7 +28,7 @@ public class Character{
         walkableLobbyArea=new Rectangle (25,5,964,630);    
     }
     
-    public void move(boolean isInLobby) {
+    public void move(boolean isInLobby, int dx, int dy) {
     	oldx=x;
     	oldy=y;
 	    x += dx;
@@ -83,7 +80,7 @@ public class Character{
     	att++;
     }
     
-	public void animationCycle(boolean click){
+	public void animationCycle(boolean click, int dx, int dy){
 			j++;				//Aggiunge ritardo all'animazione
 		if(j>Mj){
 			an++;
@@ -110,66 +107,6 @@ public class Character{
 			}
 		}
 	}
-    
-	public void keyPressed(KeyEvent e){
-
-        int key = e.getKeyCode();
-    	
-        if (key == KeyEvent.VK_F) {
-            healt=healtMax;
-        }
-        
-        if (key == KeyEvent.VK_A) {
-            if(dx!=1)
-        	dx = -1;
-        }
-
-        if (key == KeyEvent.VK_D) {
-            if(dx!=-1)
-            dx = 1;
-        }
-
-        if (key == KeyEvent.VK_W) {
-            if(dy!=1)
-            dy = -1;
-        }
-
-        if (key == KeyEvent.VK_S) {
-            if(dy!=-1)
-            dy = 1;
-        }
-        
-        if (key == KeyEvent.VK_ESCAPE) {
-        	if(paused)
-        		paused=false;
-        	else
-        		paused=true;
-        } 
-    }
-    
-    public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-        
-        if (key == KeyEvent.VK_A) {
-            if(dx!=1)
-               dx = 0;
-           }
-
-           if (key == KeyEvent.VK_D) {
-            if(dx!=-1)
-               dx = 0;
-           }
-
-           if (key == KeyEvent.VK_W) {
-            if(dy!=1)
-               dy = 0;
-           }
-
-           if (key == KeyEvent.VK_S) {
-            if(dy!=-1)
-               dy = 0;
-           }
-    }
     
     public int getPov() {
 		return pov;

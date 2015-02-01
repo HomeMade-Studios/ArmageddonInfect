@@ -1,7 +1,5 @@
 Coding
 
--Aggiungere movimento menu
--aggiungere salvataggio movimento menu
 -Menu crafting
 -Aggiungere "Scelta mappa"
 -Aggiunta menu iniziale

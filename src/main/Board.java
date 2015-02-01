@@ -32,6 +32,7 @@ public class Board extends JPanel implements ActionListener {
 	Enemy enemy;
 	Lobby lobby;
 	FontExt font;
+	Input input;
 	Drop drop;
 	SavedData save;
 	Inventory inventory;
@@ -65,6 +66,7 @@ public class Board extends JPanel implements ActionListener {
         wave = 0;
         waveFinish = 0;
         font=new FontExt();
+        input=new Input();
         inventory=new Inventory();
         drop = new Drop();
         character=new Character(screenWidth, screenHeight);
@@ -90,7 +92,7 @@ public class Board extends JPanel implements ActionListener {
         	g2d.drawImage(loader.getBancone2(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
         	g2d.drawImage(loader.getSprite()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
         	g2d.drawImage(loader.getBancone(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
-        	if(inventoryWindow){
+        	if(input.isInventory()){
         		g2d.drawImage(loader.getInventory(), inventory.getX(), inventory.getY(), null);
         		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+274, inventory.getY()+15, null);
         		g2d.drawImage(loader.getInventoryScrollButton(), inventory.getX()+88, inventory.getY()+40, null);
@@ -151,17 +153,16 @@ public class Board extends JPanel implements ActionListener {
 		if(character.isPaused()){
         	g2d.drawImage(loader.getPauseOverlay(),-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
         }
-		g2d.fill(inventory.getInventoryDrag());
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
 
 
 	public void actionPerformed(ActionEvent e) {
-		if(!character.isPaused()){
-			character.move(isInLobby);
+		if(!input.isPaused()){
+			character.move(isInLobby, input.getDx(), input.getDy());
 			character.SetP(mouse.getMx(), mouse.getMy());
-			character.animationCycle(mouse.isMouseClicked());
+			character.animationCycle(mouse.isMouseClicked(), input.getDx(), input.getDy());
 			if(isInLobby){
 				for(int i=0;i<lobby.getLobbyHB().length;i++){
 					if(lobby.getLobbyHB()[i].intersects(character.getHitbox())){
@@ -173,37 +174,37 @@ public class Board extends JPanel implements ActionListener {
 					isInLobby = false;
 				}
 				if(mouse.getMousePos().intersects(hud.getIconsHB()[0]) && mouse.isMouseClicked()){
-					if(!stats){
+					if(!input.isStats()){
 						System.out.println("Stats opened");
-						stats = true;
+						input.setStats(true);
 					}
 					else{
 						System.out.println("Stats closed");
-						stats = false;
+						input.setStats(false);
 					}
 					mouse.setClicked(false);
 				}
 				else if(mouse.getMousePos().intersects(hud.getIconsHB()[1]) && mouse.isMouseClicked()){
-					if(!equipment){
+					if(!input.isEquipment()){
 						System.out.println("Equipment opened");
-						equipment = true;
+						input.setEquipment(true);
 					}
 					else{
 						System.out.println("Equipment closed");
-						equipment = false;
+						input.setEquipment(false);
 					}
 					mouse.setClicked(false);
 				}
 				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
-					if(!inventoryWindow){
-						inventoryWindow = true;
+					if(!input.isInventory()){
+						input.setInventory(true);
 					}
 					else{
-						inventoryWindow = false;
+						input.setInventory(false);
 					}
 					mouse.setClicked(false);
 				}
-				if(inventoryWindow){
+				if(input.isInventory()){
 					if((mouse.getMousePos().intersects(inventory.getInventoryDrag())||inventory.isDragging())&&mouse.isMouseClicked()){	
 						inventory.inventoryWindowMove(mouse.getMx()-180,mouse.getMy());
 					}
@@ -270,11 +271,11 @@ public class Board extends JPanel implements ActionListener {
     private class TAdapter extends KeyAdapter {
 
         public void keyReleased(KeyEvent e) {
-        	character.keyReleased(e);
+        	input.keyReleased(e);
         }
 
         public void keyPressed(KeyEvent e) {
-        	character.keyPressed(e);
+        	input.keyPressed(e);
         }
     }
     
