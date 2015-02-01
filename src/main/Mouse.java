@@ -15,7 +15,7 @@ class Mouse implements MouseInputListener {
 	private Rectangle mousePos;
 	
 	Mouse(){
-		mousePos= new Rectangle(0,0,3,3);
+		mousePos= new Rectangle(0,0,1,1);
 	}
 	
 	public void setClicked(boolean clicked) {
@@ -27,7 +27,7 @@ class Mouse implements MouseInputListener {
 	public void mouseMoved(MouseEvent e) {
         mx = e.getX();
         my = e.getY();
-		mousePos= new Rectangle(mx,my,3,3);
+		mousePos= new Rectangle(mx,my,1,1);
     }
 	
 	public boolean isMouseClicked(){
