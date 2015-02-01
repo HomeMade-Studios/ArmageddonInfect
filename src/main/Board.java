@@ -122,7 +122,7 @@ public class Board extends JPanel implements ActionListener {
 				g2d.setFont(new Font("Purisa", Font.PLAIN, 13));
 			    g2d.drawString(drop.getText(), 100, 650);
 			    a++;
-			    if(a==3000){
+			    if(a==200){
 			    	dropped = false;
 			    	a=0;
 			    }

@@ -24,7 +24,7 @@ public class Character{
     	k=0;
     	level = 0;
     	maxExp=100;
-    	Mj=DMj=10;
+    	Mj=DMj=15;
         x = (Width/2)-16;
         y = (Height/2)-16;
         walkableMapArea=new Rectangle (47,28,923,597);
