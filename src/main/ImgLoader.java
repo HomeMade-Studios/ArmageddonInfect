@@ -31,6 +31,13 @@ public class ImgLoader {
 	private BufferedImage merchantMenu;
 	private BufferedImage pauseMenu;
 	private BufferedImage trasherMenu;
+	private BufferedImage buyButton;
+	private BufferedImage closeMenuButton;
+	private BufferedImage combineButton;
+	private BufferedImage craftButton;
+	private BufferedImage enchantButton;
+	private BufferedImage recycleButton;
+	
 	
 	
 
@@ -52,12 +59,12 @@ public class ImgLoader {
 			bancone=ImageIO.read(getClass().getResource("/img/Tavern/tavern_bancone.png"));
 			bancone2=ImageIO.read(getClass().getResource("/img/Tavern/tavern_bancone_sotto.png"));
 			scrollButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/scroll_button.png"));
-			scrollButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/buy_button.png"));
-			scrollButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/close_menu_button.png"));
-			scrollButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/combine_button.png"));
-			scrollButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/craft_button.png"));
-			scrollButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/enchant_button.png"));
-			scrollButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/recycle_button.png"));
+			buyButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/buy_button.png"));
+			closeMenuButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/close_menu_button.png"));
+			combineButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/combine_button.png"));
+			craftButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/craft_button.png"));
+			enchantButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/enchant_button.png"));
+			recycleButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/recycle_button.png"));
 			inventoryMenu=ImageIO.read(getClass().getResource("/img/Menu/inventory_menu.png"));
 			alchemistMenu=ImageIO.read(getClass().getResource("/img/Menu/alchemist_menu.png"));
 			blacksmithMenu=ImageIO.read(getClass().getResource("/img/Menu/blacksmith_menu.png"));
@@ -242,5 +249,30 @@ public class ImgLoader {
 	public int getSmallFontWidth() {
 		return smallFontWidth;
 	}
+
+	public BufferedImage getBuyButton() {
+		return buyButton;
+	}
+
+	public BufferedImage getCloseMenuButton() {
+		return closeMenuButton;
+	}
+
+	public BufferedImage getCombineButton() {
+		return combineButton;
+	}
+
+	public BufferedImage getCraftButton() {
+		return craftButton;
+	}
+
+	public BufferedImage getEnchantButton() {
+		return enchantButton;
+	}
+
+	public BufferedImage getRecycleButton() {
+		return recycleButton;
+	}
+	
 	
 }
