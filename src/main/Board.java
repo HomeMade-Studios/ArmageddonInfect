@@ -262,35 +262,39 @@ public class Board extends JPanel implements ActionListener {
     }
     
     public void save (){
-   	 FileOutputStream fos = null;
-   	 ObjectOutputStream out = null;
-   	save.setExp(character.getExp());
-   	save.setMaxHealt(character.getHealtMax());
-   	save.setLevel(character.getLevel());
-   	save.setStrength(character.getStrength());
-   	 try {
-   	   fos = new FileOutputStream(filename);
-   	   out = new ObjectOutputStream(fos);
-   	   out.writeObject(save);
-   	   out.close();
-   	 } catch (Exception ex) {
-   	   ex.printStackTrace();
-   	 }
-   }
-   public void load (){
-   	FileInputStream fis = null;
-       ObjectInputStream in = null;
-       try {
-         fis = new FileInputStream(filename);
-         in = new ObjectInputStream(fis);
-         save = (SavedData) in.readObject();
-         in.close();
-       } catch (Exception ex) {
-         ex.printStackTrace();
-       }        
-   	character.setExp(save.getExp());
-   	character.setHealtMax(save.getMaxHealt());
-   	character.setLevel(save.getLevel());
-   	character.setStrength(save.getStrength());
-   }
+      	 FileOutputStream fos = null;
+      	 ObjectOutputStream out = null;
+      	save.setExp(character.getExp());
+      	save.setMaxHealt(character.getHealtMax());
+      	save.setLevel(character.getLevel());
+      	save.setStrength(character.getStrength());
+      	save.setDrop(inventory.getDrop());
+      	save.setDropNumber(inventory.getDropNumber());
+      	 try {
+      	   fos = new FileOutputStream(filename);
+      	   out = new ObjectOutputStream(fos);
+      	   out.writeObject(save);
+      	   out.close();
+      	 } catch (Exception ex) {
+      	   ex.printStackTrace();
+      	 }
+      }
+      public void load (){
+      	FileInputStream fis = null;
+          ObjectInputStream in = null;
+          try {
+            fis = new FileInputStream(filename);
+            in = new ObjectInputStream(fis);
+            save = (SavedData) in.readObject();
+            in.close();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }        
+      	character.setExp(save.getExp());
+      	character.setHealtMax(save.getMaxHealt());
+      	character.setLevel(save.getLevel());
+      	character.setStrength(save.getStrength());
+      	inventory.setDrop(save.getDrop());
+      	inventory.setDropNumber(save.getDropNumber());
+      }
 }
