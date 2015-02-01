@@ -123,7 +123,7 @@ public class Board extends JPanel implements ActionListener {
 			    g2d.drawString(drop.getText(), 50, 652);
 			    g2d.drawImage(loader.getDrop()[drop.getN()], 10, 630, null);
 			    a++;
-			    if(a==500){
+			    if(a==250){
 			    	dropped = false;
 			    	a=0;
 			    }
