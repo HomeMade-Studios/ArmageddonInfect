@@ -87,8 +87,6 @@ public class Inventory {
 			dropNumber.add(1);
 			dropName.add(name);
 		}
-		System.out.println(dropName);
-		System.out.println(n);
 		first = true;
 	}
 

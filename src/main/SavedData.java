@@ -7,7 +7,7 @@ public class SavedData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int exp,MaxHealt,level,strength,inventoryX,inventoryY;
+	private int exp,MaxHealt,level,strength,inventoryX,inventoryY,addHealtChar,addStrengthChar;
 	public int getInventoryX() {
 		return inventoryX;
 	}
@@ -26,7 +26,59 @@ public class SavedData implements Serializable {
 
 	private ArrayList<Integer> drop=new ArrayList<Integer>();
 	private ArrayList<Integer> dropNumber=new ArrayList<Integer>();
-	private ArrayList<String> dropName=new ArrayList<String>();;
+	private ArrayList<String> dropName=new ArrayList<String>();
+	private ArrayList<Integer> equip=new ArrayList<Integer>();
+	private ArrayList<String> equipName=new ArrayList<String>();
+	private ArrayList<Integer> equipType=new ArrayList<Integer>();
+	private ArrayList<Integer> equipWear=new ArrayList<Integer>();
+	 
+	public int getAddHealtChar() {
+		return addHealtChar;
+	}
+
+	public void setAddHealtChar(int addHealtChar) {
+		this.addHealtChar = addHealtChar;
+	}
+
+	public int getAddStrengthChar() {
+		return addStrengthChar;
+	}
+
+	public void setAddStrengthChar(int addStrengthChar) {
+		this.addStrengthChar = addStrengthChar;
+	}
+
+	public ArrayList<Integer> getEquip() {
+		return equip;
+	}
+
+	public void setEquip(ArrayList<Integer> equip) {
+		this.equip = equip;
+	}
+
+	public ArrayList<String> getEquipName() {
+		return equipName;
+	}
+
+	public void setEquipName(ArrayList<String> equipName) {
+		this.equipName = equipName;
+	}
+
+	public ArrayList<Integer> getEquipType() {
+		return equipType;
+	}
+
+	public void setEquipType(ArrayList<Integer> equipType) {
+		this.equipType = equipType;
+	}
+
+	public ArrayList<Integer> getEquipWear() {
+		return equipWear;
+	}
+
+	public void setEquipWear(ArrayList<Integer> equipWear) {
+		this.equipWear = equipWear;
+	}
 
 	public ArrayList<Integer> getDrop() {
 		return drop;
