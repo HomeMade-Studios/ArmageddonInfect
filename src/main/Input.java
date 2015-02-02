@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public class Input {
 	private int dx;
 	private int dy;
-	private boolean paused = false, inventory = false, stats = false, equipment = false;
+	private boolean paused = false, inventoryMenu = false, statsMenu = false, equipmentMenu = false, craftingMenu = false;
 	
 	public void keyPressed(KeyEvent e){
 
@@ -41,25 +41,32 @@ public class Input {
         }  
         
         if (key == KeyEvent.VK_I) {
-        	if(inventory)
-        		inventory=false;
+        	if(inventoryMenu)
+        		inventoryMenu=false;
         	else
-        		inventory=true;
+        		inventoryMenu=true;
         }
         
         if (key == KeyEvent.VK_K) {
-        	if(stats)
-        		stats=false;
+        	if(statsMenu)
+        		statsMenu=false;
         	else
-        		stats=true;
+        		statsMenu=true;
         }  
         
         if (key == KeyEvent.VK_P) {
-        	if(equipment)
-        		equipment=false;
+        	if(equipmentMenu)
+        		equipmentMenu=false;
         	else
-        		equipment=true;
-        }  
+        		equipmentMenu=true;
+        } 
+        
+        if (key == KeyEvent.VK_C) {
+        	if(craftingMenu)
+        		craftingMenu=false;
+        	else
+        		craftingMenu=true;
+        }
     }
     
     public void keyReleased(KeyEvent e) {
@@ -111,27 +118,35 @@ public class Input {
 	}
 
 	public boolean isInventory() {
-		return inventory;
+		return inventoryMenu;
 	}
 
-	public void setInventory(boolean inventory) {
-		this.inventory = inventory;
+	public void setInventoryMenu(boolean inventory) {
+		this.inventoryMenu = inventory;
 	}
 
-	public boolean isStats() {
-		return stats;
+	public boolean isStatsMenu() {
+		return statsMenu;
 	}
 
-	public void setStats(boolean stats) {
-		this.stats = stats;
+	public void setStatsMenu(boolean stats) {
+		this.statsMenu = stats;
 	}
 
-	public boolean isEquipment() {
-		return equipment;
+	public boolean isEquipmentMenu() {
+		return equipmentMenu;
 	}
 
-	public void setEquipment(boolean equipment) {
-		this.equipment = equipment;
+	public void setEquipmentMenu(boolean equipment) {
+		this.equipmentMenu = equipment;
+	}
+	
+	public boolean isCraftingMenu() {
+		return craftingMenu;
+	}
+
+	public void setCraftingMenu(boolean crafting) {
+		this.craftingMenu = crafting;
 	}
 	
 	

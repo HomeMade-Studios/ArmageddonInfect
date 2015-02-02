@@ -33,6 +33,7 @@ public class Board extends JPanel implements ActionListener {
 	FontExt font;
 	Input input;
 	Drop drop;
+	Craft craft;
 	SavedData save;
 	Inventory inventory;
 	Random rand = new Random();
@@ -40,7 +41,7 @@ public class Board extends JPanel implements ActionListener {
 	private Timer timer;
 	boolean isInLobby = true;
 	boolean levelUp = false;
-	boolean inventoryWindow = false,stats = false,equipment=false;
+	boolean inventoryMenu = false,statsMenu = false,equipmentMenu=false,craftMenu=false;
 	boolean dropped;
 	boolean firstTime = true;
     String filename = "character.sav";
@@ -67,6 +68,7 @@ public class Board extends JPanel implements ActionListener {
         font=new FontExt();
         input=new Input();
         inventory=new Inventory();
+        craft=new Craft();
         drop = new Drop();
         character=new Character(screenWidth, screenHeight);
         enemy=new Enemy(wave);
@@ -100,6 +102,9 @@ public class Board extends JPanel implements ActionListener {
         			g2d.drawImage(loader.getDrop()[inventory.getDrop().get(i+(inventory.getPage()*5))], inventory.getX()+103, inventory.getY()+9+i*36, null);
         			g2d.drawString(inventory.getDropName().get(i+(inventory.getPage()*5))+" ["+inventory.getDropNumber().get(i+(inventory.getPage()*5))+"]", inventory.getX()+140, inventory.getY()+28+i*36);
         		}
+        	}
+        	if(input.isCraftingMenu()){
+        		g2d.drawImage(loader.getCraftingMenu(), craft.getX(), craft.getY(), null);
         	}
         	g2d.drawImage(loader.getLobbyHud(), hud.getX(), hud.getY(), null);
         	for(int i=0; i<hud.getIconsHB().length; i++){
@@ -174,33 +179,33 @@ public class Board extends JPanel implements ActionListener {
 					isInLobby = false;
 				}
 				if(mouse.getMousePos().intersects(hud.getIconsHB()[0]) && mouse.isMouseClicked()){
-					if(!input.isStats()){
+					if(!input.isStatsMenu()){
 						System.out.println("Stats opened");
-						input.setStats(true);
+						input.setStatsMenu(true);
 					}
 					else{
 						System.out.println("Stats closed");
-						input.setStats(false);
+						input.setStatsMenu(false);
 					}
 					mouse.setClicked(false);
 				}
 				else if(mouse.getMousePos().intersects(hud.getIconsHB()[1]) && mouse.isMouseClicked()){
-					if(!input.isEquipment()){
+					if(!input.isEquipmentMenu()){
 						System.out.println("Equipment opened");
-						input.setEquipment(true);
+						input.setEquipmentMenu(true);
 					}
 					else{
 						System.out.println("Equipment closed");
-						input.setEquipment(false);
+						input.setEquipmentMenu(false);
 					}
 					mouse.setClicked(false);
 				}
 				else if(mouse.getMousePos().intersects(hud.getIconsHB()[2]) && mouse.isMouseClicked()){
 					if(!input.isInventory()){
-						input.setInventory(true);
+						input.setInventoryMenu(true);
 					}
 					else{
-						input.setInventory(false);
+						input.setInventoryMenu(false);
 					}
 					mouse.setClicked(false);
 				}

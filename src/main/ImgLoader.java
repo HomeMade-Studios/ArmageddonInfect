@@ -27,7 +27,7 @@ public class ImgLoader {
 	private BufferedImage scrollButton;
 	private BufferedImage inventoryMenu;
 	private BufferedImage alchemistMenu;
-	private BufferedImage blacksmithMenu;
+	private BufferedImage craftingMenu;
 	private BufferedImage enchanterMenu;
 	private BufferedImage merchantMenu;
 	private BufferedImage pauseMenu;
@@ -68,7 +68,7 @@ public class ImgLoader {
 			recycleButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/recycle_button.png"));
 			inventoryMenu=ImageIO.read(getClass().getResource("/img/Menu/inventory_menu.png"));
 			alchemistMenu=ImageIO.read(getClass().getResource("/img/Menu/alchemist_menu.png"));
-			blacksmithMenu=ImageIO.read(getClass().getResource("/img/Menu/blacksmith_menu.png"));
+			craftingMenu=ImageIO.read(getClass().getResource("/img/Menu/blacksmith_menu.png"));
 			enchanterMenu=ImageIO.read(getClass().getResource("/img/Menu/enchanter_menu.png"));
 			merchantMenu=ImageIO.read(getClass().getResource("/img/Menu/merchant_menu.png"));
 			trasherMenu=ImageIO.read(getClass().getResource("/img/Menu/trasher_menu.png"));
@@ -245,8 +245,8 @@ public class ImgLoader {
 		return alchemistMenu;
 	}
 
-	public BufferedImage getBlacksmithMenu() {
-		return blacksmithMenu;
+	public BufferedImage getCraftingMenu() {
+		return craftingMenu;
 	}
 
 	public BufferedImage getEnchanterMenu() {
