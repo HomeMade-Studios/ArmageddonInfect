@@ -180,13 +180,22 @@ public class Board extends JPanel implements ActionListener {
 	    }
 	    g2d.fill(new Rectangle(hud.getX()+48, hud.getY()+106, hud.getExpBar(), 7));
 	    
-		String level="Level "+ character.getLevel();																					//Crea la stringa per l'input
+		/*String level="Level "+ character.getLevel();																					//Crea la stringa per l'input
 		font.input(level);																												//Crea arraylist con i valori giusti per il for
 		for (int i = 0; i <level.length(); i++)																							//Inserire come valore massimo contatore lunghezza stringa
 		{
 	    	g2d.drawImage(loader.getFont()[font.returnString().get(i)], hud.getX()+(i*loader.getFontWidth())+i, hud.getY(), null);		//Come posizione lasciare i*loader.getFontWidth() e aggiungere le coordinate altrimenti i caratteri si sovrappongono
 		}
-		font.clear();																													//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
+		font.clear();	*/																												//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
+		if(!isInLobby){
+	    String level=""+character.getLevel();																					//Crea la stringa per l'input
+		font.input(level);																												//Crea arraylist con i valori giusti per il for
+		for (int i = 0; i <level.length(); i++)																							//Inserire come valore massimo contatore lunghezza stringa
+		{
+	    	g2d.drawImage(loader.getFontSmall()[font.returnString().get(i)], hud.getX()+(i*loader.getSmallFontWidth())+i+146, hud.getY()+53, null);		//Come posizione lasciare i*loader.getFontWidth() e aggiungere le coordinate altrimenti i caratteri si sovrappongono
+		}
+		font.clear();
+		}
 		if(input.isPaused()){
         	g2d.drawImage(loader.getPauseMenu(),-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
         }
