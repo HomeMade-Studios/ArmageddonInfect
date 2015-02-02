@@ -35,12 +35,12 @@ public class Equip {
 		x = 300;
 		y = 100;
 		for(int i=0;i<5;i++)
-			 equippingItem.add(new Rectangle(x+8,y+21+(i*35),167,32));
+			 equippingItem.add(new Rectangle(x+8+96,y+21+(i*35),167,32));
 		scrollx = x+179;
 		scrolly = y+20;
-		equipScrollClick=new Rectangle(x+179,y+20,5,175);
-		confirmEquip=new Rectangle(x+240,y+175,74,23);
-		equipDrag=new Rectangle(x,y,321, 15);
+		equipScrollClick=new Rectangle(x+179+96,y+20,5,175);
+		confirmEquip=new Rectangle(x+240+96,y+175,74,23);
+		equipDrag=new Rectangle(x+96,y,321, 15);
 	}
 	
 	public void inventoryWindowMove(int dx, int dy){	
@@ -51,11 +51,12 @@ public class Equip {
 		y=dy;	
 		scrollx += x-tempx;
 		scrolly += y-tempy;
-		equipScrollClick=new Rectangle(x+179,y+20,5,175);
-		equipDrag=new Rectangle(x,y,321, 15);
+		equipScrollClick=new Rectangle(x+179+96,y+20,5,175);
+		equipDrag=new Rectangle(x+96,y,321, 15);
 		equippingItem.clear();
+		confirmEquip=new Rectangle(x+240+96,y+175,74,23);
 		for(int i=0;i<5;i++)
-			 equippingItem.add(new Rectangle(x+8,y+21+(i*35),167,32));
+			 equippingItem.add(new Rectangle(x+8+96,y+21+(i*35),167,32));
 	}
 	
 	public void equipScrollMove(int My, int equipSize){	
@@ -89,7 +90,8 @@ public class Equip {
 
 	public void updateEquip(){
 		equipScrollClick=new Rectangle(x+179,y+20,5,175);
-		equipDrag=new Rectangle(x,y,321, 15);
+		equipDrag=new Rectangle(x+96,y,321, 15);
+		confirmEquip=new Rectangle(x+240+96,y+175,74,23);
 	}
 
 	public void setEquipping(boolean arg0,int n){

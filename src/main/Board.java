@@ -115,18 +115,18 @@ public class Board extends JPanel implements ActionListener {
         		g2d.drawImage(loader.getEquipMenu(), equip.getX(), equip.getY(), null);
         		g2d.drawImage(loader.getScrollButton(), equip.getScrollX(), equip.getScrollY(), null);
         		if(!equip.isIsequipping())
-        			g2d.drawImage(loader.getEquipButtonPressed(), equip.getX()+240, equip.getY()+175, null);
+        			g2d.drawImage(loader.getEquipButtonPressed(), equip.getX()+356, equip.getY()+175, null);
         		else
-            		g2d.drawImage(loader.getEquipButton(), equip.getX()+240, equip.getY()+175, null);
+            		g2d.drawImage(loader.getEquipButton(), equip.getX()+356, equip.getY()+175, null);
         		for(int i=0;i<5;i++){
         			if(equip.getEquip().size() < i+equip.getPage()*5+1) break;
-        			g2d.drawImage(loader.getEquip()[equip.getEquip().get(i+(equip.getPage()*5))], equip.getX()+8, equip.getY()+21+(i*35)+i, null);
-        			g2d.drawString(equip.getEquipName().get(i+(equip.getPage()*5)), equip.getX()+46, equip.getY()+40+i*36);
+        			g2d.drawImage(loader.getEquip()[equip.getEquip().get(i+(equip.getPage()*5))], equip.getX()+8+96, equip.getY()+21+(i*35)+i, null);
+        			g2d.drawString(equip.getEquipName().get(i+(equip.getPage()*5)), equip.getX()+46+96, equip.getY()+40+i*36);
         		}
         		if(equip.getEquipWear().get(0)!=null)
-        			g2d.drawImage(loader.getEquip()[equip.getEquipWear().get(0)], equip.getX()+194, equip.getY()+60, null);
+        			g2d.drawImage(loader.getEquip()[equip.getEquipWear().get(0)], equip.getX()+194+96, equip.getY()+95, null);
         		if(equip.getEquipWear().get(1)!=null)
-        			g2d.drawImage(loader.getEquip()[equip.getEquipWear().get(1)], equip.getX()+194, equip.getY()+95, null);
+        			g2d.drawImage(loader.getEquip()[equip.getEquipWear().get(1)], equip.getX()+194+96, equip.getY()+60, null);
         	}
         	g2d.drawImage(loader.getLobbyHud(), hud.getX(), hud.getY(), null);
         	for(int i=0; i<hud.getIconsHB().length; i++){

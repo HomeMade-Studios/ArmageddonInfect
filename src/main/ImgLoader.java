@@ -70,7 +70,7 @@ public class ImgLoader {
 			enchantButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/enchant_button.png"));
 			recycleButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/recycle_button.png"));
 			inventoryMenu=ImageIO.read(getClass().getResource("/img/Menu/inventory_menu.png"));
-			equipMenu=ImageIO.read(getClass().getResource("/img/Menu/equip_menu.png"));
+			equipMenu=ImageIO.read(getClass().getResource("/img/Menu/equipment_menu.png"));
 			alchemistMenu=ImageIO.read(getClass().getResource("/img/Menu/alchemist_menu.png"));
 			craftingMenu=ImageIO.read(getClass().getResource("/img/Menu/blacksmith_menu.png"));
 			enchanterMenu=ImageIO.read(getClass().getResource("/img/Menu/enchanter_menu.png"));
