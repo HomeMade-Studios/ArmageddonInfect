@@ -16,6 +16,7 @@ public class ImgLoader {
 	private BufferedImage[] font;
 	private BufferedImage[] fontSmall;
 	private BufferedImage[] drop;
+	private BufferedImage[] equip;
 	private BufferedImage mapBackground[];
 	private BufferedImage mapHud;
 	private BufferedImage lobby;
@@ -162,8 +163,25 @@ public class ImgLoader {
 		    {
 		        drop[(i * cols) + j] = bigImg.getSubimage(j * width, i * height, width, height);
 		    }
-		}
+		}	
 		
+		try {
+			width = 32;
+			height = 32;
+			rows=16;
+			cols=16;
+			equip=new BufferedImage [rows*cols];
+			bigImg = ImageIO.read(getClass().getResource("/img/Menu/Icons/equip_icons.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < rows; i++)
+		{
+		    for (int j = 0; j < cols; j++)
+		    {
+		        equip[(i * cols) + j] = bigImg.getSubimage(j * width, i * height, width, height);
+		    }
+		}
 	}
 	
 	
