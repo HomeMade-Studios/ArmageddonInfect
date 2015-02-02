@@ -5,7 +5,7 @@ public class Craft {
 	int y;
 	
 	public Craft(){
-		x=500;
+		x=200;
 		y=200;
 	}
 
