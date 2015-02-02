@@ -16,7 +16,7 @@ public class Character{
 	boolean attack;
     
     public Character(int Width, int Height) {
-    	healt=healtMax=100;
+    	healt=healtMax=1000;
     	dAn=an=j=0;
     	k=0;
     	level = 1;

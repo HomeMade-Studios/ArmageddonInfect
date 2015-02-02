@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.Rectangle;
-import java.awt.image.BufferedImageOp;
 import java.util.ArrayList;
 
 public class Inventory {
@@ -13,7 +12,8 @@ public class Inventory {
 	Rectangle inventoryScrollClick;
 	Rectangle inventoryDrag;
 	private int x,y;
-	private int scrollx,scrolly;
+	private int scrollx,scrolly,tempx,tempy;
+	int page = 0;
 	boolean dragging;
 	
 	Inventory(){
@@ -30,22 +30,27 @@ public class Inventory {
 	
 	public void inventoryWindowMove(int dx, int dy){	
 		dragging = true;
+		tempx=x;
+		tempy=y;
 		x=dx;
 		y=dy;	
-		scrollx = x+274;
-		scrolly = y+15;
+		scrollx += x-tempx;
+		scrolly += y-tempy;
 		inventoryScrollClick=new Rectangle(x+274,y+15,5,163);
 		inventoryDrag=new Rectangle(x+95,y,192,9);
 	}
 	
 	public void inventoryScrollMove(int My, int inventorySize){	
-		if(My > scrolly){
-			scrolly+=163/(inventorySize/4+1);
+		if(inventorySize > 5){
+			if(My > scrolly){
+				scrolly+=160/(inventorySize/5);
+				page++;
+			}
+			else if(My < scrolly){
+				scrolly-=160/(inventorySize/5);	
+				page--;
+			}
 		}
-		if(My < scrolly){
-			scrolly-=163/(inventorySize/4+1);
-		}
-		System.out.println(scrolly);
 	}
 	
 	public void updateInventory(){
@@ -138,6 +143,12 @@ public class Inventory {
 	public int getScrollX() {
 		return scrollx;
 	}
+	
+	public int getPage() {
+		return page;
+	}
+	
+	
 	
 
 }

@@ -95,9 +95,10 @@ public class Board extends JPanel implements ActionListener {
         		g2d.drawImage(loader.getInventoryMenu(), inventory.getX(), inventory.getY(), null);
         		g2d.drawImage(loader.getScrollButton(), inventory.getScrollX(), inventory.getScrollY(), null);
         		g2d.drawImage(loader.getScrollButton(), inventory.getX()+88, inventory.getY()+40, null);
-        		for(int i=0;i<inventory.getDrop().size();i++){
-        			g2d.drawImage(loader.getDrop()[inventory.getDrop().get(i)], inventory.getX()+103, inventory.getY()+9+i*35, null);
-        			g2d.drawString(inventory.getDropName().get(i)+" ["+inventory.getDropNumber().get(i)+"]", inventory.getX()+140, inventory.getY()+28+i*36);
+        		for(int i=0;i<5;i++){
+        			if(inventory.getDrop().size() < i+inventory.getPage()*5+1) break;
+        			g2d.drawImage(loader.getDrop()[inventory.getDrop().get(i+(inventory.getPage()*5))], inventory.getX()+103, inventory.getY()+9+i*36, null);
+        			g2d.drawString(inventory.getDropName().get(i+(inventory.getPage()*5))+" ["+inventory.getDropNumber().get(i+(inventory.getPage()*5))+"]", inventory.getX()+140, inventory.getY()+28+i*36);
         		}
         	}
         	g2d.drawImage(loader.getLobbyHud(), hud.getX(), hud.getY(), null);
@@ -211,7 +212,9 @@ public class Board extends JPanel implements ActionListener {
 						inventory.setDragging(false);
 					if(mouse.isMouseClicked() && mouse.getMousePos().intersects(inventory.getInventoryScrollClick())){
 						inventory.inventoryScrollMove(mouse.getMy(), inventory.drop.size());
+						mouse.setClicked(false);
 					}
+					
 				}
 				else
 					inventory.updateInventory();

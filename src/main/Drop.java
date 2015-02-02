@@ -16,11 +16,17 @@ public class Drop {
 		name.add("Marihuana");
 		name.add("Zombie cunt");
 		name.add("Getting high");
+		name.add("Assembly");
+		name.add("Python");
+		name.add("java");
+		name.add("c");
+		name.add("c#");
+		name.add("c++");
 	}
 
 	void obtainItem(){
 		text = "You obtained: ";
-		n=rand.nextInt(6);
+		n=rand.nextInt(11);
 		updateString(n);
 	}
 	
