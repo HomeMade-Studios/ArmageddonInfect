@@ -7,7 +7,7 @@ public class Character{
 
     private int x,oldx;
     private int y,oldy;
-    private int pov,j,Mj,DMj,an,dAn,k,att,exp,maxExp;
+    private int pov,j,Mj,DMj,an,dAn,k,att,exp,maxExp,addhp,addStrength;
     private int strength=50;
 	int healt,healtMax;
 	int level;
@@ -16,7 +16,9 @@ public class Character{
 	boolean attack;
     
     public Character(int Width, int Height) {
-    	healt=healtMax=1000;
+    	addhp=0;
+    	addStrength=0;
+    	healt=healtMax=100;
     	dAn=an=j=0;
     	k=0;
     	level = 1;
@@ -107,6 +109,23 @@ public class Character{
 			}
 		}
 	}
+	
+	public void wearEquip(int t,int n){
+		
+		if(t==1){
+			if(addStrength!=0)
+				strength-=addStrength;
+			addStrength=n;
+			strength+=addStrength;
+		}
+		else{ 
+			if(addhp!=0)
+				healt-=addhp;
+			addhp=n;
+			healtMax+=addhp;
+			healt=healtMax;
+		}
+	}
     
     public int getPov() {
 		return pov;
@@ -130,6 +149,22 @@ public class Character{
 
 	public int getHealt() {
 		return healt;
+	}
+
+	public void setAddhp(int addhp) {
+		this.addhp = addhp;
+	}
+
+	public void setAddStrength(int addStrength) {
+		this.addStrength = addStrength;
+	}
+
+	public int getAddhp() {
+		return addhp;
+	}
+
+	public int getAddStrength() {
+		return addStrength;
 	}
 
 	public int getHealtMax() {

@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public class Input {
 	private int dx;
 	private int dy;
-	private boolean paused = false, inventoryMenu = false, statsMenu = false, equipmentMenu = false, craftingMenu = false;
+	private boolean paused = false, inventoryMenu = false, statsMenu = false, equipmentMenu = false, craftingMenu = false,addEquip=false;
 	
 	public void keyPressed(KeyEvent e){
 
@@ -67,6 +67,9 @@ public class Input {
         	else
         		craftingMenu=true;
         }
+        if (key == KeyEvent.VK_L) {
+        		addEquip=true;
+        }
     }
     
     public void keyReleased(KeyEvent e) {
@@ -90,6 +93,9 @@ public class Input {
         if (key == KeyEvent.VK_S) {
         	if(dy!=-1)
         		dy = 0;
+        }
+        if (key == KeyEvent.VK_L) {
+        	addEquip=false;
         }
     }
 
@@ -148,9 +154,9 @@ public class Input {
 	public void setCraftingMenu(boolean crafting) {
 		this.craftingMenu = crafting;
 	}
-	
-	
-    
+	public boolean addedEquip() {
+		return addEquip;
+	}    
 }
 
 

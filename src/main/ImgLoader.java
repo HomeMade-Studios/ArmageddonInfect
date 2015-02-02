@@ -25,6 +25,7 @@ public class ImgLoader {
 	private BufferedImage bancone;
 	private BufferedImage bancone2;
 	private BufferedImage scrollButton;
+	private BufferedImage equipMenu;
 	private BufferedImage inventoryMenu;
 	private BufferedImage alchemistMenu;
 	private BufferedImage craftingMenu;
@@ -36,6 +37,8 @@ public class ImgLoader {
 	private BufferedImage closeMenuButton;
 	private BufferedImage combineButton;
 	private BufferedImage craftButton;
+	private BufferedImage equipButton;
+	private BufferedImage equipButtonPressed;
 	private BufferedImage enchantButton;
 	private BufferedImage recycleButton;
 	
@@ -67,12 +70,16 @@ public class ImgLoader {
 			enchantButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/enchant_button.png"));
 			recycleButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/recycle_button.png"));
 			inventoryMenu=ImageIO.read(getClass().getResource("/img/Menu/inventory_menu.png"));
+			equipMenu=ImageIO.read(getClass().getResource("/img/Menu/equip_menu.png"));
 			alchemistMenu=ImageIO.read(getClass().getResource("/img/Menu/alchemist_menu.png"));
 			craftingMenu=ImageIO.read(getClass().getResource("/img/Menu/blacksmith_menu.png"));
 			enchanterMenu=ImageIO.read(getClass().getResource("/img/Menu/enchanter_menu.png"));
 			merchantMenu=ImageIO.read(getClass().getResource("/img/Menu/merchant_menu.png"));
 			trasherMenu=ImageIO.read(getClass().getResource("/img/Menu/trasher_menu.png"));
 			pauseMenu=ImageIO.read(getClass().getResource("/img/Menu/pause_menu.png"));
+			equipButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/equip_button.png")).getSubimage(0,0, 74, 23);
+			equipButtonPressed=ImageIO.read(getClass().getResource("/img/Menu/Buttons/equip_button.png")).getSubimage(0,23, 74, 23);
+						
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -185,6 +192,14 @@ public class ImgLoader {
 	}
 	
 	
+	public BufferedImage getEquipButton() {
+		return equipButton;
+	}
+
+	public BufferedImage getEquipButtonPressed() {
+		return equipButtonPressed;
+	}
+
 	public int getFontWidth() {
 		return fontWidth;
 	}	
@@ -228,7 +243,11 @@ public class ImgLoader {
 	public BufferedImage[] getDrop() {
 		return drop;
 	}
-
+	
+	public BufferedImage[] getEquip() {
+		return equip;
+	}
+	
 	public BufferedImage[] getFontSmall() {
 		return fontSmall;
 	}
@@ -255,6 +274,10 @@ public class ImgLoader {
 
 	public BufferedImage getMerchantMenu() {
 		return merchantMenu;
+	}
+	
+	public BufferedImage getEquipMenu() {
+		return equipMenu;
 	}
 
 	public BufferedImage getPauseMenu() {

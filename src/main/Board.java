@@ -36,13 +36,15 @@ public class Board extends JPanel implements ActionListener {
 	Craft craft;
 	SavedData save;
 	Inventory inventory;
+	Equip equip;
+	Equippable equippable;
 	Random rand = new Random();
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private Timer timer;
 	boolean isInLobby = true;
 	boolean levelUp = false;
 	boolean inventoryMenu = false,statsMenu = false,equipmentMenu=false,craftMenu=false;
-	boolean dropped;
+	boolean dropped,addedequip=false;
 	boolean firstTime = true;
     String filename = "character.sav";
     File f = new File(filename);
@@ -68,7 +70,9 @@ public class Board extends JPanel implements ActionListener {
         font=new FontExt();
         input=new Input();
         inventory=new Inventory();
+        equip=new Equip();
         craft=new Craft();
+        equippable=new Equippable();
         drop = new Drop();
         character=new Character(screenWidth, screenHeight);
         enemy=new Enemy(wave);
@@ -89,10 +93,14 @@ public class Board extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D)g;
 	    
         if(isInLobby){
+	        g2d.setColor(Color.BLACK);
         	g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);  
         	g2d.drawImage(loader.getBancone2(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
         	g2d.drawImage(loader.getSpriteBase()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
         	g2d.drawImage(loader.getBancone(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
+        	if(input.isCraftingMenu()){
+        		g2d.drawImage(loader.getCraftingMenu(), craft.getX(), craft.getY(), null);
+        	}
         	if(input.isInventory()){
         		g2d.drawImage(loader.getInventoryMenu(), inventory.getX(), inventory.getY(), null);
         		g2d.drawImage(loader.getScrollButton(), inventory.getScrollX(), inventory.getScrollY(), null);
@@ -103,8 +111,22 @@ public class Board extends JPanel implements ActionListener {
         			g2d.drawString(inventory.getDropName().get(i+(inventory.getPage()*5))+" ["+inventory.getDropNumber().get(i+(inventory.getPage()*5))+"]", inventory.getX()+140, inventory.getY()+28+i*36);
         		}
         	}
-        	if(input.isCraftingMenu()){
-        		g2d.drawImage(loader.getCraftingMenu(), craft.getX(), craft.getY(), null);
+        	if(input.isEquipmentMenu()){
+        		g2d.drawImage(loader.getEquipMenu(), equip.getX(), equip.getY(), null);
+        		g2d.drawImage(loader.getScrollButton(), equip.getScrollX(), equip.getScrollY(), null);
+        		if(!equip.isIsequipping())
+        			g2d.drawImage(loader.getEquipButtonPressed(), equip.getX()+240, equip.getY()+175, null);
+        		else
+            		g2d.drawImage(loader.getEquipButton(), equip.getX()+240, equip.getY()+175, null);
+        		for(int i=0;i<5;i++){
+        			if(equip.getEquip().size() < i+equip.getPage()*5+1) break;
+        			g2d.drawImage(loader.getEquip()[equip.getEquip().get(i+(equip.getPage()*5))], equip.getX()+8, equip.getY()+21+(i*35)+i, null);
+        			g2d.drawString(equip.getEquipName().get(i+(equip.getPage()*5)), equip.getX()+46, equip.getY()+40+i*36);
+        		}
+        		if(equip.getEquipWear().get(0)!=null)
+        			g2d.drawImage(loader.getEquip()[equip.getEquipWear().get(0)], equip.getX()+194, equip.getY()+60, null);
+        		if(equip.getEquipWear().get(1)!=null)
+        			g2d.drawImage(loader.getEquip()[equip.getEquipWear().get(1)], equip.getX()+194, equip.getY()+95, null);
         	}
         	g2d.drawImage(loader.getLobbyHud(), hud.getX(), hud.getY(), null);
         	for(int i=0; i<hud.getIconsHB().length; i++){
@@ -115,6 +137,18 @@ public class Board extends JPanel implements ActionListener {
         			g2d.drawImage(loader.getLobbyHudIcon()[1][i], hud.getX()+10+i*106, hud.getY()+53, null);
         		}
         	}
+        	
+		    if(addedequip){
+			    g2d.setColor(Color.WHITE);
+			    g2d.drawString(equippable.getText(), 50, 652);
+			    g2d.drawImage(loader.getEquip()[equippable.getN()], 10, 630, null);
+			    a++;
+			    if(a==250){
+			    	addedequip = false;
+			    	a=0;
+			    }
+		    }
+		    g2d.fill(equip.getEquipScrollClick());
         }
         else{
         	g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
@@ -125,7 +159,6 @@ public class Board extends JPanel implements ActionListener {
     	    	g2d.draw(enemies.get(i).getEnemyHealth());
     	        g2d.setColor(Color.RED);
     	        g2d.fill(new Rectangle((int)enemies.get(i).getEnemyHealth().getX(),(int) enemies.get(i).getEnemyHealth().getY(), (int)((float)enemies.get(i).getHealth()*0.2), (int)enemies.get(i).getEnemyHealth().getHeight()));
-    	        
     	    } 
     	    g2d.drawImage(loader.getMapHud(), hud.getX(), hud.getY(), null);
 	        g2d.setColor(Color.GREEN);
@@ -223,6 +256,50 @@ public class Board extends JPanel implements ActionListener {
 				}
 				else
 					inventory.updateInventory();
+				
+				if(input.isEquipmentMenu()){
+					if((mouse.getMousePos().intersects(equip.getEquipDrag())||equip.isDragging())&&mouse.isMouseClicked()){	
+						equip.inventoryWindowMove(mouse.getMx()-161,mouse.getMy()-5);
+					}
+					else
+						equip.setDragging(false);
+					if(mouse.isMouseClicked() && mouse.getMousePos().intersects(inventory.getInventoryScrollClick())){
+						equip.equipScrollMove(mouse.getMy(), equip.equip.size());
+						mouse.setClicked(false);
+					}
+					for(int i=0; i<5;i++)
+						if(mouse.getMousePos().intersects(equip.getEquippingItem().get(i))&&mouse.isMouseClicked())
+							equip.setEquipping(true,i);
+					if(mouse.getMousePos().intersects(equip.getConfirmEquip())&&mouse.isMouseClicked()&&equip.isIsequipping()){
+						if(equip.getEquipWear().get(0)!=null)
+						character.wearEquip(0, equippable.getForce().get(equip.getEquipWear().get(0)));
+						if(equip.getEquipWear().get(1)!=null)
+						character.wearEquip(1, equippable.getForce().get(equip.getEquipWear().get(1)));
+						equip.setIsequipping(false);
+						}
+				}
+				else
+					equip.updateEquip();
+				if(input.addedEquip()){
+					equippable.obtainItem(0);
+					addedequip=true;
+					equip.addEquip(equippable.getN(),equippable.getName().get(equippable.getN()),equippable.getType().get(equippable.getN()));
+					equippable.obtainItem(1);
+					addedequip=true;
+					equip.addEquip(equippable.getN(),equippable.getName().get(equippable.getN()),equippable.getType().get(equippable.getN()));
+					equippable.obtainItem(2);
+					addedequip=true;
+					equip.addEquip(equippable.getN(),equippable.getName().get(equippable.getN()),equippable.getType().get(equippable.getN()));
+					equippable.obtainItem(3);
+					addedequip=true;
+					equip.addEquip(equippable.getN(),equippable.getName().get(equippable.getN()),equippable.getType().get(equippable.getN()));
+					equippable.obtainItem(4);
+					addedequip=true;
+					equip.addEquip(equippable.getN(),equippable.getName().get(equippable.getN()),equippable.getType().get(equippable.getN()));
+					equippable.obtainItem(5);
+					addedequip=true;
+					equip.addEquip(equippable.getN(),equippable.getName().get(equippable.getN()),equippable.getType().get(equippable.getN()));
+				}
 			}
 			else{
 				if(rand.nextInt(spawnFrequency) == 0){
@@ -274,6 +351,10 @@ public class Board extends JPanel implements ActionListener {
 		wave = 0;
 		waveFinish = 0;
 		character= new Character(screenWidth, screenHeight);
+		if(equip.getEquipWear().get(0)!=null)
+		character.wearEquip(0, equippable.getForce().get(equip.getEquipWear().get(0)));
+		if(equip.getEquipWear().get(1)!=null)
+		character.wearEquip(1, equippable.getForce().get(equip.getEquipWear().get(1)));
 		hud=new HUD(screenWidth, screenHeight);
 	}
     
@@ -300,6 +381,12 @@ public class Board extends JPanel implements ActionListener {
       	save.setDropNumber(inventory.getDropNumber());
       	save.setInventoryX(inventory.getX());
       	save.setInventoryY(inventory.getY());
+      	save.setEquip(equip.getEquip());
+      	save.setEquipName(equip.getEquipName());
+      	save.setEquipType(equip.getEquipType());
+      	save.setEquipWear(equip.getEquipWear());
+      	save.setAddHealtChar(character.getAddhp());
+      	save.setAddStrengthChar(character.getAddStrength());
       	 try {
       	   fos = new FileOutputStream(filename);
       	   out = new ObjectOutputStream(fos);
@@ -329,5 +416,11 @@ public class Board extends JPanel implements ActionListener {
       	inventory.setDropNumber(save.getDropNumber());
       	inventory.setX(save.getInventoryX());
       	inventory.setY(save.getInventoryY());
+      	equip.setEquip(save.getEquip());
+      	equip.setEquipName(save.getEquipName());
+      	equip.setEquipType(save.getEquipType());
+      	equip.setEquipWear(save.getEquipWear());
+      	character.setAddhp(save.getAddHealtChar());
+      	character.setAddStrength(save.getAddStrengthChar());
       }
 }

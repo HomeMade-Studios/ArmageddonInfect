@@ -7,23 +7,40 @@ public class Equip {
 	
 	 ArrayList<Integer> equip;
 	 ArrayList<String> equipName;
+	 ArrayList<Integer> equipType;
+	 public ArrayList<Integer> getEquipType() {
+		return equipType;
+	}
+
+	ArrayList<Rectangle> equippingItem;
+	 ArrayList<Integer> equipWear;
+
 	private boolean first=true;
 	Rectangle equipScrollClick;
 	Rectangle equipDrag;
+	Rectangle confirmEquip;
 	private int x,y;
 	private int scrollx,scrolly,tempx,tempy;
 	int page = 0;
-	boolean dragging;
+	boolean dragging,isequipping;
 	
 	Equip(){
+		equipWear=new ArrayList<Integer>();
+		for(int i=0;i<2;i++)
+			equipWear.add(null);
+		equippingItem=new ArrayList<Rectangle>() ;
 		equip=new ArrayList<Integer>();
 		equipName=new ArrayList<String>();
-		x = 700;
-		y = 200;
-		scrollx = x+274;
-		scrolly = y+15;
-		equipScrollClick=new Rectangle(x+274,y+15,5,163);
-		equipDrag=new Rectangle(x,y,192,9);
+		equipType=new ArrayList<Integer>();
+		x = 300;
+		y = 100;
+		for(int i=0;i<5;i++)
+			 equippingItem.add(new Rectangle(x+8,y+21+(i*35),167,32));
+		scrollx = x+179;
+		scrolly = y+20;
+		equipScrollClick=new Rectangle(x+179,y+20,5,175);
+		confirmEquip=new Rectangle(x+240,y+175,74,23);
+		equipDrag=new Rectangle(x,y,321, 15);
 	}
 	
 	public void inventoryWindowMove(int dx, int dy){	
@@ -34,24 +51,28 @@ public class Equip {
 		y=dy;	
 		scrollx += x-tempx;
 		scrolly += y-tempy;
-		equipScrollClick=new Rectangle(x+274,y+15,5,163);
-		equipDrag=new Rectangle(x+95,y,192,9);
+		equipScrollClick=new Rectangle(x+179,y+20,5,175);
+		equipDrag=new Rectangle(x,y,321, 15);
+		equippingItem.clear();
+		for(int i=0;i<5;i++)
+			 equippingItem.add(new Rectangle(x+8,y+21+(i*35),167,32));
 	}
 	
-	public void inventoryScrollMove(int My, int inventorySize){	
-		if(inventorySize > 5){
+	public void equipScrollMove(int My, int equipSize){	
+		if(equipSize > 5){
 			if(My > scrolly){
-				scrolly+=160/(inventorySize/5);
+				scrolly+=175/(equipSize/5);
 				page++;
 			}
 			else if(My < scrolly){
-				scrolly-=160/(inventorySize/5);	
+				scrolly-=175/(equipSize/5);	
 				page--;
 			}
 		}
+		
 	}
 
-	public void addEquip(int n, String name){
+	public void addEquip(int n, String name, int type){
 		for(int i=0;i<equip.size();i++){
 			if(equip.get(i)==n){
 				first=false;
@@ -61,23 +82,63 @@ public class Equip {
 		if(first){
 			equip.add(n);
 			equipName.add(name);
+			equipType.add(type);
 		}
-		System.out.println(equipName);
-		System.out.println(n);
 		first = true;
 	}
 
-	
-	public void updateInventory(){
-		equipScrollClick=new Rectangle(x+274,y+15,5,163);
-		equipDrag=new Rectangle(x+95,y,192,9);
-	}
-	
-	public Rectangle getInventoryDrag() {
-		return equipDrag;
+	public void updateEquip(){
+		equipScrollClick=new Rectangle(x+179,y+20,5,175);
+		equipDrag=new Rectangle(x,y,321, 15);
 	}
 
-	public void setInventoryDrag(Rectangle inventoryDrag) {
+	public void setEquipping(boolean arg0,int n){
+		if(equipType.size()!=0){
+			this.isequipping=arg0;
+			if(equipType.get(n)==1)
+				equipWear.set(1, n);
+			else {
+				equipWear.set(0, n);
+			}
+		}
+	}
+	public ArrayList<Rectangle> getEquippingItem() {
+		return equippingItem;
+	}
+
+	public Rectangle getEquipDrag() {
+		return equipDrag;
+	}
+	
+	public Rectangle getConfirmEquip() {
+		return confirmEquip;
+	}
+
+	public 	 ArrayList<Integer> getEquipWear() {
+		return equipWear;
+	}
+
+	public boolean isIsequipping() {
+		return isequipping;
+	}
+
+	public void setIsequipping(boolean isequipping) {
+		this.isequipping = isequipping;
+	}
+
+	public boolean getEquipping() {
+		return isequipping;
+	}
+	
+	public void setEquipType(ArrayList<Integer> equipType) {
+		this.equipType = equipType;
+	}
+
+	public void setEquipWear(ArrayList<Integer> equipWear) {
+		this.equipWear = equipWear;
+	}
+
+	public void setEquipDrag(Rectangle inventoryDrag) {
 		this.equipDrag = inventoryDrag;
 	}
 
@@ -89,11 +150,11 @@ public class Equip {
 		this.dragging = dragging;
 	}
 	
-	public ArrayList<Integer> getDrop() {
+	public ArrayList<Integer> getEquip() {
 		return equip;
 	}
 	
-	public ArrayList<String> getDropName() {
+	public ArrayList<String> getEquipName() {
 		return equipName;
 	}
 
@@ -113,15 +174,15 @@ public class Equip {
 		this.y = y;
 	}
 
-	public void setDrop(ArrayList<Integer> drop) {
+	public void setEquip(ArrayList<Integer> drop) {
 		this.equip = drop;
 	}
 
-	public void setDropName(ArrayList<String> dropName) {
+	public void setEquipName(ArrayList<String> dropName) {
 		this.equipName = dropName;
 	}
 
-	public Rectangle getInventoryScrollClick() {
+	public Rectangle getEquipScrollClick() {
 		return equipScrollClick;
 	}
 	
