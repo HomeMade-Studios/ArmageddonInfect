@@ -59,7 +59,7 @@ public class ImgLoader {
 			bigImg = ImageIO.read(getClass().getResource("/img/Characters/Spritesheet.png"));
 			mapHud=ImageIO.read(getClass().getResource("/img/Hud/map_hud.png"));
 			lobbyHud=ImageIO.read(getClass().getResource("/img/Hud/lobby_hud.png"));
-			lobby=ImageIO.read(getClass().getResource("/img/Tavern/tavern.png"));
+			lobby=ImageIO.read(getClass().getResource("/img/Tavern/Tavern.png"));
 			bancone=ImageIO.read(getClass().getResource("/img/Tavern/tavern_bancone.png"));
 			bancone2=ImageIO.read(getClass().getResource("/img/Tavern/tavern_bancone_sotto.png"));
 			scrollButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/scroll_button.png"));

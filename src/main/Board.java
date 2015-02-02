@@ -148,7 +148,6 @@ public class Board extends JPanel implements ActionListener {
 			    	a=0;
 			    }
 		    }
-		    g2d.fill(equip.getEquipScrollClick());
         }
         else{
         	g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
