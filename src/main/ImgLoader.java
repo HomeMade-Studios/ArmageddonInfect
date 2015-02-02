@@ -77,8 +77,8 @@ public class ImgLoader {
 			merchantMenu=ImageIO.read(getClass().getResource("/img/Menu/merchant_menu.png"));
 			trasherMenu=ImageIO.read(getClass().getResource("/img/Menu/trasher_menu.png"));
 			pauseMenu=ImageIO.read(getClass().getResource("/img/Menu/pause_menu.png"));
-			equipButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/equip_button.png")).getSubimage(0,0, 74, 23);
-			equipButtonPressed=ImageIO.read(getClass().getResource("/img/Menu/Buttons/equip_button.png")).getSubimage(0,23, 74, 23);
+			equipButton=ImageIO.read(getClass().getResource("/img/Menu/Buttons/equip_button.png")).getSubimage(0,0, 56, 23);
+			equipButtonPressed=ImageIO.read(getClass().getResource("/img/Menu/Buttons/equip_button.png")).getSubimage(0,23, 56, 23);
 						
 		} catch (IOException e) {
 			e.printStackTrace();
