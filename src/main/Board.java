@@ -99,7 +99,7 @@ public class Board extends JPanel implements ActionListener {
 	        g2d.setColor(Color.BLACK);
         	g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);  
         	g2d.drawImage(loader.getBancone2(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
-        	g2d.drawImage(loader.getCharacter()[character.get(characterSelected).getPov()][character.get(characterSelected).getAn()],character.get(characterSelected).getX(),character.get(characterSelected).getY(),null);
+        	g2d.drawImage(loader.getCharacter()[character.get(characterSelected).getPov()+characterSelected*4][character.get(characterSelected).getAn()],character.get(characterSelected).getX(),character.get(characterSelected).getY(),null);
         	g2d.drawImage(loader.getBancone(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
         	if(input.isCraftingMenu()){
         		g2d.drawImage(loader.getCraftingMenu(), craft.getX(), craft.getY(), null);
@@ -154,7 +154,7 @@ public class Board extends JPanel implements ActionListener {
         }
         else{
         	g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
-        	g2d.drawImage(loader.getCharacter()[character.get(characterSelected).getPov()][character.get(characterSelected).getAn()],character.get(characterSelected).getX(),character.get(characterSelected).getY(),null);
+        	g2d.drawImage(loader.getCharacter()[character.get(characterSelected).getPov()+characterSelected*4][character.get(characterSelected).getAn()],character.get(characterSelected).getX(),character.get(characterSelected).getY(),null);
     	    for(int i = 0; i < enemies.size(); i++){
     	       	g2d.drawImage(loader.getEnemy()[enemies.get(i).getP()][enemies.get(i).getAn()], enemies.get(i).getX(), enemies.get(i).getY(), null);
     	        g2d.setColor(Color.BLACK);
@@ -360,7 +360,7 @@ public class Board extends JPanel implements ActionListener {
 		enemies.clear();
 		wave = 0;
 		waveFinish = 0;
-		ArrayList<Character> character = new ArrayList<Character>();
+		character.clear();
 		character.add(new Cazzillo(screenWidth, screenHeight));
         character.add(new Engineer(screenWidth, screenHeight));
 		if(equip.getEquipWear().get(0)!=null)
