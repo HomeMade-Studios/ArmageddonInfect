@@ -24,7 +24,6 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class Board extends JPanel implements ActionListener {
 
-	Character character;
 	Mouse mouse;
 	HUD hud;
 	ImgLoader loader;
@@ -40,6 +39,7 @@ public class Board extends JPanel implements ActionListener {
 	Equippable equippable;
 	Random rand = new Random();
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+	ArrayList<Character> character = new ArrayList<Character>();
 	private Timer timer;
 	boolean isInLobby = true;
 	boolean levelUp = false;
@@ -54,6 +54,7 @@ public class Board extends JPanel implements ActionListener {
 	int oldMouseX, oldMouseY;
 	int spawnFrequency;
 	int wave,waveFinish;
+	int characterSelected;
 	
 	public Board(int Width, int Height) {
 		screenWidth=Width - 6;
@@ -74,7 +75,9 @@ public class Board extends JPanel implements ActionListener {
         craft=new Craft();
         equippable=new Equippable();
         drop = new Drop();
-        character=new Character(screenWidth, screenHeight);
+        characterSelected = 0;
+        character.add(new Cazzillo(screenWidth, screenHeight));
+        character.add(new Engineer(screenWidth, screenHeight));
         enemy=new Enemy(wave);
         lobby=new Lobby();
         hud= new HUD(screenWidth, screenHeight);
@@ -96,7 +99,7 @@ public class Board extends JPanel implements ActionListener {
 	        g2d.setColor(Color.BLACK);
         	g2d.drawImage(loader.getLobby(), -(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);  
         	g2d.drawImage(loader.getBancone2(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
-        	g2d.drawImage(loader.getSpriteBase()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
+        	g2d.drawImage(loader.getCharacter()[character.get(characterSelected).getPov()][character.get(characterSelected).getAn()],character.get(characterSelected).getX(),character.get(characterSelected).getY(),null);
         	g2d.drawImage(loader.getBancone(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
         	if(input.isCraftingMenu()){
         		g2d.drawImage(loader.getCraftingMenu(), craft.getX(), craft.getY(), null);
@@ -151,9 +154,9 @@ public class Board extends JPanel implements ActionListener {
         }
         else{
         	g2d.drawImage(loader.getMapBackground()[0],-(1920 - screenWidth)/2, -(1080 - screenHeight)/2,null);
-        	g2d.drawImage(loader.getSpriteBase()[character.getPov()][character.getAn()],character.getX(),character.getY(),null);
+        	g2d.drawImage(loader.getCharacter()[character.get(characterSelected).getPov()][character.get(characterSelected).getAn()],character.get(characterSelected).getX(),character.get(characterSelected).getY(),null);
     	    for(int i = 0; i < enemies.size(); i++){
-    	       	g2d.drawImage(loader.getSpriteBase()[enemies.get(i).getP()][enemies.get(i).getAn()], enemies.get(i).getX(), enemies.get(i).getY(), null);
+    	       	g2d.drawImage(loader.getEnemy()[enemies.get(i).getP()][enemies.get(i).getAn()], enemies.get(i).getX(), enemies.get(i).getY(), null);
     	        g2d.setColor(Color.BLACK);
     	    	g2d.draw(enemies.get(i).getEnemyHealth());
     	        g2d.setColor(Color.RED);
@@ -187,7 +190,7 @@ public class Board extends JPanel implements ActionListener {
 		}
 		font.clear();	*/																												//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
 		if(!isInLobby){
-	    String level=""+character.getLevel();																					//Crea la stringa per l'input
+	    String level=""+character.get(characterSelected).getLevel();																					//Crea la stringa per l'input
 		font.input(level);																												//Crea arraylist con i valori giusti per il for
 		for (int i = 0; i <level.length(); i++)																							//Inserire come valore massimo contatore lunghezza stringa
 		{
@@ -205,16 +208,16 @@ public class Board extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if(!input.isPaused()){
-			character.move(isInLobby, input.getDx(), input.getDy());
-			character.SetP(mouse.getMx(), mouse.getMy());
-			character.animationCycle(mouse.isMouseClicked(), input.getDx(), input.getDy());
+			character.get(characterSelected).move(isInLobby, input.getDx(), input.getDy());
+			character.get(characterSelected).SetP(mouse.getMx(), mouse.getMy());
+			character.get(characterSelected).animationCycle(mouse.isMouseClicked(), input.getDx(), input.getDy());
 			if(isInLobby){
 				for(int i=0;i<lobby.getLobbyHB().length;i++){
-					if(lobby.getLobbyHB()[i].intersects(character.getHitbox())){
-						character.stopmove();
+					if(lobby.getLobbyHB()[i].intersects(character.get(characterSelected).getHitbox())){
+						character.get(characterSelected).stopmove();
 					}
 				}
-				if(character.getHitbox().intersects(lobby.getMapSelection())){
+				if(character.get(characterSelected).getHitbox().intersects(lobby.getMapSelection())){
 					save();
 					isInLobby = false;
 				}
@@ -279,9 +282,9 @@ public class Board extends JPanel implements ActionListener {
 							equip.setEquipping(true,i);
 					if(mouse.getMousePos().intersects(equip.getConfirmEquip())&&mouse.isMouseClicked()&&equip.isIsequipping()){
 						if(equip.getEquipWear().get(0)!=null)
-						character.wearEquip(0, equippable.getForce().get(equip.getEquipWear().get(0)));
+							character.get(characterSelected).wearEquip(0, equippable.getForce().get(equip.getEquipWear().get(0)));
 						if(equip.getEquipWear().get(1)!=null)
-						character.wearEquip(1, equippable.getForce().get(equip.getEquipWear().get(1)));
+							character.get(characterSelected).wearEquip(1, equippable.getForce().get(equip.getEquipWear().get(1)));
 						equip.setIsequipping(false);
 						}
 				}
@@ -318,11 +321,11 @@ public class Board extends JPanel implements ActionListener {
 		    		}
 		    	}
 		    	for(int i = 0; i < enemies.size(); i++){
-		    		enemies.get(i).move(character.getX(), character.getY(), character.getHitbox());
-		    		if(enemies.get(i).getEnemyHB().intersects(character.getHitbox()))
-		        		character.attacked(enemies.get(i).getStrength());
-		        	if(enemies.get(i).getEnemyHB().intersects(character.getAttackbox())){
-		        		enemies.get(i).attacked(character.getStrength(),character.getPov(),character.getX(),character.getY(),mouse.isMouseClicked());
+		    		enemies.get(i).move(character.get(characterSelected).getX(), character.get(characterSelected).getY(), character.get(characterSelected).getHitbox());
+		    		if(enemies.get(i).getEnemyHB().intersects(character.get(characterSelected).getHitbox()))
+		    			character.get(characterSelected).attacked(enemies.get(i).getStrength());
+		        	if(enemies.get(i).getEnemyHB().intersects(character.get(characterSelected).getAttackbox())){
+		        		enemies.get(i).attacked(character.get(characterSelected).getStrength(),character.get(characterSelected).getPov(),character.get(characterSelected).getX(),character.get(characterSelected).getY(),mouse.isMouseClicked());
 		        		}
 		        	if(enemies.get(i).getHealth() <= 0){
 		        		if(enemies.get(i).getDrop() == 0){
@@ -331,21 +334,21 @@ public class Board extends JPanel implements ActionListener {
 		        			inventory.addDrop(drop.getN(),drop.getName().get(drop.getN()));
 		        		}
 		        		enemies.remove(i);
-		        		character.setExp(character.getExp() + 500);
+		        		character.get(characterSelected).setExp(character.get(characterSelected).getExp() + 500);
 		        	}
 		        	
 		    	}
 		    	mouse.setClicked(false);
-		    	if(character.getHealt() <= 0){
+		    	if(character.get(characterSelected).getHealt() <= 0){
 		    		isInLobby = true;
 		    		save();
 		    		reset();
 		    		load();
 		    	}
 			}
-			if(hud.updateHUD(character.getHealt(),character.getHealtMax(), character.getExp(),character.getMaxExp())){
-				character.setLevel(character.getLevel()+1);
-				character.setExp(character.getExp()-character.getMaxExp()*10);
+			if(hud.updateHUD(character.get(characterSelected).getHealt(),character.get(characterSelected).getHealtMax(), character.get(characterSelected).getExp(),character.get(characterSelected).getMaxExp())){
+				character.get(characterSelected).setLevel(character.get(characterSelected).getLevel()+1);
+				character.get(characterSelected).setExp(character.get(characterSelected).getExp()-character.get(characterSelected).getMaxExp()*10);
 			};
 		    
 		}
@@ -357,11 +360,13 @@ public class Board extends JPanel implements ActionListener {
 		enemies.clear();
 		wave = 0;
 		waveFinish = 0;
-		character= new Character(screenWidth, screenHeight);
+		ArrayList<Character> character = new ArrayList<Character>();
+		character.add(new Cazzillo(screenWidth, screenHeight));
+        character.add(new Engineer(screenWidth, screenHeight));
 		if(equip.getEquipWear().get(0)!=null)
-		character.wearEquip(0, equippable.getForce().get(equip.getEquipWear().get(0)));
+			character.get(characterSelected).wearEquip(0, equippable.getForce().get(equip.getEquipWear().get(0)));
 		if(equip.getEquipWear().get(1)!=null)
-		character.wearEquip(1, equippable.getForce().get(equip.getEquipWear().get(1)));
+			character.get(characterSelected).wearEquip(1, equippable.getForce().get(equip.getEquipWear().get(1)));
 		hud=new HUD(screenWidth, screenHeight);
 	}
     
@@ -379,10 +384,10 @@ public class Board extends JPanel implements ActionListener {
     public void save (){
       	 FileOutputStream fos = null;
       	 ObjectOutputStream out = null;
-      	save.setExp(character.getExp());
-      	save.setMaxHealt(character.getHealtMax());
-      	save.setLevel(character.getLevel());
-      	save.setStrength(character.getStrength());
+      	save.setExp(character.get(characterSelected).getExp());
+      	save.setMaxHealt(character.get(characterSelected).getHealtMax());
+      	save.setLevel(character.get(characterSelected).getLevel());
+      	save.setStrength(character.get(characterSelected).getStrength());
       	save.setDrop(inventory.getDrop());
       	save.setDropName(inventory.getDropName());
       	save.setDropNumber(inventory.getDropNumber());
@@ -392,8 +397,8 @@ public class Board extends JPanel implements ActionListener {
       	save.setEquipName(equip.getEquipName());
       	save.setEquipType(equip.getEquipType());
       	save.setEquipWear(equip.getEquipWear());
-      	save.setAddHealtChar(character.getAddhp());
-      	save.setAddStrengthChar(character.getAddStrength());
+      	save.setAddHealtChar(character.get(characterSelected).getAddhp());
+      	save.setAddStrengthChar(character.get(characterSelected).getAddStrength());
       	 try {
       	   fos = new FileOutputStream(filename);
       	   out = new ObjectOutputStream(fos);
@@ -405,19 +410,19 @@ public class Board extends JPanel implements ActionListener {
       }
       public void load (){
       	FileInputStream fis = null;
-          ObjectInputStream in = null;
-          try {
-            fis = new FileInputStream(filename);
-            in = new ObjectInputStream(fis);
-            save = (SavedData) in.readObject();
-            in.close();
-          } catch (Exception ex) {
-            ex.printStackTrace();
-          }        
-      	character.setExp(save.getExp());
-      	character.setHealtMax(save.getMaxHealt());
-      	character.setLevel(save.getLevel());
-      	character.setStrength(save.getStrength());
+        ObjectInputStream in = null;
+        try {
+          fis = new FileInputStream(filename);
+          in = new ObjectInputStream(fis);
+          save = (SavedData) in.readObject();
+          in.close();
+        }catch (Exception ex) {
+          ex.printStackTrace();
+        }        
+        character.get(characterSelected).setExp(save.getExp());
+        character.get(characterSelected).setHealtMax(save.getMaxHealt());
+      	character.get(characterSelected).setLevel(save.getLevel());
+      	character.get(characterSelected).setStrength(save.getStrength());
       	inventory.setDrop(save.getDrop());
       	inventory.setDropName(save.getDropName());
       	inventory.setDropNumber(save.getDropNumber());
@@ -427,7 +432,7 @@ public class Board extends JPanel implements ActionListener {
       	equip.setEquipName(save.getEquipName());
       	equip.setEquipType(save.getEquipType());
       	equip.setEquipWear(save.getEquipWear());
-      	character.setAddhp(save.getAddHealtChar());
-      	character.setAddStrength(save.getAddStrengthChar());
+      	character.get(characterSelected).setAddhp(save.getAddHealtChar());
+      	character.get(characterSelected).setAddStrength(save.getAddStrengthChar());
       }
 }

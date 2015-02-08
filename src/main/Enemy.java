@@ -31,7 +31,7 @@ public class Enemy {
 		j = 0;
 		enemyHB =new Rectangle(x+6,y,20,32);
 		enemyHealth=new Rectangle(enemyHB.x,enemyHB.y-12,(int)enemyHB.getWidth(),3);
-		p = 4;
+		p = 0;
 		drop=rand.nextInt(1);
 	}
 	
@@ -40,19 +40,19 @@ public class Enemy {
 			if(move > delay ){
 				if(x < characterx){
 					x++;
-					p=7;
+					p=3;
 				}
 				if(x > characterx){
 					x--;
-					p=6;
+					p=2;
 				}
 				if(y < charactery){
 					y++;
-					p=4;
+					p=0;
 				}
 				if(y > charactery){
 					y--;
-					p=5;
+					p=1;
 				}
 				move = 0;
 			}

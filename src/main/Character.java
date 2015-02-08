@@ -18,10 +18,8 @@ public class Character{
     public Character(int Width, int Height) {
     	addhp=0;
     	addStrength=0;
-    	healt=healtMax=100;
     	dAn=an=j=0;
     	k=0;
-    	level = 1;
     	maxExp=100;
     	Mj=DMj=15;
         x = (Width/2)-16;

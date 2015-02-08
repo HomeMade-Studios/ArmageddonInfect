@@ -11,7 +11,9 @@ public class ImgLoader {
 	private int height;
 	private int rows;
 	private int cols;
-	private BufferedImage[][] spritesBase;
+	private BufferedImage[][] character;
+	private BufferedImage[][] npc;
+	private BufferedImage[][] enemy;
 	private BufferedImage[][] lobbyHudIcon;
 	private BufferedImage[] font;
 	private BufferedImage[] fontSmall;
@@ -50,13 +52,13 @@ public class ImgLoader {
 	height = 32;
 	rows = 8;
 	cols = 4;
-	spritesBase = new BufferedImage[rows][cols];
+	character = new BufferedImage[rows][cols];
 	load();
 	}
 	
 	void load(){
 		try {
-			bigImg = ImageIO.read(getClass().getResource("/img/Characters/Spritesheet.png"));
+			bigImg = ImageIO.read(getClass().getResource("/img/Characters/character.png"));
 			mapHud=ImageIO.read(getClass().getResource("/img/Hud/map_hud.png"));
 			lobbyHud=ImageIO.read(getClass().getResource("/img/Hud/lobby_hud.png"));
 			lobby=ImageIO.read(getClass().getResource("/img/Tavern/Tavern.png"));
@@ -88,9 +90,45 @@ public class ImgLoader {
 		{
 		    for (int j = 0; j < cols; j++)
 		    {
-		    	spritesBase[i][j] = bigImg.getSubimage(j * width,i * height,width,height);
+		    	character[i][j] = bigImg.getSubimage(j * width,i * height,width,height);
 		    }
 		}
+		
+		width = 32;
+		height = 32;
+		rows = 4;
+		cols = 4;
+		enemy = new BufferedImage[rows][cols];
+		try {
+			bigImg = ImageIO.read(getClass().getResource("/img/Characters/enemies.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < rows; i++)
+		{
+		    for (int j = 0; j < cols; j++)
+		    {
+		    	enemy[i][j] = bigImg.getSubimage(j * width,i * height,width,height);
+		    }
+		}	
+		
+		width = 32;
+		height = 32;
+		rows = 4;
+		cols = 4;
+		npc = new BufferedImage[rows][cols];
+		try {
+			bigImg = ImageIO.read(getClass().getResource("/img/Characters/npc.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < rows; i++)
+		{
+		    for (int j = 0; j < cols; j++)
+		    {
+		    	npc[i][j] = bigImg.getSubimage(j * width,i * height,width,height);
+		    }
+		}	
 		
 		width = 32;
 		height = 32;
@@ -208,8 +246,16 @@ public class ImgLoader {
 		return lobby;
 	}
 	
-	public BufferedImage[][] getSpriteBase() {
-		return spritesBase;
+	public BufferedImage[][] getCharacter() {
+		return character;
+	}
+	
+	public BufferedImage[][] getEnemy() {
+		return enemy;
+	}
+	
+	public BufferedImage[][] getNpc() {
+		return npc;
 	}
 	
 	public BufferedImage[] getFont() {
