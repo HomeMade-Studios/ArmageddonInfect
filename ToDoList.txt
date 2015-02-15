@@ -1,12 +1,12 @@
 Coding
 
--Crafting
--Archivement		[Ugo]
--Stats			[Ugo]
+-Crafting				[Marco]
+-Archivement			[Ugo]
+-Stats					[Ugo]
 -Menu vari ed eventuali
 -Menu iniziale
--LAN			[Marco]
--SoundTrack		[Marco]
+-LAN					[Marco]
+-SoundTrack				[Marco]
 
 -----------------------------
 
