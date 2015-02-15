@@ -1,15 +1,19 @@
 package main;
 
-import java.util.ArrayList;
+import java.awt.Point;
 
 public class Archivement {
-	ArrayList<String> archivementUnlocked;
-	ArrayList<String> archivementLocked;
 	
-	public Archivement(){
-		archivementUnlocked = new ArrayList<String>();
-		archivementLocked = new ArrayList<String>();
-	}
+	String name;
+	Point imagePosition;
+	boolean unlocked;
+	
+	
+	public Archivement(String name, Point imagePosition){
+		this.name = name;
+		this.imagePosition = imagePosition;
+		unlocked = false;
+	}	
 	
 	
 }
