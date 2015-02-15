@@ -107,6 +107,9 @@ public class Board extends JPanel implements ActionListener {
         	g2d.drawImage(loader.getBancone(),-(1018 - screenWidth)/2, -(672 - screenHeight)/2, null);
         	if(input.isCraftingMenu()){
         		g2d.drawImage(loader.getCraftingMenu(), craft.getX(), craft.getY(), null);
+        		for(int i=0; i<craft.craftingItem.size();i++)
+        			g2d.drawImage(loader.getEquip()[i], craft.getCraftingItem().get(i).x,craft.getCraftingItem().get(i).y,null);
+        		g2d.fill(craft.getExitCraft());
         	}
         	if(input.isInventory()){
         		g2d.drawImage(loader.getInventoryMenu(), inventory.getX(), inventory.getY(), null);
@@ -273,13 +276,28 @@ public class Board extends JPanel implements ActionListener {
 				else
 					inventory.updateInventory();
 				
+				if(input.isCraftingMenu()){
+					if((mouse.getMousePos().intersects(craft.getCraftDrag())||craft.isDragging())&&mouse.isMouseClicked()){	
+						craft.craftWindowMove(mouse.getMx()-286,mouse.getMy()-7);
+					}
+					else
+						craft.setDragging(false);
+					if(mouse.isMouseClicked() && mouse.getMousePos().intersects(craft.getCraftScrollClick())){
+						craft.craftScrollMove(mouse.getMy(), inventory.drop.size());
+						mouse.setClicked(false);
+					}
+					
+				}
+				else
+					craft.updateCraft();
+				
 				if(input.isEquipmentMenu()){
 					if((mouse.getMousePos().intersects(equip.getEquipDrag())||equip.isDragging())&&mouse.isMouseClicked()){	
 						equip.inventoryWindowMove(mouse.getMx()-161,mouse.getMy()-5);
 					}
 					else
 						equip.setDragging(false);
-					if(mouse.isMouseClicked() && mouse.getMousePos().intersects(inventory.getInventoryScrollClick())){
+					if(mouse.isMouseClicked() && mouse.getMousePos().intersects(equip.getEquipScrollClick())){
 						equip.equipScrollMove(mouse.getMy(), equip.equip.size());
 						mouse.setClicked(false);
 					}
