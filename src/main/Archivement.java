@@ -21,10 +21,26 @@ public class Archivement {
 		return unlocked;
 	}
 
-
 	public void setUnlocked(boolean unlocked) {
 		this.unlocked = unlocked;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public String getGoal() {
+		return goal;
+	}
+
+
+	public Point getImagePosition() {
+		return imagePosition;
 	}	
+	
+	
 	
 	
 	

@@ -31,6 +31,8 @@ public class SavedData implements Serializable {
 	private ArrayList<String> equipName=new ArrayList<String>();
 	private ArrayList<Integer> equipType=new ArrayList<Integer>();
 	private ArrayList<Integer> equipWear=new ArrayList<Integer>();
+
+	private int enemyKilled;
 	 
 	public int getAddHealtChar() {
 		return addHealtChar;
@@ -134,6 +136,15 @@ public class SavedData implements Serializable {
 
 	public void setDropName(ArrayList<String> dropName) {
 		this.dropName = dropName;
-		
 	}
+
+	public int getEnemyKilled() {
+		return enemyKilled;
+	}
+
+	public void setEnemyKilled(int enemyKilled) {
+		this.enemyKilled = enemyKilled;
+	}
+	
+	
 }

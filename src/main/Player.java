@@ -6,12 +6,14 @@ public class Player {
 	public Player(){
 		enemyKilled = 0;
 	}
-	
-	public void AddEnemyKilled(){
-		enemyKilled++;
-	}
-	
-	public int enemyKilled(){
+
+	public int getEnemyKilled() {
 		return enemyKilled;
 	}
+
+	public void setEnemyKilled(int enemyKilled) {
+		this.enemyKilled = enemyKilled;
+	}
+	
+	
 }

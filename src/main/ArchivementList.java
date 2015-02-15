@@ -11,7 +11,7 @@ public class ArchivementList {
 	
 	public ArchivementList(){
 		UpdateListNames();
-		UpdateListPoint();
+		UpdateListGoals();
 		UpdateListPoint();
 		Load();
 	}
@@ -37,6 +37,22 @@ public class ArchivementList {
 	
 	public void UpdateListPoint(){
 		imagePositions.add(new Point(100,100));
+	}
+	
+	public String getArchivementName(int n){
+		return archivement.get(n).getName();
+	}
+	
+	public String getArchivementGoal(int n){
+		return archivement.get(n).getGoal();
+	}
+	
+	public Point getArchivementImagePosition(int n){
+		return archivement.get(n).getImagePosition();
+	}
+	
+	public boolean isArchivementUnlocked(int n){
+		return archivement.get(n).isUnlocked();
 	}
 	
 }

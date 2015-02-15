@@ -38,6 +38,7 @@ public class Board extends JPanel implements ActionListener {
 	Inventory inventory;
 	Equip equip;
 	Equippable equippable;
+	ArchivementList archivementList;
 	Random rand = new Random();
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	ArrayList<Character> character = new ArrayList<Character>();
@@ -82,6 +83,7 @@ public class Board extends JPanel implements ActionListener {
         enemy=new Enemy(wave);
         lobby=new Lobby();
         player=new Player();
+        archivementList=new ArchivementList();
         hud= new HUD(screenWidth, screenHeight);
         loader= new ImgLoader();
         if (f.exists() && !f.isDirectory()){
@@ -337,6 +339,7 @@ public class Board extends JPanel implements ActionListener {
 		        		}
 		        		enemies.remove(i);
 		        		character.get(characterSelected).setExp(character.get(characterSelected).getExp() + 500);
+		        		player.setEnemyKilled(player.getEnemyKilled() + 1);
 		        	}
 		        	
 		    	}
@@ -354,6 +357,10 @@ public class Board extends JPanel implements ActionListener {
 			};
 		    
 		}
+		archivementList.CheckUnlockedArchivement(player.getEnemyKilled());
+		System.out.println(player.getEnemyKilled());
+		if(archivementList.isArchivementUnlocked(0))
+			System.out.println(archivementList.getArchivementName(0) + " " + archivementList.getArchivementGoal(0) + " " + archivementList.getArchivementImagePosition(0));
 		repaint();
     }
 	
@@ -401,6 +408,7 @@ public class Board extends JPanel implements ActionListener {
       	save.setEquipWear(equip.getEquipWear());
       	save.setAddHealtChar(character.get(characterSelected).getAddhp());
       	save.setAddStrengthChar(character.get(characterSelected).getAddStrength());
+      	save.setEnemyKilled(player.getEnemyKilled());
       	 try {
       	   fos = new FileOutputStream(filename);
       	   out = new ObjectOutputStream(fos);
@@ -436,5 +444,6 @@ public class Board extends JPanel implements ActionListener {
       	equip.setEquipWear(save.getEquipWear());
       	character.get(characterSelected).setAddhp(save.getAddHealtChar());
       	character.get(characterSelected).setAddStrength(save.getAddStrengthChar());
+      	player.setEnemyKilled(save.getEnemyKilled());
       }
 }
