@@ -32,6 +32,7 @@ public class Board extends JPanel implements ActionListener {
 	FontExt font;
 	Input input;
 	Drop drop;
+	Stats stats;
 	Craft craft;
 	SavedData save;
 	Player player;
@@ -77,6 +78,7 @@ public class Board extends JPanel implements ActionListener {
         craft=new Craft();
         equippable=new Equippable();
         drop = new Drop();
+        stats = new Stats();
         characterSelected = 0;
         character.add(new CharacterCazzillo(screenWidth, screenHeight));
         character.add(new CharacterEngineer(screenWidth, screenHeight));

@@ -368,6 +368,4 @@ public class ImgLoader {
 	public BufferedImage getObtainingHud() {
 		return obtainingHud;
 	}
-	
-	
 }
