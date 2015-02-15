@@ -177,7 +177,9 @@ public class Board extends JPanel implements ActionListener {
 		    g2d.drawImage(loader.getMapHud(), hud.getX(), hud.getY(), null);
 		    if(dropped){
 			    g2d.setColor(Color.BLACK);
-			    g2d.drawString(drop.getText(), 50, 652);
+			    g2d.drawImage(loader.getObtainingHud(), 10, 630, null);
+			    g2d.drawString("You obtained:", 50, 645);
+			    g2d.drawString(drop.getText(), 50, 656);
 			    g2d.drawImage(loader.getDrop()[drop.getN()], 10, 630, null);
 			    a++;
 			    if(a==250){

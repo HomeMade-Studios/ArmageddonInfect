@@ -6,7 +6,7 @@ import java.util.Random;
 public class Drop {
 	Random rand = new Random();
 	ArrayList<String> name=new ArrayList<String>();
-	String text="You obtained";
+	String text;
 	int n;
 
 	Drop(){
@@ -25,13 +25,12 @@ public class Drop {
 	}
 
 	void obtainItem(){
-		text = "You obtained: ";
 		n=rand.nextInt(11);
 		updateString(n);
 	}
 	
 	void updateString(int n){
-		text=text+name.get(n);
+		text=name.get(n);
 	}
 
 	public String getText() {

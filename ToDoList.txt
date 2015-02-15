@@ -1,7 +1,6 @@
 Coding
 
 -Crafting
--Scelta mappa
 -Archivement		[Ugo]
 -Stats			[Ugo]
 -Menu vari ed eventuali
