@@ -1,14 +1,21 @@
 Coding
 
--Menu crafting
--Aggiungere "Scelta mappa"
--Aggiunta menu iniziale
--LAN
--SoundTrack
+-Crafting
+-Scelta mappa
+-Archivement		[Ugo]
+-Stats			[Ugo]
+-Menu vari ed eventuali
+-Menu iniziale
+-LAN			[Marco]
+-SoundTrack		[Marco]
 
 Graphics
 
--Sistemare font
--Menu "Scelta mappa"
--Menu di crafting
--Menu iniziale
+-Crafter(omini)
+-Trophy
+-Equip,drop
+-Arredi tavern
+-Icone pg
+-Finire pg
+-Icone skill pg
+-Main title
