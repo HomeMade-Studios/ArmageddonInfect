@@ -1,21 +1,15 @@
 package main;
 
-import java.awt.Point;
-
 public class Archivement {
 	
 	String name, goal;
-	Point imagePosition;
 	boolean unlocked;
 	
-	
-	public Archivement(String name, String goal, Point imagePosition){
+	public Archivement(String name, String goal){
 		this.name = name;
 		this.goal = goal;
-		this.imagePosition = imagePosition;
 		unlocked = false;
 	}
-
 
 	public boolean isUnlocked() {
 		return unlocked;
@@ -25,23 +19,12 @@ public class Archivement {
 		this.unlocked = unlocked;
 	}
 
-
 	public String getName() {
 		return name;
 	}
 
-
 	public String getGoal() {
 		return goal;
 	}
-
-
-	public Point getImagePosition() {
-		return imagePosition;
-	}	
-	
-	
-	
-	
 	
 }

@@ -190,14 +190,7 @@ public class Board extends JPanel implements ActionListener {
 			    	a=0;
 			    }
 		    }
-        }	    
-		/*String level="Level "+ character.getLevel();																					//Crea la stringa per l'input
-		font.input(level);																												//Crea arraylist con i valori giusti per il for
-		for (int i = 0; i <level.length(); i++)																							//Inserire come valore massimo contatore lunghezza stringa
-		{
-	    	g2d.drawImage(loader.getFont()[font.returnString().get(i)], hud.getX()+(i*loader.getFontWidth())+i, hud.getY(), null);		//Come posizione lasciare i*loader.getFontWidth() e aggiungere le coordinate altrimenti i caratteri si sovrappongono
-		}
-		font.clear();	*/																												//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
+        }	    																										//Pulizia arraylist, altrimenti si creerebbe un arraylist infinito
 		if(!isInLobby){
 	    String level=""+character.get(characterSelected).getLevel();																					//Crea la stringa per l'input
 		font.input(level);																												//Crea arraylist con i valori giusti per il for
@@ -378,9 +371,6 @@ public class Board extends JPanel implements ActionListener {
 		    
 		}
 		archivementList.CheckUnlockedArchivement(player.getEnemyKilled());
-		System.out.println(player.getEnemyKilled());
-		if(archivementList.isArchivementUnlocked(0))
-			System.out.println(archivementList.getArchivementName(0) + " " + archivementList.getArchivementGoal(0) + " " + archivementList.getArchivementImagePosition(0));
 		repaint();
     }
 	
