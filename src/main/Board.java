@@ -34,6 +34,7 @@ public class Board extends JPanel implements ActionListener {
 	Drop drop;
 	Craft craft;
 	SavedData save;
+	Player player;
 	Inventory inventory;
 	Equip equip;
 	Equippable equippable;
@@ -76,10 +77,11 @@ public class Board extends JPanel implements ActionListener {
         equippable=new Equippable();
         drop = new Drop();
         characterSelected = 0;
-        character.add(new Cazzillo(screenWidth, screenHeight));
-        character.add(new Engineer(screenWidth, screenHeight));
+        character.add(new CharacterCazzillo(screenWidth, screenHeight));
+        character.add(new CharacterEngineer(screenWidth, screenHeight));
         enemy=new Enemy(wave);
         lobby=new Lobby();
+        player=new Player();
         hud= new HUD(screenWidth, screenHeight);
         loader= new ImgLoader();
         if (f.exists() && !f.isDirectory()){
@@ -361,8 +363,8 @@ public class Board extends JPanel implements ActionListener {
 		wave = 0;
 		waveFinish = 0;
 		character.clear();
-		character.add(new Cazzillo(screenWidth, screenHeight));
-        character.add(new Engineer(screenWidth, screenHeight));
+		character.add(new CharacterCazzillo(screenWidth, screenHeight));
+        character.add(new CharacterEngineer(screenWidth, screenHeight));
 		if(equip.getEquipWear().get(0)!=null)
 			character.get(characterSelected).wearEquip(0, equippable.getForce().get(equip.getEquipWear().get(0)));
 		if(equip.getEquipWear().get(1)!=null)
